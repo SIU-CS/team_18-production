@@ -5,4 +5,6 @@
 # dakota.mitchem@siu.edu
 # Avtar Singh
 # avtar.singh@siu.edu
+# Albert Mensah-Bekoe
+# amen89@siu.edu
 
