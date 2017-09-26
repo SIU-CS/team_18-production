@@ -7,4 +7,5 @@
 # avtar.singh@siu.edu
 # Albert Mensah-Bekoe
 # amen89@siu.edu
-
+# Ian Todd
+# iantodd96@siu.edu
