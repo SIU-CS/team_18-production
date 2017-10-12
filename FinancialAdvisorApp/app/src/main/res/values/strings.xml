@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Financial Advisor</string>
+    <string name="app_name">Financial Advisor App</string>
 
     <string name="button_subtract_from_budget">Subtract from Budget</string>
     <string name="button_add_to_budget">Add to Budget</string>
@@ -9,10 +9,9 @@
     <string name="label_current_budget">Current Budget</string>
     <string name="label_financial_health">Financial Health</string>
 
-    <string-array name="spinner_upcoming_bills">
+    <string-array name="upcoming_bills_spinner">
         <item>Sample Bill 1</item>
         <item>Sample Bill 2</item>
         <item>Sample Bill 3</item>
     </string-array>
-
 </resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="team_18_production.financialadvisorapp.MainActivity">
+
+    <TextView
+        android:text="@string/label_current_budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:editable="false"
+        android:clickable="false"
+        android:text="placeholder, change later"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="?android:attr/colorButtonNormal"
+        android:backgroundTint="@android:color/background_dark"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/label_financial_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="placeholder health"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:textAlignment="center"
+        android:backgroundTint="@android:color/background_dark"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24sp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/editText" />
+
+    <TextView
+        android:text="@string/label_upcoming_bills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText5"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView7"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Change this to a listview that scrolls"
+        android:layout_width="match_parent"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textView7"
+        android:textStyle="normal|bold|italic"
+        android:textAlignment="center"
+        android:layout_height="200dp"
+        android:layout_above="@+id/button3" />
+
+    <Button
+        android:text="@string/button_add_to_budget"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_width="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="18dp" />
+
+    <Button
+        android:text="@string/button_subtract_from_budget"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="160dp"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="@string/button_budget_summary"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="13dp"
+        android:id="@+id/button3"
+        android:layout_height="100dp"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:textSize="30sp" />
+
+</android.widget.RelativeLayout>
