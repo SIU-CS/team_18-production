@@ -14,22 +14,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button budgetSummary = (Button)findViewById(R.id.buttonBudgetSummary);
+        Button buttonMMGoToBS = (Button)findViewById(R.id.buttonMMGoToBS);
+        Button buttonMMGoToCV = (Button)findViewById(R.id.buttonMMGoToCV);
+        Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
 
         //Setting button behavior
-        budgetSummary.setOnClickListener(new View.OnClickListener(){
+        buttonMMGoToBS.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
                 startActivity(myIntent);
             }
         });
 
-        OnTouchSwipeListener onSwipeTouchListener = new OnTouchSwipeListener(MainActivity.this) {
-            @Override
-            public void onSwipeLeft() {
-                //your actions
+        buttonMMGoToCV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
+                startActivity(myIntent);
             }
-        };
+        });
+
+        buttonMMGoToGV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, GraphView.class);
+                startActivity(myIntent);
+            }
+        });
 
         }
 

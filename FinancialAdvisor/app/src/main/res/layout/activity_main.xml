@@ -17,7 +17,7 @@
         android:id="@+id/textView"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/editText"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -28,12 +28,12 @@
         android:ems="10"
         android:id="@+id/editText"
         android:textAlignment="center"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
         android:clickable="false"
         android:editable="false"
         android:focusable="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="false"
+        android:layout_above="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="@string/label_financial_health"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:textSize="24sp"
-        android:layout_below="@+id/editText"
+        android:layout_above="@+id/editText2"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -50,14 +50,14 @@
         android:inputType="textPersonName"
         android:text="Placeholder Health Value"
         android:ems="10"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/editText"
         android:id="@+id/editText2"
         android:textAlignment="center"
         android:clickable="false"
         android:editable="false"
         android:focusable="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="false"
+        android:layout_above="@+id/textView3"
+        android:layout_alignStart="@+id/editText" />
 
     <TextView
         android:text="Upcoming Bills"
@@ -65,24 +65,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView3"
         android:textSize="24sp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_above="@+id/textView4"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
         android:text="Change this into a listview that scrolls"
-        android:textAlignment="center" />
-
-    <Button
-        android:text="@string/button_budget_summary"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:id="@+id/buttonBudgetSummary"
-        android:layout_above="@+id/button3"
+        android:textAlignment="center"
+        android:layout_above="@+id/buttonGVGoToMM"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -97,7 +89,31 @@
         android:text="@string/button_subtract_from_budget"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
+        android:id="@+id/buttonGVGoToMM"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonMMGoToBS"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_budget_summary" />
+
+    <Button
+        android:id="@+id/buttonMMGoToCV"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_calendar_view" />
+
+    <Button
+        android:id="@+id/buttonMMGoToGV"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_graph_view" />
 </RelativeLayout>

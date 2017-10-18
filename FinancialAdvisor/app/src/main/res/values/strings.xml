@@ -4,11 +4,16 @@
 
     <string name="app_name">Financial Advisor</string>
 
+    //Universal Strings
+    <string name="button_main_menu">Main Menu</string>
+    <string name="button_calendar_view">Calendar View</string>
+    <string name="button_budget_summary">Budget Summary</string>
+    <string name="button_graph_view">Graph View</string>
+
     //For main activity
 
     <string name="button_subtract_from_budget">Subtract from Budget</string>
     <string name="button_add_to_budget">Add to Budget</string>
-    <string name="button_budget_summary">Budget Summary</string>
 
     <string name="label_upcoming_bills">Upcoming Bills</string>
     <string name="label_current_budget">Current Budget</string>
@@ -29,7 +34,6 @@
 
     <string name="button_file_export">Export Budget Data</string>
     <string name="button_file_import">Import Budget Data</string>
-    <string name="button_calendar_view">Calendar View</string>
 
     //For graph view
 

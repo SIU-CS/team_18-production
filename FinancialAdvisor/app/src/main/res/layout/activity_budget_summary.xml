@@ -13,22 +13,21 @@
         android:id="@+id/textViewBSTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:text="@string/label_budget_summary_title"
         android:textAlignment="textStart"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_above="@+id/textViewBSExpendituresTitle"
+        android:layout_toEndOf="@+id/buttonBSExportBudget"
+        android:layout_marginBottom="18dp" />
 
     <TextView
         android:id="@+id/textViewBSExpendituresLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewBSTitle"
-        android:layout_marginTop="32dp"
-        android:layout_toStartOf="@+id/textViewBSTitle"
         android:text="@string/label_money_earned"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_above="@+id/listViewBSEarnings"
+        android:layout_toStartOf="@+id/textViewBSTitle" />
 
     <TextView
         android:id="@+id/textViewBSExpendituresTitle"
@@ -44,8 +43,8 @@
         android:id="@+id/listViewBSEarnings"
         android:layout_width="180dp"
         android:layout_height="150dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewBSExpendituresLabel" />
+        android:layout_above="@+id/textView9"
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:id="@+id/listViewBSExpenditures"
@@ -58,41 +57,56 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listViewBSEarnings"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
         android:text="@string/label_alerts"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_above="@+id/listView3"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/listView3"
         android:layout_width="match_parent"
         android:layout_height="135dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView9" />
+        android:layout_above="@+id/buttonBSExportBudget"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/buttonBSExportBudget"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/listView3"
-        android:text="@string/button_file_export" />
+        android:text="@string/button_file_export"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/buttonBSCalendarView"
-        android:layout_width="150dp"
+        android:id="@+id/buttonBSGoToCV"
+        android:layout_width="125dp"
         android:layout_height="70dp"
-        android:layout_alignBottom="@+id/buttonBSExportBudget"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="@string/button_calendar_view" />
 
     <Button
         android:id="@+id/buttonBSImportBudget"
         android:layout_width="100dp"
         android:layout_height="70dp"
+        android:text="@string/button_file_import"
+        android:layout_below="@+id/listView3"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonBSGoToMM"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_main_menu" />
+
+    <Button
+        android:id="@+id/buttonBSGoToGV"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/buttonBSCalendarView"
-        android:text="@string/button_file_import" />
+        android:layout_alignParentTop="true"
+        android:text="@string/button_graph_view" />
 
 </RelativeLayout>

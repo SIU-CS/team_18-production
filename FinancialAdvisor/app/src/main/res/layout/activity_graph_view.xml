@@ -10,11 +10,11 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:text="This space reserved for graph"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/button8"
@@ -44,19 +44,43 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true"
         android:text="@string/label_total_spent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/editText3"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="$Placeholder$"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_above="@+id/button8"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonGVGoToBS"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_budget_summary" />
+
+    <Button
+        android:id="@+id/buttonGVGoToMM"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button10"
+        android:text="@string/button_main_menu" />
+
+    <Button
+        android:id="@+id/buttonGVGoToCV"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_calendar_view" />
 </RelativeLayout>
