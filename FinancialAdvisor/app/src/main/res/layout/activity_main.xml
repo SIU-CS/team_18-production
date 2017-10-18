@@ -69,35 +69,35 @@
         android:layout_alignEnd="@+id/textView2" />
 
     <TextView
-        android:text="Change this into a listview that scrolls"
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
+        android:layout_height="230dp"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView4"
-        android:textAlignment="center"
-        android:layout_height="150dp" />
+        android:text="Change this into a listview that scrolls"
+        android:textAlignment="center" />
 
     <Button
         android:text="@string/button_budget_summary"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/buttonBudgetSummary" />
+        android:id="@+id/buttonBudgetSummary"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/button_add_to_budget"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonBudgetSummary"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button2" />
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/button_subtract_from_budget"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonBudgetSummary"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button3" />
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

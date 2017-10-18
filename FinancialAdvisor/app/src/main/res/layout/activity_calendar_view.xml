@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context="team_18.financialadvisor.CalendarView">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spinner"
+        android:layout_toStartOf="@+id/spinner"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spinner"
+        android:layout_toEndOf="@+id/spinner"
+        android:text="Button" />
 </RelativeLayout>

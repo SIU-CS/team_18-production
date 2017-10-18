@@ -35,11 +35,10 @@
 
     <string name="label_graph_view">Graph View</string>
     <string name="label_total_spent">Total Expenditures</string>
-    <string name="label_graph_time_frame">Graph Time Frame</string>
 
     <string name="button_three_months">Past Three Months</string>
     <string name="button_six_months">Past Six Months</string>
-    <string name="button_one_year">Past Year</string>
+    <string name="button_twelve_months">Past Twelve Months</string>
 
     //For calendar view
 
