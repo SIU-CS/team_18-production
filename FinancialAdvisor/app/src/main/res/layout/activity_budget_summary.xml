@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutBS"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="team_18.financialadvisor.BudgetSummary"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewBSTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,58 +21,58 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewBSExpendituresLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/textViewBSTitle"
         android:layout_marginTop="32dp"
-        android:layout_toStartOf="@+id/textView5"
+        android:layout_toStartOf="@+id/textViewBSTitle"
         android:text="@string/label_money_earned"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewBSExpendituresTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/listViewBSEarnings"
+        android:layout_toEndOf="@+id/textViewBSTitle"
         android:text="TextView"
         android:textSize="16sp"
-        tools:text="@string/label_money_spent"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_toEndOf="@+id/textView5" />
+        tools:text="@string/label_money_spent" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listViewBSEarnings"
         android:layout_width="180dp"
         android:layout_height="150dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView6" />
+        android:layout_below="@+id/textViewBSExpendituresLabel" />
 
     <ListView
+        android:id="@+id/listViewBSExpenditures"
         android:layout_width="180dp"
         android:layout_height="150dp"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView7" />
+        android:layout_below="@+id/textViewBSExpendituresTitle" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/listViewBSEarnings"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="@string/label_alerts"
-        android:textSize="24sp"
-        android:layout_below="@+id/listView"
-        android:layout_centerHorizontal="true" />
+        android:textSize="24sp" />
 
     <ListView
+        android:id="@+id/listView3"
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView9"
-        android:id="@+id/listView3" />
+        android:layout_below="@+id/textView9" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonBSExportBudget"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
@@ -80,19 +80,19 @@
         android:text="@string/button_file_export" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonBSCalendarView"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignBottom="@+id/button4"
+        android:layout_alignBottom="@+id/buttonBSExportBudget"
         android:layout_centerHorizontal="true"
         android:text="@string/button_calendar_view" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonBSImportBudget"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/button5"
+        android:layout_alignTop="@+id/buttonBSCalendarView"
         android:text="@string/button_file_import" />
 
 </RelativeLayout>
