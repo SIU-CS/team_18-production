@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_calendar_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="team_18.financialadvisor.CalendarView">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/CVSpinner"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
@@ -25,9 +26,9 @@
         android:id="@+id/buttonCVGoToBS"
         android:layout_width="125dp"
         android:layout_height="70dp"
-        android:text="@string/button_budget_summary"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:text="@string/button_budget_summary" />
 
     <Button
         android:id="@+id/buttonCVGoToMM"
