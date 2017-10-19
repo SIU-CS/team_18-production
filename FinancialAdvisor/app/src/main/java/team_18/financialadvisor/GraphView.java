@@ -14,7 +14,7 @@ public class GraphView extends AppCompatActivity {
         setContentView(R.layout.activity_graph_view);
 
         Button buttonGVGoToBS = (Button)findViewById(R.id.buttonGVGoToBS);
-        Button buttonGVGoToMM = (Button)findViewById(R.id.buttonGVGoToMM);
+        Button buttonGVGoToMM = (Button)findViewById(R.id.MMButtonGVGoToMM);
         Button buttonGVGoToCV = (Button)findViewById(R.id.buttonGVGoToCV);
 
         //Setting button behavior
