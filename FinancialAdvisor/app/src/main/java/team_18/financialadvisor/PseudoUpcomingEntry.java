@@ -1,13 +1,12 @@
+package team_18.financialadvisor;
+
 public class PseudoUpcomingEntry extends PseudoDatabaseEntry{
-private final String month;
-private final int date;
-private final int year;
+private final String month = "test";
+private final int date = 0;
+private final int year = 0;
 
-
-    public PseudoUpcomingEntry(String month, int date, int year) {
-        this.month = month;
-        this.date = date;
-        this.year = year;
+    public PseudoUpcomingEntry(String transactionType, float transactionAmount, String transactionComment, int transactionID) {
+        super(transactionType, transactionAmount, transactionComment, transactionID);
     }
 
     public String getMonth() {

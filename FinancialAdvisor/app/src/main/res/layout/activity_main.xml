@@ -11,14 +11,14 @@
     tools:context="team_18.financialadvisor.MainActivity">
 
     <TextView
-        android:text="@string/label_current_budget"
+        android:id="@+id/textViewCurrentBudgetLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textAlignment="center"
-        android:textSize="24sp"
         android:layout_above="@+id/editText"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/label_current_budget"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -32,14 +32,14 @@
         android:editable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:layout_above="@+id/textView2"
+        android:layout_above="@+id/textViewFinancialHealthLabel"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="@string/label_financial_health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/textViewFinancialHealthLabel"
         android:textSize="24sp"
         android:layout_above="@+id/editText2"
         android:layout_centerHorizontal="true" />
