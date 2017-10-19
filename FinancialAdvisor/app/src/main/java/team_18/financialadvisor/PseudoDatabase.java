@@ -7,20 +7,25 @@ public class PseudoDatabase {
     private int weeksUsed;
     private int weeksDelinquent;
     private int weeksClose;
-    private float savings;
+    private float totalSavings;
     private int currentIndex;
 
 
-    public PseudoDatabase(float currentBalance, float expensesRemaining, int weeksUsed, int weeksDelinquent, int weeksClose, float savings, int currentIndex) {
-        this.currentBalance = currentBalance;
-        this.expensesRemaining = expensesRemaining;
-        this.weeksUsed = weeksUsed;
-        this.weeksDelinquent = weeksDelinquent;
-        this.weeksClose = weeksClose;
-        this.savings = savings;
-        this.currentIndex = currentIndex;
+
+    public PseudoDatabase(float balance, float expenses, int weeks, int delinquent, int close, float savings, int index) {
+        currentBalance = balance;
+        expensesRemaining = expenses;
+        weeksUsed = weeks;
+        weeksDelinquent = delinquent;
+        weeksClose = close;
+        totalSavings = savings;
+        currentIndex = index;
     }
 
+
+
+
+    //Getters and Setters
     public float getCurrentBalance() {
         return currentBalance;
     }
@@ -61,12 +66,12 @@ public class PseudoDatabase {
         this.weeksClose = weeksClose;
     }
 
-    public float getSavings() {
-        return savings;
+    public float getTotalSavings() {
+        return totalSavings;
     }
 
-    public void setSavings(float savings) {
-        this.savings = savings;
+    public void setTotalSavings(float totalSavings) {
+        this.totalSavings = totalSavings;
     }
 
     public int getCurrentIndex() {

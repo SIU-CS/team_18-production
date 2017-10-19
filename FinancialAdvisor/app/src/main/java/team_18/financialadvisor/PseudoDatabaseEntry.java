@@ -10,26 +10,11 @@ public class PseudoDatabaseEntry {
     private final int transactionID;
 
 
-    public PseudoDatabaseEntry(String transactionType, float transactionAmount, String transactionComment, int transactionID) {
-        this.transactionType = transactionType;
-        this.transactionAmount = transactionAmount;
-        this.transactionComment = transactionComment;
-        this.transactionID = transactionID;
+    public PseudoDatabaseEntry(String type, float amount, String comment, int ID) {
+        transactionType = type;
+        transactionAmount = amount;
+        transactionComment = comment;
+        transactionID = ID;
     }
 
-    public String getTransactionType() {
-        return transactionType;
-    }
-
-    public float getTransactionAmount() {
-        return transactionAmount;
-    }
-
-    public String getTransactionComment() {
-        return transactionComment;
-    }
-
-    public int getTransactionID() {
-        return transactionID;
-    }
 }
