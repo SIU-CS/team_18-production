@@ -9,6 +9,9 @@ public class PseudoDatabaseEntry {
     private final String transactionComment;
     private final int transactionID;
 
+    //Node Specific things
+    PseudoDatabaseEntry previousEntry;
+    PseudoDatabaseEntry nextEntry;
 
     public PseudoDatabaseEntry(String type, float amount, String comment, int ID) {
         transactionType = type;

@@ -1,3 +1,5 @@
+package team_18.financialadvisor;
+
 /**
 *Class is used to test functionality of app prior to developing the database by acting as a surrogate for the database
 */
@@ -10,6 +12,11 @@ public class PseudoDatabase {
     private float totalSavings;
     private int currentIndex;
 
+    private static PseudoDatabaseEntry root;
+    private static PseudoDatabaseEntry temp;
+    private static PseudoDatabaseEntry current;
+    private static int numOfEntries;
+
 
 
     public PseudoDatabase(float balance, float expenses, int weeks, int delinquent, int close, float savings, int index) {
@@ -20,9 +27,63 @@ public class PseudoDatabase {
         weeksClose = close;
         totalSavings = savings;
         currentIndex = index;
+        numOfEntries =0;
     }
 
+    public void newDatabaseEntry(String type, float amount, String comment, int ID){
+        PseudoDatabaseEntry newEntry = new PseudoDatabaseEntry(type, amount, comment, ID);
+        if(root==null){
+            root=newEntry;
+            root.previousEntry=null;
+            root.nextEntry=null;
+        }
+        else{
+            current=root;
+            while(current.nextEntry!=null){
+                current=current.nextEntry;
+            }
+            current.nextEntry=newEntry;
+            newEntry.previousEntry=current;
+            newEntry.nextEntry=null;
+        }
+        numOfEntries++;
 
+    }
+
+    public void deleteEntry(){
+        int counter=1;
+        current= root;
+        if(numOfEntries==1){
+            root= current.nextEntry;
+            current.nextEntry=null;
+            current.previousEntry=null;
+        }
+        else{
+            while(counter<numOfEntries){
+                current=current.nextEntry;
+                counter++;
+            }
+            if(current.nextEntry==null){
+                current.previousEntry.nextEntry=null;
+                current.previousEntry=null;
+            }
+            else{
+                current.previousEntry.nextEntry=current.nextEntry;
+                current.nextEntry.previousEntry=current.previousEntry;
+            }
+        }
+        numOfEntries--;
+    }
+    public boolean isEmpty(){
+        return root==null;
+    }
+    public void clear(){
+        while(!isEmpty())
+            deleteEntry();
+    }
+    public int getNumOfEntries(){
+        return numOfEntries;
+    }
 
 
     //Getters and Setters
