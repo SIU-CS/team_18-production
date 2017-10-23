@@ -1,5 +1,6 @@
 package team_18.financialadvisor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +14,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button budgetSummary = (Button)findViewById(R.id.buttonBudgetSummary);
+        Button buttonMMGoToBS = (Button)findViewById(R.id.buttonMMGoToBS);
+        Button buttonMMGoToCV = (Button)findViewById(R.id.buttonMMGoToCV);
+        Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
 
         //Setting button behavior
-        budgetSummary.setOnClickListener(new View.OnClickListener(){
+        buttonMMGoToBS.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
+                startActivity(myIntent);
+            }
+        });
+
+        buttonMMGoToCV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
+                startActivity(myIntent);
+            }
+        });
+
+        buttonMMGoToGV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, GraphView.class);
                 startActivity(myIntent);
             }
         });

@@ -4,11 +4,16 @@
 
     <string name="app_name">Financial Advisor</string>
 
+    //Universal Strings
+    <string name="button_main_menu">Main Menu</string>
+    <string name="button_calendar_view">Calendar View</string>
+    <string name="button_budget_summary">Budget Summary</string>
+    <string name="button_graph_view">Graph View</string>
+
     //For main activity
 
     <string name="button_subtract_from_budget">Subtract from Budget</string>
     <string name="button_add_to_budget">Add to Budget</string>
-    <string name="button_budget_summary">Budget Summary</string>
 
     <string name="label_upcoming_bills">Upcoming Bills</string>
     <string name="label_current_budget">Current Budget</string>
@@ -29,17 +34,15 @@
 
     <string name="button_file_export">Export Budget Data</string>
     <string name="button_file_import">Import Budget Data</string>
-    <string name="button_calendar_view">Calendar View</string>
 
     //For graph view
 
     <string name="label_graph_view">Graph View</string>
     <string name="label_total_spent">Total Expenditures</string>
-    <string name="label_graph_time_frame">Graph Time Frame</string>
 
     <string name="button_three_months">Past Three Months</string>
     <string name="button_six_months">Past Six Months</string>
-    <string name="button_one_year">Past Year</string>
+    <string name="button_twelve_months">Past Twelve Months</string>
 
     //For calendar view
 

@@ -11,13 +11,13 @@
     tools:context="team_18.financialadvisor.MainActivity">
 
     <TextView
-        android:text="@string/label_current_budget"
+        android:id="@+id/MMTextViewCurrentBudgetLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:text="@string/label_current_budget"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/buttonMMGoToBS"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -26,22 +26,22 @@
         android:inputType="textPersonName"
         android:text="$Placeholder$"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/MMEditTextCurrentBudget"
         android:textAlignment="center"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
         android:clickable="false"
         android:editable="false"
         android:focusable="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="false"
+        android:layout_below="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="@string/label_financial_health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/MMTextViewFinancialHealthLabel"
         android:textSize="24sp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/MMEditTextCurrentBudget"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -50,54 +50,67 @@
         android:inputType="textPersonName"
         android:text="Placeholder Health Value"
         android:ems="10"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/editText"
-        android:id="@+id/editText2"
+        android:id="@+id/MMEditTextFinancialHealth"
         android:textAlignment="center"
         android:clickable="false"
         android:editable="false"
         android:focusable="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="false"
+        android:layout_below="@+id/MMTextViewFinancialHealthLabel"
+        android:layout_alignStart="@+id/MMEditTextCurrentBudget" />
 
     <TextView
         android:text="Upcoming Bills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/MMTextViewUpcomingBillsLabel"
         android:textSize="24sp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignEnd="@+id/textView2" />
-
-    <TextView
-        android:text="Change this into a listview that scrolls"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView4"
-        android:textAlignment="center"
-        android:layout_height="150dp" />
-
-    <Button
-        android:text="@string/button_budget_summary"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/buttonBudgetSummary" />
+        android:layout_below="@+id/MMEditTextFinancialHealth"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/button_add_to_budget"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonBudgetSummary"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button2" />
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/button_subtract_from_budget"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonBudgetSummary"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button3" />
+        android:id="@+id/MMButtonSubtractFromBudget"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonMMGoToBS"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_budget_summary" />
+
+    <Button
+        android:id="@+id/buttonMMGoToCV"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_calendar_view" />
+
+    <Button
+        android:id="@+id/buttonMMGoToGV"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:text="@string/button_graph_view"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
