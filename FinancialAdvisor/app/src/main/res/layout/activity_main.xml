@@ -69,12 +69,12 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="@string/button_add_to_budget"
+        android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/button_add_to_budget" />
 
     <Button
         android:text="@string/button_subtract_from_budget"
@@ -109,8 +109,10 @@
         android:layout_alignParentEnd="true" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/MMTextViewUpcomingBillsLabel"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/button2">
+    </ListView>
 </RelativeLayout>
