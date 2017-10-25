@@ -12,8 +12,8 @@
 
     //For main activity
 
-    <string name="button_subtract_from_budget">Subtract from Budget</string>
-    <string name="button_add_to_budget">Add to Budget</string>
+    <string name="button_subtract_from_budget">Add Expenses</string>
+    <string name="button_add_to_budget">Add Income</string>
 
     <string name="label_upcoming_bills">Upcoming Bills</string>
     <string name="label_current_budget">Current Budget</string>
@@ -49,7 +49,6 @@
     <string name="label_time_frame_week">One Week</string>
     <string name="label_time_frame_month">One Month</string>
     <string name="label_time_frame_year">One Year</string>
-
 
 
 </resources>
