@@ -11,7 +11,6 @@ public class PseudoDatabase {
     private int weeksClose;
     private double totalSavings;
     private int currentIndex;
-
     private static PseudoDatabaseEntry root;
     private static PseudoDatabaseEntry temp;
     private static PseudoDatabaseEntry current;
@@ -19,14 +18,14 @@ public class PseudoDatabase {
 
 
 
-    public PseudoDatabase(double balance, double expenses, int weeks, int delinquent, int close, double savings, int index) {
-        currentBalance = balance;
-        expensesRemaining = expenses;
-        weeksUsed = weeks;
-        weeksDelinquent = delinquent;
-        weeksClose = close;
-        totalSavings = savings;
-        currentIndex = index;
+    public PseudoDatabase() {
+        currentBalance = 0.00;
+        expensesRemaining = 0.00;
+        weeksUsed = 0;
+        weeksDelinquent = 0;
+        weeksClose = 0;
+        totalSavings = 0.00;
+        currentIndex = 0;
         numOfEntries =0;
     }
 
