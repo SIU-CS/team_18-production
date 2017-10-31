@@ -1,6 +1,5 @@
 package team_18.financialadvisor;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToBS = (Button)findViewById(R.id.buttonMMGoToBS);
         Button buttonMMGoToCV = (Button)findViewById(R.id.buttonMMGoToCV);
         Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
+        Button buttonMMGoToAddIncome = (Button)findViewById(R.id.buttonMMGoToAddIncome);
+        Button MMButtonSubtractFromBudget = (Button)findViewById(R.id.MMButtonSubtractFromBudget);
+
         PseudoDatabase database = new PseudoDatabase();
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
         FinancialHealthStatus health = new FinancialHealthStatus(database);
@@ -45,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
         buttonMMGoToGV.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(MainActivity.this, GraphView.class);
+                startActivity(myIntent);
+            }
+        });
+        buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, AddIncome.class);
+                startActivity(myIntent);
+            }
+        });
+        MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(MainActivity.this, AddExpenses.class);
                 startActivity(myIntent);
             }
         });
