@@ -11,9 +11,9 @@ public class PseudoDatabase {
     private int weeksClose;
     private double totalSavings;
     private int currentIndex;
-    private static PseudoDatabaseEntry root;
-    private static PseudoDatabaseEntry temp;
-    private static PseudoDatabaseEntry current;
+    public static PseudoDatabaseEntry root;
+    public static PseudoDatabaseEntry temp;
+    public static PseudoDatabaseEntry current;
     private static int numOfEntries;
 
 
@@ -143,4 +143,6 @@ public class PseudoDatabase {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
+
+
 }

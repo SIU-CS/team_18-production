@@ -64,7 +64,8 @@ public class FinancialHealthStatus {
 
     }
 
-    public String generateStatus(){
+    public String generateStatus(PseudoDatabase database){
+        refreshStatus(database);
         int points = (currentBalancePoints()+expensesPoints()+ savingsPoints());
         String status=null;
         if (points<=7)

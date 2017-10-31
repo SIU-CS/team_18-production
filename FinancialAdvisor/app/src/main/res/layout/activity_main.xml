@@ -109,10 +109,9 @@
         android:layout_alignParentEnd="true" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/MMListViewUpcomingBills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"
-        android:layout_above="@+id/buttonMMGoToAddIncome">
-    </ListView>
+        android:layout_above="@+id/buttonMMGoToAddIncome"
+        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
 </RelativeLayout>

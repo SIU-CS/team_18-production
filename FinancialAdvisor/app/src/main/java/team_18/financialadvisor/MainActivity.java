@@ -12,69 +12,78 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    ListView lst;
-    String[] months={"11/10/17: Car Payment $150.00","11/15/17: Phone Bill $80.00","11/29/17: Internet Bill $30.00"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ListView upcomingBills;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonMMGoToBS = (Button)findViewById(R.id.buttonMMGoToBS);
-        Button buttonMMGoToCV = (Button)findViewById(R.id.buttonMMGoToCV);
-        Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
-        Button buttonMMGoToAddIncome = (Button)findViewById(R.id.buttonMMGoToAddIncome);
-        Button MMButtonSubtractFromBudget = (Button)findViewById(R.id.MMButtonSubtractFromBudget);
+        //Declaring button
+        Button buttonMMGoToBS = (Button) findViewById(R.id.buttonMMGoToBS);
+        Button buttonMMGoToCV = (Button) findViewById(R.id.buttonMMGoToCV);
+        Button buttonMMGoToGV = (Button) findViewById(R.id.buttonMMGoToGV);
+        Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
+        Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
 
+
+        //Pseudo Database code
         PseudoDatabase database = new PseudoDatabase();
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
         FinancialHealthStatus health = new FinancialHealthStatus(database);
+        //Entries
+        database.newDatabaseEntry("Bill", -120.00, "Electricity Bill", 1);
+        database.newDatabaseEntry("Paycheck", 1000.00, "Payday", 2);
+        database.newDatabaseEntry("Car payment", -200.00, "Car Payment", 3);
 
-        //Setting button behavior
-        buttonMMGoToBS.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        //Financial health status generation
+        health.generateStatus(database);
+
+        //Setting button behaviors
+        buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
                 startActivity(myIntent);
             }
         });
 
-        buttonMMGoToCV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        buttonMMGoToCV.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
                 startActivity(myIntent);
             }
         });
 
-        buttonMMGoToGV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        buttonMMGoToGV.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, GraphView.class);
                 startActivity(myIntent);
             }
         });
-        buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, AddIncome.class);
                 startActivity(myIntent);
             }
         });
-        MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, AddExpenses.class);
                 startActivity(myIntent);
             }
         });
 
-        lst= (ListView) findViewById(R.id.list);
-        ArrayAdapter<String> arrayadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,months);
-        lst.setAdapter(arrayadapter);
-        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv= (TextView) view;
-                Toast.makeText(MainActivity.this,tv.getText()+"  "+position,Toast.LENGTH_LONG).show();
-            }
-        });
+        //Upcoming bills ListView
 
+        ListView simpleList;
+        String bills[] = {database.root.toString(), database.root.nextEntry.toString(), database.root.nextEntry.nextEntry.toString()};
+
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_main, R.id.textView, bills);
+            simpleList.setAdapter(arrayAdapter);
         }
-
     }
+}
 
