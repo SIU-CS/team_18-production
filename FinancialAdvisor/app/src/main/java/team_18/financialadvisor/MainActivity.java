@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -75,15 +76,18 @@ public class MainActivity extends AppCompatActivity {
         //Upcoming bills ListView
 
         ListView simpleList;
-        String bills[] = {database.root.toString(), database.root.nextEntry.toString(), database.root.nextEntry.nextEntry.toString()};
+        ArrayList<String> bills = new ArrayList<String>();
+        PseudoDatabaseEntry pos = database.root;
+        for (int i = 0; i <= (database.getNumOfEntries()-1); i++){
+            bills.add(i, pos.toString());
+            if (pos.nextEntry != null) {
+                pos = pos.nextEntry;
+            }
+        }
 
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_main, R.id.textView, bills);
-            simpleList.setAdapter(arrayAdapter);
+        simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_main, bills);
+        simpleList.setAdapter(arrayAdapter);
         }
     }
-}
 

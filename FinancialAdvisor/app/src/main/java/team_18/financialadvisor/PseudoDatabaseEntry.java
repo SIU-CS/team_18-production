@@ -40,9 +40,9 @@ public class PseudoDatabaseEntry {
     }
 
     public String toString(){
-            String temp;
-            String price = Double.toString(getTransactionAmount());
-            temp = (getTransactionComment() + " - " + price);
+        String temp;
+        String price = Double.toString(getTransactionAmount());
+        temp = (getTransactionComment() + " - " + price);
         return temp;
     }
 
