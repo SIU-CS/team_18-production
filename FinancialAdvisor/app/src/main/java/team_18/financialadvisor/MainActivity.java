@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
         PseudoDatabase database = new PseudoDatabase();
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
+        FinancialHealthStatus health = new FinancialHealthStatus(database);
 
         //Setting button behavior
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener(){
