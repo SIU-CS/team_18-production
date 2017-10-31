@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ListView upcomingBills;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -75,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Upcoming bills ListView
 
-        ListView simpleList;
-        ArrayList<String> bills = new ArrayList<String>();
+        ArrayList<String> bills = new ArrayList<>();
         PseudoDatabaseEntry pos = database.root;
         for (int i = 0; i <= (database.getNumOfEntries()-1); i++){
             bills.add(i, pos.toString());
@@ -85,8 +83,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        String[] test = {"testing testing 1 2 3", "another test", "and a third"};
+        ListView simpleList;
+        ArrayAdapter<String> arrayAdapter;
+
+
         simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_main, bills);
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
         simpleList.setAdapter(arrayAdapter);
         }
     }

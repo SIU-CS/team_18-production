@@ -114,4 +114,5 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonMMGoToAddIncome"
         android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
+
 </RelativeLayout>
