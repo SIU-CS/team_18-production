@@ -46,7 +46,8 @@ public class PseudoDatabase {
             newEntry.nextEntry=null;
         }
         numOfEntries++;
-
+        setCurrentBalance(getCurrentBalance()+ amount);
+        setCurrentIndex(getCurrentIndex()+1);
     }
 
     public void deleteEntry(){
@@ -72,6 +73,7 @@ public class PseudoDatabase {
             }
         }
         numOfEntries--;
+        setCurrentIndex(getCurrentIndex()+1);
     }
     public boolean isEmpty(){
         return root==null;
