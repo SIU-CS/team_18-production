@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToBS = (Button)findViewById(R.id.buttonMMGoToBS);
         Button buttonMMGoToCV = (Button)findViewById(R.id.buttonMMGoToCV);
         Button buttonMMGoToGV = (Button)findViewById(R.id.buttonMMGoToGV);
+        PseudoDatabase database = new PseudoDatabase(0.0, 0.0, 0, 0, 0, 0.0, 0);
 
         //Setting button behavior
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener(){

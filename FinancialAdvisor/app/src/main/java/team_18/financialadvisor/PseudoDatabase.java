@@ -4,12 +4,12 @@ package team_18.financialadvisor;
 *Class is used to test functionality of app prior to developing the database by acting as a surrogate for the database
 */
 public class PseudoDatabase {
-    private float currentBalance;
-    private float expensesRemaining;
+    private double currentBalance;
+    private double expensesRemaining;
     private int weeksUsed;
     private int weeksDelinquent;
     private int weeksClose;
-    private float totalSavings;
+    private double totalSavings;
     private int currentIndex;
 
     private static PseudoDatabaseEntry root;
@@ -19,7 +19,7 @@ public class PseudoDatabase {
 
 
 
-    public PseudoDatabase(float balance, float expenses, int weeks, int delinquent, int close, float savings, int index) {
+    public PseudoDatabase(double balance, double expenses, int weeks, int delinquent, int close, double savings, int index) {
         currentBalance = balance;
         expensesRemaining = expenses;
         weeksUsed = weeks;
@@ -30,7 +30,7 @@ public class PseudoDatabase {
         numOfEntries =0;
     }
 
-    public void newDatabaseEntry(String type, float amount, String comment, int ID){
+    public void newDatabaseEntry(String type, double amount, String comment, int ID){
         PseudoDatabaseEntry newEntry = new PseudoDatabaseEntry(type, amount, comment, ID);
         if(root==null){
             root=newEntry;
@@ -87,19 +87,19 @@ public class PseudoDatabase {
 
 
     //Getters and Setters
-    public float getCurrentBalance() {
+    public double getCurrentBalance() {
         return currentBalance;
     }
 
-    public void setCurrentBalance(float currentBalance) {
+    public void setCurrentBalance(double currentBalance) {
         this.currentBalance = currentBalance;
     }
 
-    public float getExpensesRemaining() {
+    public double getExpensesRemaining() {
         return expensesRemaining;
     }
 
-    public void setExpensesRemaining(float expensesRemaining) {
+    public void setExpensesRemaining(double expensesRemaining) {
         this.expensesRemaining = expensesRemaining;
     }
 
@@ -127,11 +127,11 @@ public class PseudoDatabase {
         this.weeksClose = weeksClose;
     }
 
-    public float getTotalSavings() {
+    public double getTotalSavings() {
         return totalSavings;
     }
 
-    public void setTotalSavings(float totalSavings) {
+    public void setTotalSavings(double totalSavings) {
         this.totalSavings = totalSavings;
     }
 
