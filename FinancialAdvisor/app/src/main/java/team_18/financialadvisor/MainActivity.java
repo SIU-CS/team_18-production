@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         //Upcoming bills ListView
 
         ArrayList<String> bills = new ArrayList<>();

@@ -50,5 +50,28 @@
     <string name="label_time_frame_month">One Month</string>
     <string name="label_time_frame_year">One Year</string>
 
+    //For income transaction types
 
+    <string-array name="income_transactions">
+        <item>Wages</item>
+        <item>Commission</item>
+        <item>Gift</item>
+        <item>Other</item>
+    </string-array>
+
+    //For expenses transaction types
+
+    <string-array name="expense_transactions">
+        <item>Groceries</item>
+        <item>Gas</item>
+        <item>Rent Payment</item>
+        <item>Car Loan</item>
+        <item>Mortgage</item>
+        <item>Phone Bill</item>
+        <item>Internet and TV</item>
+        <item>Insurance</item>
+        <item>Electricity and Gas</item>
+        <item>Water and Waste</item>
+        <item>Other</item>
+    </string-array>
 </resources>
