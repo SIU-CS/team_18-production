@@ -88,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
-        String[] test = {"testing testing 1 2 3", "another test", "and a third"};
         ListView simpleList;
         ArrayAdapter<String> arrayAdapter;
 
