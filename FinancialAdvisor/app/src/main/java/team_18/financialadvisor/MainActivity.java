@@ -30,10 +30,14 @@ public class MainActivity extends AppCompatActivity {
         PseudoDatabase database = new PseudoDatabase();
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
         FinancialHealthStatus health = new FinancialHealthStatus(database);
+
+
+
         //Entries
+
         database.newDatabaseEntry("Bill", -120.00, "Electricity Bill", 1);
         database.newDatabaseEntry("Paycheck", 1000.00, "Payday", 2);
-        database.newDatabaseEntry("Car payment", -200.00, "Car Payment", 3);
+       database.newDatabaseEntry("Car payment", -200.00, "Car Payment", 3);
 
         //Financial health status generation
         health.generateStatus(database);
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
         String[] test = {"testing testing 1 2 3", "another test", "and a third"};
         ListView simpleList;
         ArrayAdapter<String> arrayAdapter;
@@ -92,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
         simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
         simpleList.setAdapter(arrayAdapter);
-        }
+
+
     }
+
+
+}
 
