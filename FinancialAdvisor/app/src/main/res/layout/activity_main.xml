@@ -69,7 +69,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonMMGoToAddIncome"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -109,10 +109,10 @@
         android:layout_alignParentEnd="true" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/MMListViewUpcomingBills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"
-        android:layout_above="@+id/button2">
-    </ListView>
+        android:layout_above="@+id/buttonMMGoToAddIncome"
+        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
+
 </RelativeLayout>
