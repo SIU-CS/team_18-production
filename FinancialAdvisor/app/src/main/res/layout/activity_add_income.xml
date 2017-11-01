@@ -82,7 +82,15 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="152dp" />
+        android:layout_height="152dp"
+        android:clickable="amtPerMonth = (EditText)findViewById(R.id.text_box_income);
+                 transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
+
+                id = (EditText)findViewById(R.id.input_transaction_ID);
+                transactionID = Integer.parseInt(id.getText().toString());
+
+                transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
+                transactionComment = transactionCmt.getText().toString();" />
 
     <LinearLayout
         android:layout_width="match_parent"
