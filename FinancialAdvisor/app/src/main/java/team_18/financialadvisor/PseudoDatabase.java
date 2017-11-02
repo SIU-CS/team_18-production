@@ -144,5 +144,8 @@ public class PseudoDatabase {
         this.currentIndex = currentIndex;
     }
 
+    public String budgetToString(){
+        return Double.toString(currentBalance);
+    }
 
 }
