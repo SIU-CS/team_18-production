@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
         FinancialHealthStatus health = new FinancialHealthStatus(database);
 
-
+        //Declaring EditText
+        EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
+        healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
 
         //Entries
 
