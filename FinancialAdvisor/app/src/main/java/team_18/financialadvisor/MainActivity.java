@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: TEST BUTTONS, REMOVE LATER
         testBudget.setOnClickListener(new View.OnClickListener() {
-                                          public void onClick(View v) {
-                                              database.newDatabaseEntry("Vet Bill", -100.00, "Fido's Medication", 4);
-                                              refreshList(database);
-                                              health.generateStatus(database);
-                                              budgetText.setText(database.budgetToString());
-                                          }
-                                      });
+            public void onClick(View v) {
+                database.newDatabaseEntry("Vet Bill", -100.00, "Fido's Medication", 4);
+                refreshList(database);
+                health.generateStatus(database);
+                budgetText.setText(database.budgetToString());
+            }
+        });
         testBudget2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 database.newDatabaseEntry("Birthday Present", 100.00, "B-Day Present from Mom", 5);
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
         ListView simpleList;
         ArrayAdapter<String> arrayAdapter;
-
 
         simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
