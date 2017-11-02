@@ -31,10 +31,7 @@
         android:id="@+id/spinner_transaction_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawSelectorOnTop="true"
-        android:dropDownWidth="match_parent"
-        android:entries="@array/income_transactions"
-        android:popupBackground="@color/colorAccent" />
+        android:entries="@array/income_transactions"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -82,15 +79,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="152dp"
-        android:clickable="amtPerMonth = (EditText)findViewById(R.id.text_box_income);
-                 transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
-
-                id = (EditText)findViewById(R.id.input_transaction_ID);
-                transactionID = Integer.parseInt(id.getText().toString());
-
-                transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
-                transactionComment = transactionCmt.getText().toString();" />
+        android:layout_height="152dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
