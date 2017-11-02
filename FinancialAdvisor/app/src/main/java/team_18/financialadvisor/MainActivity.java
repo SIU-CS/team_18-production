@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,17 +31,18 @@ public class MainActivity extends AppCompatActivity {
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
         FinancialHealthStatus health = new FinancialHealthStatus(database);
 
-        //Declaring EditText
-        EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
-        healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
 
         //Entries
+
         database.newDatabaseEntry("Bill", -120.00, "Electricity Bill", 1);
         database.newDatabaseEntry("Paycheck", 1000.00, "Payday", 2);
         database.newDatabaseEntry("Car payment", -200.00, "Car Payment", 3);
 
         //Financial health status generation
         health.generateStatus(database);
+
+        //Initial list generation
+        refreshList(database);
 
         //Setting button behaviors
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
@@ -65,38 +65,41 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
         buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddIncome.class);
-                startActivity(myIntent);
+
             }
         });
+
         MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddExpenses.class);
-                startActivity(myIntent);
+
             }
         });
+    }
 
         //Upcoming bills ListView
-
+        public void refreshList(PseudoDatabase database) {
         ArrayList<String> bills = new ArrayList<>();
         PseudoDatabaseEntry pos = database.root;
-        for (int i = 0; i <= (database.getNumOfEntries()-1); i++){
+        for (int i = 0; i <= (database.getNumOfEntries() - 1); i++) {
             bills.add(i, pos.toString());
             if (pos.nextEntry != null) {
                 pos = pos.nextEntry;
             }
         }
 
-        String[] test = {"testing testing 1 2 3", "another test", "and a third"};
         ListView simpleList;
         ArrayAdapter<String> arrayAdapter;
 
 
-        simpleList = (ListView)findViewById(R.id.MMListViewUpcomingBills);
+        simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
         simpleList.setAdapter(arrayAdapter);
         }
+
     }
+
+
 
