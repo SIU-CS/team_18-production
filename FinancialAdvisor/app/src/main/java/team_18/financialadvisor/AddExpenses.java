@@ -2,6 +2,7 @@ package team_18.financialadvisor;
 
 /**
  * Created by Avtar on 10/31/17.
+ * Revised by Ian on 11/1/17.
  */
 
 
@@ -70,6 +71,7 @@ public class AddExpenses extends AppCompatActivity {
                 transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
 
+<<<<<<< HEAD
 
                 //temp db code
                 database.newDatabaseEntry(transactionType, transactionAmount, transactionComment, transactionID);
@@ -77,5 +79,7 @@ public class AddExpenses extends AppCompatActivity {
             }
         });
 
+=======
+>>>>>>> development
     }
 }
