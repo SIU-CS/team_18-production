@@ -98,12 +98,16 @@ public class MainActivity extends AppCompatActivity {
 
         buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, AddIncome.class);
+                startActivity(myIntent);
 
             }
         });
 
         MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, AddExpenses.class);
+                startActivity(myIntent);
 
             }
         });
