@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Financial health status generation
         health.generateStatus(database);
+<<<<<<< Updated upstream
 
         //Declaring Budget EditText
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
@@ -95,18 +95,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
         buttonMMGoToAddIncome.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddIncome.class);
-                startActivity(myIntent);
+
             }
         });
+
         MMButtonSubtractFromBudget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, AddExpenses.class);
-                startActivity(myIntent);
+
             }
         });
+    }
 
     }
 
@@ -131,4 +132,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+=======
+>>>>>>> development
 
