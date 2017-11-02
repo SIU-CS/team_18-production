@@ -115,4 +115,21 @@
         android:layout_above="@+id/buttonMMGoToAddIncome"
         android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
 
+    <Button
+        android:id="@+id/buttonMMTestBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/MMEditTextCurrentBudget"
+        android:layout_toStartOf="@+id/MMEditTextCurrentBudget"
+        android:text="TEST -" />
+
+    <Button
+        android:id="@+id/buttonMMTestBudget2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/MMEditTextCurrentBudget"
+        android:layout_alignBottom="@+id/MMEditTextCurrentBudget"
+        android:layout_alignParentEnd="true"
+        android:text="TEST +" />
+
 </RelativeLayout>
