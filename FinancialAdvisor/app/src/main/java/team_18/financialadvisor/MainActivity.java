@@ -40,10 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Financial health status generation
         health.generateStatus(database);
+<<<<<<< Updated upstream
 
         //Initial list generation
         refreshList(database);
 
+=======
+        
+>>>>>>> Stashed changes
         //Setting button behaviors
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
