@@ -26,7 +26,7 @@ public class AddIncome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final PseudoDatabase database = new PseudoDatabase();
+        final BudgetData database = new BudgetData();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
         final Spinner mySpinner=(Spinner) findViewById(R.id.spinner_transaction_type);
@@ -72,7 +72,6 @@ public class AddIncome extends AppCompatActivity {
                 transactionComment = transactionCmt.getText().toString();
 
                 //temp db code
-               database.newDatabaseEntry(transactionType, transactionAmount, transactionComment, transactionID);
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
             }
 

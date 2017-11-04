@@ -27,7 +27,7 @@ public class AddExpenses extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final PseudoDatabase database = new PseudoDatabase();
+        final BudgetData database = new BudgetData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
@@ -74,7 +74,7 @@ public class AddExpenses extends AppCompatActivity {
 
 
                 //temp db code
-                database.newDatabaseEntry(transactionType, transactionAmount, transactionComment, transactionID);
+
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
             }
         });

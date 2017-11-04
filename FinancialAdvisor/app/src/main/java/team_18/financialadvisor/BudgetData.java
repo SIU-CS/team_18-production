@@ -1,9 +1,12 @@
 package team_18.financialadvisor;
 
-/**
-*Class is used to test functionality of app prior to developing the database by acting as a surrogate for the database
+/*
+ * get and set all entries for the database
+ *
+ *
 */
-public class PseudoDatabase {
+public class BudgetData {
+    private int id;
     private double currentBalance;
     private double expensesRemaining;
     private int weeksUsed;
@@ -17,8 +20,9 @@ public class PseudoDatabase {
     private static int numOfEntries;
 
 
-
-    public PseudoDatabase() {
+//setting a blank budget
+    public BudgetData() {
+        id = 1;
         currentBalance = 0.00;
         expensesRemaining = 0.00;
         weeksUsed = 0;
@@ -28,66 +32,37 @@ public class PseudoDatabase {
         currentIndex = 0;
         numOfEntries =0;
     }
-
-    public void newDatabaseEntry(String type, double amount, String comment, int ID){
-        PseudoDatabaseEntry newEntry = new PseudoDatabaseEntry(type, amount, comment, ID);
-        if(root==null){
-            root=newEntry;
-            root.previousEntry=null;
-            root.nextEntry=null;
-        }
-        else{
-            current=root;
-            while(current.nextEntry!=null){
-                current=current.nextEntry;
-            }
-            current.nextEntry=newEntry;
-            newEntry.previousEntry=current;
-            newEntry.nextEntry=null;
-        }
-        numOfEntries++;
-        setCurrentBalance(getCurrentBalance()+ amount);
-        setCurrentIndex(getCurrentIndex()+1);
+//setting a custom initial budget for testing!!
+    public BudgetData(int id, double currentBalance, double expensesRemaining, int weeksUsed,
+        int weeksDelinquent, int weeksClose, double totalSavings, int currentIndex, int numOfEntries)
+    {
+        this.id = id;
+        this.currentBalance = currentBalance;
+        this.expensesRemaining = expensesRemaining;
+        this.weeksUsed = weeksUsed;
+        this.weeksDelinquent = weeksDelinquent;
+        this.weeksClose = weeksClose;
+        this.totalSavings = totalSavings;
+        this.currentIndex = currentIndex;
+        this.numOfEntries = numOfEntries;
     }
 
-    public void deleteEntry(){
-        int counter=1;
-        current= root;
-        if(numOfEntries==1){
-            root= current.nextEntry;
-            current.nextEntry=null;
-            current.previousEntry=null;
-        }
-        else{
-            while(counter<numOfEntries){
-                current=current.nextEntry;
-                counter++;
-            }
-            if(current.nextEntry==null){
-                current.previousEntry.nextEntry=null;
-                current.previousEntry=null;
-            }
-            else{
-                current.previousEntry.nextEntry=current.nextEntry;
-                current.nextEntry.previousEntry=current.previousEntry;
-            }
-        }
-        numOfEntries--;
-        setCurrentIndex(getCurrentIndex()+1);
-    }
-    public boolean isEmpty(){
-        return root==null;
-    }
-    public void clear(){
-        while(!isEmpty())
-            deleteEntry();
-    }
+
+
+    //Getters and Setters
+
+
+    public int getId() { return id; }
+    public void setId(int id){ this.id  = id; }
+
     public int getNumOfEntries(){
         return numOfEntries;
     }
 
+    public void setNumOfEntries(int numOfEntries) {
+        this.numOfEntries = numOfEntries;
+    }
 
-    //Getters and Setters
     public double getCurrentBalance() {
         return currentBalance;
     }
@@ -144,6 +119,8 @@ public class PseudoDatabase {
         this.currentIndex = currentIndex;
     }
 
+
+    //toString methods
     public String budgetToString(){
         return Double.toString(currentBalance);
     }

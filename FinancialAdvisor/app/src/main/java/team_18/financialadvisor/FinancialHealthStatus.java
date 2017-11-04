@@ -11,13 +11,13 @@ public class FinancialHealthStatus {
     private double expensesRemaining;
     private double totalSavings;
 
-    public FinancialHealthStatus(PseudoDatabase database){
+    public FinancialHealthStatus(BudgetData database){
         currentBalance=database.getCurrentBalance();
         expensesRemaining=database.getExpensesRemaining();
         totalSavings=database.getTotalSavings();
     }
 
-    public void refreshStatus(PseudoDatabase database){
+    public void refreshStatus(BudgetData database){
         setCurrentBalance(database);
         setExpensesRemaining(database);
         setTotalSavings(database);
@@ -64,7 +64,7 @@ public class FinancialHealthStatus {
 
     }
 
-    public String generateStatus(PseudoDatabase database){
+    public String generateStatus(BudgetData database){
         refreshStatus(database);
         int points = (currentBalancePoints()+expensesPoints()+ savingsPoints());
         String status=null;
@@ -86,7 +86,7 @@ public class FinancialHealthStatus {
         return currentBalance;
     }
 
-    public void setCurrentBalance(PseudoDatabase database) {
+    public void setCurrentBalance(BudgetData database) {
         this.currentBalance = database.getCurrentBalance();
     }
 
@@ -94,7 +94,7 @@ public class FinancialHealthStatus {
         return expensesRemaining;
     }
 
-    public void setExpensesRemaining(PseudoDatabase database) {
+    public void setExpensesRemaining(BudgetData database) {
         this.expensesRemaining = database.getExpensesRemaining();
     }
 
@@ -103,7 +103,7 @@ public class FinancialHealthStatus {
         return totalSavings;
     }
 
-    public void setTotalSavings(PseudoDatabase database) {
+    public void setTotalSavings(BudgetData database) {
         this.totalSavings = database.getTotalSavings();
     }
 }
