@@ -5,6 +5,10 @@ package team_18.financialadvisor;
  * Revised by Ian on 11/1/17
  */
 
+import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.model.NewTransaction;
+import team_18.financialadvisor.data.repo.NewTransactionRepo;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +21,13 @@ import android.widget.Toast;
 
 
 public class AddIncome extends AppCompatActivity {
-    EditText id, amtPerMonth, transactionCmt;
+    EditText id, amtPerMonth, transactionCmt, recurring;
 
     String transactionType;
     double transactionAmount;
     String transactionComment;
     int transactionID;
+    int transaction_recurring;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,31 +63,45 @@ public class AddIncome extends AppCompatActivity {
         addIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 //getting all the values from fields
                 transactionType = mySpinner.getSelectedItem().toString();
 
+                recurring = (EditText)findViewById(R.id.income_every);
+                transaction_recurring = Integer.parseInt(recurring.getText().toString());
+
 
                 amtPerMonth = (EditText)findViewById(R.id.text_box_income);
-                 transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
+                transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
 
                 id = (EditText)findViewById(R.id.input_transaction_ID);
                 transactionID = Integer.parseInt(id.getText().toString());
 
                 transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
+                int key_id = BudgetData.getNumOfEntries();
 
-                //temp db code
+
+                //add transaction to table
+                NewTransactionRepo addTrRepo = new NewTransactionRepo();
+                NewTransaction addTransaction = new NewTransaction();
+
+                addTransaction.setTransactionID(transactionID);
+                addTransaction.setTransactionAmount(transactionAmount);
+                addTransaction.setTransactionRecurring(transaction_recurring);
+                addTransaction.setTransactionType(transactionType);
+                addTransaction.setTransactionComment(transactionComment);
+                addTrRepo.insert(addTransaction);
+
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
             }
 
 
         });
 
-        //code i tried to work out
-        //PseudoDatabaseEntry income = new PseudoDatabaseEntry(transactionType.toString(), amount, transactionCmt.toString(), ID);
-        //Intent i = new Intent(this, MainActivity.class);
-        //i.putExtra("Income", (Parcelable) income);
-        //startActivity(i);
+
     }
+
 
 }

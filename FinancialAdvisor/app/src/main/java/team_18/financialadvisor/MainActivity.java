@@ -9,10 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.database.Cursor;
 
 import java.util.ArrayList;
 
+import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.repo.NewTransactionRepo;
+
 public class MainActivity extends AppCompatActivity {
+    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,22 +37,21 @@ public class MainActivity extends AppCompatActivity {
         //Pseudo Database code
         final BudgetData database = new BudgetData();
         PseudoUpcomingDatabase upcoming = new PseudoUpcomingDatabase();
-        final FinancialHealthStatus health = new FinancialHealthStatus(database);
+
 
         //Declaring Financial Health EditText
         EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
-        healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
 
 
         //Financial health status generation
-        health.generateStatus(database);
+
 
         //Declaring Budget EditText
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
         budgetText.setText(database.budgetToString());
 
         //Initial ListView creation
-        refreshList(database);
+       listItems();
 
         //Setting button behaviors
 
@@ -91,24 +95,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Upcoming bills ListView
-    public void refreshList(BudgetData database) {
-        ArrayList<String> bills = new ArrayList<>();
-        PseudoDatabaseEntry pos = database.root;
-        for (int i = 0; i <= (database.getNumOfEntries() - 1); i++) {
-            bills.add(i, pos.toString());
-            if (pos.nextEntry != null) {
-                pos = pos.nextEntry;
-            }
+    public void listItems() {
+
+        Cursor allBills = NewTransactionRepo.getAllBills();
+        ArrayList<String> mylist = new ArrayList<String>();
+
+        allBills.moveToFirst();
+        int fourBills = 0;
+        String bills;
+        do {
+
+            // todo seprate recurring from one time transactins and format the output
+
+            String billType = allBills.getString(3);
+            String amout = allBills.getString(1);
+            bills = billType + "  " + amout;
+            mylist.add(bills);
+            allBills.moveToNext();
+            fourBills++;
+
+        } while ( fourBills < 4 || !allBills.isLast());
+
+        for (int i = 0; i <= 4; i++){
+            ListView simpleList;
+            ArrayAdapter<String> arrayAdapter;
+            simpleList = (ListView)
+                    findViewById(R.id.MMListViewUpcomingBills);
+            arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mylist);
+            simpleList.setAdapter(arrayAdapter);
+
         }
 
-        ListView simpleList;
-        ArrayAdapter<String> arrayAdapter;
-
-        simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
-        simpleList.setAdapter(arrayAdapter);
     }
+
 
 }
 
