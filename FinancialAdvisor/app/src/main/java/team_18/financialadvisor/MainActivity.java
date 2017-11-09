@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //list bills
         listItems();
 
+
         //Declaring Budget EditText
 
         BudgetData newData = App.getDBdata();
@@ -132,28 +133,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * //todo this need work for creating the main table to track data
-     //add transaction to table
-     public void setBudgetData() {
 
-     BudgetData startBudget = new BudgetData();
-     int id = 1;
-     double startZero = 0.00;
-     int setZero = 0;
-     startBudget.setId(id);
-     startBudget.setCurrentBalance(startZero);
-     startBudget.setExpensesRemaining(startZero);
-     startBudget.setTotalSavings(startZero);
-     startBudget.setWeeksDelinquent(setZero);
-     startBudget.setWeeksClose(setZero);
-     startBudget.setCurrentIndex(setZero);
-     startBudget.setWeeksUsed(setZero);
-     startBudget.setNumOfEntries(setZero);
-
-
-     }
-     */
+      //todo this need work for creating the main table to track data
 
 
 }

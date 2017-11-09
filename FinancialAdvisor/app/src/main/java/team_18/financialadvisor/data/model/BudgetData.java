@@ -43,6 +43,10 @@ public class BudgetData {
         this.numOfEntries = numOfEntries;
     }
 
+    public BudgetData() {
+
+    }
+
     //Getters and Setters
     public  int getId() { return id; }
     public void setId(int id){ this.id  = id; }

@@ -23,14 +23,12 @@ import team_18.financialadvisor.data.repo.NewTransactionRepo;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    // set the format to sql date time
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date date = new Date();
+
 
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     // Database Name
     private static final String DATABASE_NAME = "myBudget.db";
