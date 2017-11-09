@@ -19,16 +19,29 @@ public class BudgetData {
     public static final String NUM_OF_ENTRIES = "num_off_entries" ;
 
 
-    private  int id;
+    private int id;
     private double currentBalance;
     private double expensesRemaining;
+    private double totalSavings;
     private int weeksUsed;
     private int weeksDelinquent;
     private int weeksClose;
-    private double totalSavings;
     private int currentIndex;
     private int numOfEntries;
 
+
+    public BudgetData(int id, double currentBalance, double expensesRemaining, double totalSavings,
+          int weeksUsed, int weeksDelinquent, int weeksClose, int currentIndex, int numOfEntries) {
+        this.id = id;
+        this.currentBalance = currentBalance;
+        this.expensesRemaining = expensesRemaining;
+        this.totalSavings = totalSavings;
+        this.weeksUsed = weeksUsed;
+        this.weeksDelinquent = weeksDelinquent;
+        this.weeksClose = weeksClose;
+        this.currentIndex = currentIndex;
+        this.numOfEntries = numOfEntries;
+    }
 
     //Getters and Setters
     public  int getId() { return id; }

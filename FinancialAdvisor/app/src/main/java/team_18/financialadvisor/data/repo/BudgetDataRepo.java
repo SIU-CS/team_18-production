@@ -10,17 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import team_18.financialadvisor.data.DatabaseManager;
 import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.model.NewTransaction;
 
 
 public class BudgetDataRepo {
 
-    private BudgetData budget;
 
-    public BudgetDataRepo(){
-
-        budget = new BudgetData();
-
-    }
 
     public static String createTable(){
 
@@ -54,6 +49,13 @@ public class BudgetDataRepo {
         // Inserting Row
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
         DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public static Cursor getAllData() {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
+
+        return cursor;
     }
 
 

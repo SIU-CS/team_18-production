@@ -74,4 +74,11 @@
         <item>Water and Waste</item>
         <item>Other</item>
     </string-array>
+    //for recurring transactions
+    <string-array name="transactions_recurring">
+        <item>One Time</item>
+        <item>Weekly</item>
+        <item>Bi-Weekly</item>
+        <item>Monthly</item>
+    </string-array>
 </resources>
