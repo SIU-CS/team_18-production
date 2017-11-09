@@ -5,15 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
+import android.database.Cursor;
+import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.repo.BudgetDataRepo;
+import team_18.financialadvisor.data.repo.NewTransactionRepo;
 
 public class MainActivity extends AppCompatActivity {
+    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
 
-        //TODO: TEST BUTTONS, REMOVE LATER
-        Button testBudget = (Button) findViewById(R.id.buttonMMTestBudget);
-        Button testBudget2 = (Button) findViewById(R.id.buttonMMTestBudget2);
 
         //Pseudo Database code
         final PseudoDatabase database = new PseudoDatabase();
@@ -39,11 +39,10 @@ public class MainActivity extends AppCompatActivity {
         EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
         healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
 
-        //Entries
+        //list bills
+        listItems();
 
-        database.newDatabaseEntry("Bill", -120.00, "Electricity Bill", 1);
-        database.newDatabaseEntry("Paycheck", 1000.00, "Payday", 2);
-        database.newDatabaseEntry("Car payment", -200.00, "Car Payment", 3);
+
 
         //Financial health status generation
         health.generateStatus(database);
@@ -52,29 +51,9 @@ public class MainActivity extends AppCompatActivity {
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
         budgetText.setText(database.budgetToString());
 
-        //Initial ListView creation
-        refreshList(database);
+
 
         //Setting button behaviors
-
-        //TODO: TEST BUTTONS, REMOVE LATER
-        testBudget.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                database.newDatabaseEntry("Vet Bill", -100.00, "Fido's Medication", 4);
-                refreshList(database);
-                health.generateStatus(database);
-                budgetText.setText(database.budgetToString());
-            }
-        });
-        testBudget2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                database.newDatabaseEntry("Birthday Present", 100.00, "B-Day Present from Mom", 5);
-                refreshList(database);
-                health.generateStatus(database);
-                budgetText.setText(database.budgetToString());
-            }
-        });
-
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
@@ -113,24 +92,64 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Upcoming bills ListView
-    public void refreshList(PseudoDatabase database) {
-        ArrayList<String> bills = new ArrayList<>();
-        PseudoDatabaseEntry pos = database.root;
-        for (int i = 0; i <= (database.getNumOfEntries() - 1); i++) {
-            bills.add(i, pos.toString());
-            if (pos.nextEntry != null) {
-                pos = pos.nextEntry;
+    public void listItems() {
+
+        Cursor allBills = NewTransactionRepo.getAllBills();
+        ArrayList<String> mylist = new ArrayList<String>();
+
+        allBills.moveToFirst();
+        int fourBills = 0;
+        String bills, billType, amount;
+        if(allBills != null && allBills.moveToFirst()) {
+
+            do{
+
+                // todo seprate recurring from one time transactins and format the output
+
+                billType = allBills.getString(3);
+                amount = allBills.getString(1);
+                bills = billType + "  " + amount;
+                mylist.add(bills);
+
+                fourBills++;
+
+            }while ( allBills.moveToNext());
+
+            for (int i = 0; i <= 4; i++) {
+                ListView simpleList;
+                ArrayAdapter<String> arrayAdapter;
+                simpleList = (ListView)
+                        findViewById(R.id.MMListViewUpcomingBills);
+                arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mylist);
+                simpleList.setAdapter(arrayAdapter);
+
             }
         }
 
-        ListView simpleList;
-        ArrayAdapter<String> arrayAdapter;
-
-        simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, bills);
-        simpleList.setAdapter(arrayAdapter);
     }
+    /**
+     * //todo this need work for creating the main table to track data
+     //add transaction to table
+     public void setBudgetData() {
+
+     BudgetData startBudget = new BudgetData();
+     int id = 1;
+     double startZero = 0.00;
+     int setZero = 0;
+     startBudget.setId(id);
+     startBudget.setCurrentBalance(startZero);
+     startBudget.setExpensesRemaining(startZero);
+     startBudget.setTotalSavings(startZero);
+     startBudget.setWeeksDelinquent(setZero);
+     startBudget.setWeeksClose(setZero);
+     startBudget.setCurrentIndex(setZero);
+     startBudget.setWeeksUsed(setZero);
+     startBudget.setNumOfEntries(setZero);
+
+
+     }
+     */
+
 
 }
 

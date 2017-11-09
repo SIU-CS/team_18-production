@@ -52,6 +52,31 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transaction Recurring Every:(Days)"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/expenses_every"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transaction ID (DDMMYY)" />
+
+    <EditText
+        android:id="@+id/input_transaction_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,19 +95,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Transaction ID (DDMMYY)" />
-
-    <EditText
-        android:id="@+id/input_transaction_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="152dp"
+        android:layout_height="127dp"
         android:clickable="true"
         android:visibility="invisible" />
 
