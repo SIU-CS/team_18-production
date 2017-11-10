@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.CheckBox;
+import android.view.View.OnClickListener;
 
 
 public class AddIncome extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class AddIncome extends AppCompatActivity {
     int transactionID;
     String transactionType, transaction_recurring, transactionComment;
     double transactionAmount;
+    private CheckBox chkRecurring;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,6 +39,8 @@ public class AddIncome extends AppCompatActivity {
         Button buttonGVGoToMM = (Button) findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button) findViewById(R.id.button_clear);
         Button addIncome = (Button) findViewById(R.id.button_add_income);
+
+        addListenerOnChkRecurring();
 
 
         //Go to main menu button
@@ -77,7 +82,7 @@ public class AddIncome extends AppCompatActivity {
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
                 NewTransaction addTransaction = new NewTransaction();
 
-                addTransaction.setTransactionID(updateDB().getInt(8)+1);
+                addTransaction.setTransactionID(updateDB().getInt(8) + 1);
                 addTransaction.setTransactionAmount(transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
@@ -91,7 +96,32 @@ public class AddIncome extends AppCompatActivity {
 
 
         });
+
     }
+
+
+    public void addListenerOnChkRecurring() {
+
+        chkRecurring = (CheckBox) findViewById(R.id.isRecurring);
+
+        chkRecurring.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
+                    findViewById(R.id.income_every).setVisibility(View.VISIBLE);
+
+                }
+                else{
+                    findViewById(R.id.income_every).setVisibility(View.GONE);
+
+                }
+
+            }
+        });
+
+    }
+
 
         //get cursor object from the Budget Database and use it to get values
         public Cursor updateDB(){

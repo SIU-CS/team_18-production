@@ -115,7 +115,6 @@ public class AddExpenses extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
                     findViewById(R.id.expenses_every).setVisibility(View.VISIBLE);
                     findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
