@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,14 +19,16 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Type of Transaction"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="visible" />
 
     <Spinner
         android:id="@+id/spinner_transaction_type"
@@ -34,17 +37,20 @@
         android:drawSelectorOnTop="true"
         android:dropDownWidth="match_parent"
         android:entries="@array/expense_transactions"
-        android:popupBackground="@color/colorAccent" />
+        android:popupBackground="@color/colorAccent"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="34dp" />
+        android:layout_height="34dp"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Amount Paid" />
+        android:text="Amount Paid"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/text_box_paid"
@@ -61,6 +67,13 @@
         android:textAlignment="center"
         android:textStyle="bold" />
 
+    <CheckBox
+        android:id="@+id/isRecurring"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        tools:id="isRecurring" />
+
     <Spinner
         android:id="@+id/expenses_every"
         android:layout_width="match_parent"
@@ -72,7 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showDatePickerDialog"
-        android:text="@string/pick_date" />
+        android:text="@string/pick_date"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/text_displayDate"

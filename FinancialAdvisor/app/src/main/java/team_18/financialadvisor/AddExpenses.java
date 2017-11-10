@@ -14,10 +14,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.CheckBox;
+import android.view.View.OnClickListener;
 
 
 import java.text.SimpleDateFormat;
@@ -30,7 +33,7 @@ public class AddExpenses extends AppCompatActivity {
 
     String transactionType, transactionComment , transaction_recurring;
     double transactionAmount;
-
+    private CheckBox chkRecurring;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,8 +47,10 @@ public class AddExpenses extends AppCompatActivity {
         Button buttonGVGoToMM = (Button)findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button)findViewById(R.id.button_clear);
 
-        Button addINcome = (Button)findViewById(R.id.button_add_income);
+        Button addIncome = (Button)findViewById(R.id.button_add_income);
 
+
+        addListenerOnChkRecurring();
 
 
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener(){
@@ -65,7 +70,7 @@ public class AddExpenses extends AppCompatActivity {
             }
         });
 
-        addINcome.setOnClickListener(new View.OnClickListener() {
+        addIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -97,6 +102,29 @@ public class AddExpenses extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
                 startActivity(myIntent);
+            }
+        });
+
+    }
+
+    public void addListenerOnChkRecurring() {
+
+        chkRecurring = (CheckBox) findViewById(R.id.isRecurring);
+
+        chkRecurring.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //is chkIos checked?
+                if (((CheckBox) v).isChecked()) {
+                    findViewById(R.id.expenses_every).setVisibility(View.VISIBLE);
+                    findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
+                }
+                else{
+                    findViewById(R.id.expenses_every).setVisibility(View.GONE);
+                    findViewById(R.id.datePicker).setVisibility(View.GONE);
+                }
+
             }
         });
 
