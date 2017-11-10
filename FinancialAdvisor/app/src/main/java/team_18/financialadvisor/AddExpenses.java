@@ -95,6 +95,8 @@ public class AddExpenses extends AppCompatActivity {
                 addTrRepo.insert(addTransaction);
 
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
+                startActivity(myIntent);
             }
         });
 
