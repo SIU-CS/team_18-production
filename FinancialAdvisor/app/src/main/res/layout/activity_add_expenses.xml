@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,14 +19,16 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Type of Transaction"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="visible" />
 
     <Spinner
         android:id="@+id/spinner_transaction_type"
@@ -34,17 +37,20 @@
         android:drawSelectorOnTop="true"
         android:dropDownWidth="match_parent"
         android:entries="@array/expense_transactions"
-        android:popupBackground="@color/colorAccent" />
+        android:popupBackground="@color/colorAccent"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="34dp" />
+        android:layout_height="34dp"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Amount Paid" />
+        android:text="Amount Paid"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/text_box_paid"
@@ -52,31 +58,45 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Recurring Every:(Days)"
+        android:layout_gravity="center_horizontal"
+        android:text="Is This Transaction Recurring?"
+        android:textAlignment="center"
         android:textStyle="bold" />
 
-    <EditText
+    <CheckBox
+        android:id="@+id/isRecurring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        android:gravity="center_horizontal" />
+
+    <Spinner
         android:id="@+id/expenses_every"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+        android:entries="@array/transactions_recurring" />
+
+    <Button
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showDatePickerDialog"
+        android:text="@string/pick_date"
+        android:visibility="visible" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/text_displayDate"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Transaction ID (DDMMYY)" />
-
-    <EditText
-        android:id="@+id/input_transaction_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+        android:text=" "
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -94,10 +114,9 @@
         android:inputType="textPersonName" />
 
     <TextView
+        android:id="@+id/blank_text"
         android:layout_width="match_parent"
-        android:layout_height="127dp"
-        android:clickable="true"
-        android:visibility="invisible" />
+        android:layout_height="100dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,13 +127,15 @@
             android:id="@+id/MMButtonGVGoToMM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="Main Menu" />
+            android:text="Cancel" />
 
         <Button
             android:id="@+id/button_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Clear" />
 
@@ -122,6 +143,7 @@
             android:id="@+id/button_add_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Done" />
     </LinearLayout>

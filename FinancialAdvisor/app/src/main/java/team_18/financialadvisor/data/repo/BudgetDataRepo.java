@@ -10,17 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import team_18.financialadvisor.data.DatabaseManager;
 import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.model.NewTransaction;
 
 
 public class BudgetDataRepo {
 
-    private BudgetData budget;
 
-    public BudgetDataRepo(){
-
-        budget = new BudgetData();
-
-    }
 
     public static String createTable(){
 
@@ -35,15 +30,15 @@ public class BudgetDataRepo {
 
 
     //todo add one blank initial entry
-    public void setBudget() {
+    public static void setBudget() {
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
         values.put(BudgetData.KEY_ID, 1);
-        values.put(BudgetData.CURRENT_BALANCE, 1.99);
-        values.put(BudgetData.EXPENSES_REMAINING, 1.99);
-        values.put(BudgetData.TOTAL_SAVINGS, 1.99);
+        values.put(BudgetData.CURRENT_BALANCE, 0.00);
+        values.put(BudgetData.EXPENSES_REMAINING, 0.00);
+        values.put(BudgetData.TOTAL_SAVINGS, 0.00);
         values.put(BudgetData.WEEKS_DELINQUENT, 0);
         values.put(BudgetData.WEEKS_CLOSE, 0);
         values.put(BudgetData.CURRENT_INDEX, 0);
@@ -54,6 +49,13 @@ public class BudgetDataRepo {
         // Inserting Row
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
         DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public static Cursor getAllData() {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
+
+        return cursor;
     }
 
 

@@ -16,6 +16,7 @@ public class NewTransaction {
     public static final String KEY_AMOUNT = "amount";
     public static final String KEY_COMMENT = "comment";
     public static final String KYE_TRANSACTION_EVERY = "transaction_recurring_every";
+    public static final String KYE_TRANSACTION_DATE= "paid_on";
 
 
     //variables
@@ -23,7 +24,8 @@ public class NewTransaction {
     private double transactionAmount;
     private String transactionComment;
     private int transactionID;
-    private int transactionRecurring;
+    private String transactionRecurring;
+    private String date;
 
 
 
@@ -60,14 +62,20 @@ public class NewTransaction {
         this.transactionID = transactionID;
     }
 
-    public int getTransactionRecurring() {
+    public String getTransactionRecurring() {
         return transactionRecurring;
     }
 
-    public void setTransactionRecurring(int transactionRecurring) {
+    public void setTransactionRecurring(String transactionRecurring) {
         this.transactionRecurring = transactionRecurring;
     }
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String toString(){
         String temp;
