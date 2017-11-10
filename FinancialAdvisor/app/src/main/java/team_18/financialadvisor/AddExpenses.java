@@ -5,11 +5,10 @@ package team_18.financialadvisor;
  * Revised by Ian on 11/1/17.
  */
 
-import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
-
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +43,7 @@ public class AddExpenses extends AppCompatActivity {
         final Spinner tSpinner= (Spinner) findViewById(R.id.expenses_every);
         Button buttonGVGoToMM = (Button)findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button)findViewById(R.id.button_clear);
+
         Button addINcome = (Button)findViewById(R.id.button_add_income);
 
 
@@ -59,7 +60,7 @@ public class AddExpenses extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v==reset) {
-                    startActivity(new Intent(AddExpenses.this, AddIncome.class));
+                    startActivity(new Intent(AddExpenses.this, AddExpenses.class));
                 }
             }
         });
@@ -90,11 +91,20 @@ public class AddExpenses extends AppCompatActivity {
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
                 addTransaction.setDate(date.toString());
+
                 addTrRepo.insert(addTransaction);
 
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
 
     }
     //get cursor object from the Budget Database and use it to get values

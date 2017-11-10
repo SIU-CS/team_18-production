@@ -60,6 +60,7 @@
     </string-array>
 
     //For expenses transaction types
+    <string name="pick_date">Next Due On</string>
 
     <string-array name="expense_transactions">
         <item>Groceries</item>
