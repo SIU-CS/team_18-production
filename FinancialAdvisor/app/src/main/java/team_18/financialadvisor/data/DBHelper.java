@@ -19,6 +19,8 @@ import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
+import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -28,14 +30,10 @@ public class DBHelper extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 8;
 
     // Database Name
     private static final String DATABASE_NAME = "myBudget.db";
-    private static final String TAG = DBHelper.class.getSimpleName().toString();
-
-
-
 
     public DBHelper() {
 
@@ -49,6 +47,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(NewTransactionRepo.createTable());
         db.execSQL(BudgetDataRepo.createTable());
+        db.execSQL(RecurringExpenseRepo.createTable());
+        db.execSQL(RecurringIncomeRepo.createTable());
 
     }
     @Override
@@ -58,6 +58,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS " + NewTransaction.TABLE_TRANSACTIONS);
         db.execSQL("DROP TABLE IF EXISTS " + BudgetData.TABLE_BUDGET_STATS);
+        db.execSQL("DROP TABLE IF EXISTS " + NewTransaction.TABLE_RECURRING_EXPENSES);
+        db.execSQL("DROP TABLE IF EXISTS " + NewTransaction.TABLE_RECURRING_INCOME);
+
 
         // Creating tables again
         onCreate(db);

@@ -14,6 +14,7 @@ import android.database.Cursor;
 import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -99,12 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void listItems() {
 
-        Cursor allBills = NewTransactionRepo.getAllBills();
+        Cursor allBills = RecurringExpenseRepo.getAllBills();
         ArrayList<String> mylist = new ArrayList<String>();
 
         allBills.moveToFirst();
         int fourBills = 0;
-        String bills, billType, amount;
+        String bills, billType, amount, due;
         if(allBills != null && allBills.moveToFirst()) {
 
             do{
@@ -113,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
                 billType = allBills.getString(3);
                 amount = allBills.getString(1);
-                bills = billType + "  " + amount;
+                due = allBills.getString(5);
+                bills =  "$ " + amount +"   " + billType +" Due On: " + due;
                 mylist.add(bills);
 
                 fourBills++;
