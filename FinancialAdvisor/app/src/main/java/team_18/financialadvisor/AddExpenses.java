@@ -8,13 +8,15 @@ package team_18.financialadvisor;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
+import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
+
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -34,12 +36,16 @@ public class AddExpenses extends AppCompatActivity {
     String transactionType, transactionComment , transaction_recurring;
     double transactionAmount;
     private CheckBox chkRecurring;
+    boolean isRecurring = true;
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final Date date = new Date();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
         final Spinner mySpinner=(Spinner) findViewById(R.id.spinner_transaction_type);
@@ -86,20 +92,31 @@ public class AddExpenses extends AppCompatActivity {
                 transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
 
-                //add transaction to table
+                //add transaction to table depending on type
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
                 NewTransaction addTransaction = new NewTransaction();
+                RecurringExpenseRepo addExpRepo = new RecurringExpenseRepo();
+
 
                 addTransaction.setTransactionID(updateDB().getInt(8)+1);
                 addTransaction.setTransactionAmount(-transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
-                addTransaction.setDate(date.toString());
 
-                addTrRepo.insert(addTransaction);
 
-                Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                if (isRecurring == true) {
+                    addTransaction.setDate(DatePickerFragment.getDate());
+                    addExpRepo.insert(addTransaction);
+
+                }
+                else
+                {
+                    addTransaction.setDate(date.toString());
+                    addTrRepo.insert(addTransaction);
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                }
+
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
                 startActivity(myIntent);
             }
@@ -118,18 +135,23 @@ public class AddExpenses extends AppCompatActivity {
                 if (((CheckBox) v).isChecked()) {
                     findViewById(R.id.expenses_every).setVisibility(View.VISIBLE);
                     findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
+                    findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
+                    //Toast.makeText(getApplicationContext(), "is recurring = true", Toast.LENGTH_SHORT).show();
+                    isRecurring = true;
                 }
                 else{
                     findViewById(R.id.expenses_every).setVisibility(View.GONE);
                     findViewById(R.id.datePicker).setVisibility(View.GONE);
+                    findViewById(R.id.text_displayDate).setVisibility(View.GONE);
+                    //Toast.makeText(getApplicationContext(), "is recurring = false", Toast.LENGTH_SHORT).show();
+                    isRecurring = false;
                 }
 
             }
         });
 
+
     }
-
-
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();

@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.text.DecimalFormat;
 
 import team_18.financialadvisor.data.DatabaseManager;
-import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
-import team_18.financialadvisor.data.model.RecurringIncome;
 
 /**
  * Created by Avtar on 11/9/17.
@@ -17,22 +15,28 @@ import team_18.financialadvisor.data.model.RecurringIncome;
 
 public class RecurringIncomeRepo {
 
+    private NewTransaction income;
 
+    public RecurringIncomeRepo(){
+
+        income = new NewTransaction();
+
+    }
     public static String createTable(){
 
         //this returns a string that creates the blank table with give column names
-        return "CREATE TABLE " + RecurringIncome.TABLE_RECURRING_INCOME  + "("
-                + RecurringIncome.KEY_INCOME_ID + " INTEGER PRIMARY KEY,"
-                + RecurringIncome.KEY_AMOUNT + " REAL,"
-                + RecurringIncome.KYE_TRANSACTION_EVERY + " TEXT,"
-                + RecurringIncome.KEY_TYPE + " TEXT,"
-                + RecurringIncome.KEY_COMMENT + " TEXT,"
-                + RecurringIncome.KYE_DUE_ON + " DEFAULT CURRENT_TIMESTAMP"  +")";
+        return "CREATE TABLE " + NewTransaction.TABLE_RECURRING_INCOME  + "("
+                + NewTransaction.KEY_TRANSACTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + NewTransaction.KEY_AMOUNT + " REAL,"
+                + NewTransaction.KYE_TRANSACTION_EVERY + " TEXT,"
+                + NewTransaction.KEY_TYPE + " TEXT,"
+                + NewTransaction.KEY_COMMENT + " TEXT,"
+                + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
     }
 
 
 
-    public void insertRecurringIncome(NewTransaction transaction) {
+    public void insert(NewTransaction income) {
 
         DecimalFormat precision = new DecimalFormat("0.00");
 
@@ -40,14 +44,15 @@ public class RecurringIncomeRepo {
         ContentValues values = new ContentValues();
 
 
-        values.put(RecurringIncome.TABLE_RECURRING_INCOME, transaction.getTransactionID());
-        values.put(RecurringIncome.KEY_AMOUNT, transaction.getTransactionAmount());
-        values.put(RecurringIncome.KYE_TRANSACTION_EVERY, transaction.getTransactionRecurring());
-        values.put(RecurringIncome.KEY_TYPE, transaction.getTransactionType());
-        values.put(RecurringIncome.KEY_COMMENT, transaction.getTransactionComment());
+        //values.put(NewTransaction.KEY_TRANSACTION_ID, income.getTransactionID());
+        values.put(NewTransaction.KEY_AMOUNT, income.getTransactionAmount());
+        values.put(NewTransaction.KYE_TRANSACTION_EVERY, income.getTransactionRecurring());
+        values.put(NewTransaction.KEY_TYPE, income.getTransactionType());
+        values.put(NewTransaction.KEY_COMMENT, income.getTransactionComment());
+        values.put(NewTransaction.KYE_TRANSACTION_DATE, income.getDate());
 
         // Inserting Row
-        db.insert(RecurringIncome.TABLE_RECURRING_INCOME, null, values);
+        db.insert(NewTransaction.TABLE_RECURRING_INCOME, null, values);
 
         DatabaseManager.getInstance().closeDatabase();
     }
@@ -66,7 +71,7 @@ public class RecurringIncomeRepo {
     //todo set code for Deleting a transaction by ID
     public void delete( ) {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        db.delete(RecurringIncome.TABLE_RECURRING_INCOME, null,null);
+        db.delete(NewTransaction.TABLE_RECURRING_INCOME, null,null);
         DatabaseManager.getInstance().closeDatabase();
     }
 
@@ -75,13 +80,13 @@ public class RecurringIncomeRepo {
     public Cursor getIncomeByID(int id) {
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        Cursor cursor = db.rawQuery( "SELECT * FROM " + RecurringIncome.TABLE_RECURRING_INCOME + " WHERE " +
-                RecurringIncome.TABLE_RECURRING_INCOME + "=1", new String[] { Integer.toString(id) } );
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + NewTransaction.TABLE_RECURRING_INCOME + " WHERE " +
+                NewTransaction.TABLE_RECURRING_INCOME + "=1", new String[] { Integer.toString(id) } );
         return cursor;
     }
     public static Cursor getIncomes() {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        Cursor cursor = db.rawQuery( "SELECT * FROM " + RecurringIncome.TABLE_RECURRING_INCOME, null );
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + NewTransaction.TABLE_RECURRING_INCOME, null );
 
         return cursor;
     }

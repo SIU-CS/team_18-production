@@ -8,6 +8,10 @@ package team_18.financialadvisor.data.model;
 
 public class NewTransaction {
     public static final String TABLE_TRANSACTIONS = "Transactions";
+    public static final String TABLE_RECURRING_EXPENSES = "RecurringExpenses";
+    public static final String TABLE_RECURRING_INCOME = "RecurringIncome";
+
+
 
 
     //Transactions table column names
@@ -15,7 +19,7 @@ public class NewTransaction {
     public static final String KEY_TYPE = "type";
     public static final String KEY_AMOUNT = "amount";
     public static final String KEY_COMMENT = "comment";
-    public static final String KYE_TRANSACTION_EVERY = "transaction_recurring_every";
+    public static final String KYE_TRANSACTION_EVERY = "transaction_recurring";
     public static final String KYE_TRANSACTION_DATE= "paid_on";
 
 

@@ -31,7 +31,6 @@ public class NewTransactionRepo {
         return "CREATE TABLE " + NewTransaction.TABLE_TRANSACTIONS  + "("
                 + NewTransaction.KEY_TRANSACTION_ID + " INTEGER PRIMARY KEY,"
                 + NewTransaction.KEY_AMOUNT + " REAL,"
-                + NewTransaction.KYE_TRANSACTION_EVERY + " TEXT,"
                 + NewTransaction.KEY_TYPE + " TEXT,"
                 + NewTransaction.KEY_COMMENT + " TEXT,"
                 + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
@@ -49,7 +48,6 @@ public class NewTransactionRepo {
 
         values.put(NewTransaction.KEY_TRANSACTION_ID, transaction.getTransactionID());
         values.put(NewTransaction.KEY_AMOUNT, transaction.getTransactionAmount());
-        values.put(NewTransaction.KYE_TRANSACTION_EVERY, transaction.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, transaction.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, transaction.getTransactionComment());
 

@@ -9,7 +9,9 @@ import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -22,6 +24,9 @@ import android.widget.Toast;
 import android.widget.CheckBox;
 import android.view.View.OnClickListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class AddIncome extends AppCompatActivity {
     EditText amtPerMonth, transactionCmt;
@@ -29,8 +34,16 @@ public class AddIncome extends AppCompatActivity {
     String transactionType, transaction_recurring, transactionComment;
     double transactionAmount;
     private CheckBox chkRecurring;
+    boolean isRecurring = true;
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        // set the format to sql date time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        final Date date = new Date();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
@@ -81,17 +94,30 @@ public class AddIncome extends AppCompatActivity {
                 //add transaction to table
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
                 NewTransaction addTransaction = new NewTransaction();
+                RecurringIncomeRepo addIncomeRepo = new RecurringIncomeRepo();
 
                 addTransaction.setTransactionID(updateDB().getInt(8) + 1);
                 addTransaction.setTransactionAmount(transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
-                addTrRepo.insert(addTransaction);
 
-                Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                if (isRecurring == true) {
+                    addTransaction.setDate(DatePickerFragment.getDate());
+                    addIncomeRepo.insert(addTransaction);
+                    Toast.makeText(getApplicationContext(), "Recurring Income Added", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    addTransaction.setDate(date.toString());
+                    addTrRepo.insert(addTransaction);
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                }
+
                 Intent myIntent = new Intent(AddIncome.this, MainActivity.class);
                 startActivity(myIntent);
+
             }
 
 
@@ -110,11 +136,15 @@ public class AddIncome extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     findViewById(R.id.income_every).setVisibility(View.VISIBLE);
-
+                    findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
+                    findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
+                    isRecurring = true;
                 }
                 else{
                     findViewById(R.id.income_every).setVisibility(View.GONE);
-
+                    findViewById(R.id.datePicker).setVisibility(View.GONE);
+                    findViewById(R.id.text_displayDate).setVisibility(View.GONE);
+                    isRecurring = false;
                 }
 
             }
@@ -122,12 +152,18 @@ public class AddIncome extends AppCompatActivity {
 
     }
 
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    }
 
         //get cursor object from the Budget Database and use it to get values
-        public Cursor updateDB(){
+    public Cursor updateDB(){
 
-            Cursor cursor = BudgetDataRepo.getAllData();
-                if(cursor != null)
+        Cursor cursor = BudgetDataRepo.getAllData();
+            if(cursor != null)
                     cursor.moveToFirst();
 
         return cursor;

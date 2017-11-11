@@ -72,6 +72,21 @@
         android:layout_height="wrap_content"
         android:entries="@array/transactions_recurring" />
 
+    <Button
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showDatePickerDialog"
+        android:text="@string/pick_date"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text_displayDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -90,7 +105,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="87dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
