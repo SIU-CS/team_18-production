@@ -41,21 +41,9 @@ public class  App extends Application {
 
         if(allData != null && allData.moveToFirst()) {
 
-                // todo seprate recurring from one time transactins and format the output
-                /**
-                allBudgetData.setId(allData.getInt(0));
-                allBudgetData.setCurrentBalance(allData.getDouble(1));
-                allBudgetData.setExpensesRemaining(allData.getDouble(2));
-                allBudgetData.setTotalSavings(allData.getDouble(3));
-                allBudgetData.setWeeksDelinquent(allData.getInt(4));
-                allBudgetData.setWeeksClose(allData.getInt(5));
-                allBudgetData.setCurrentIndex(allData.getInt(6));
-                allBudgetData.setWeeksUsed(allData.getInt(7));
-                allBudgetData.setNumOfEntries(allData.getInt(8));
-                 */
             BudgetData setBudgetData = new BudgetData(allData.getInt(0),allData.getDouble(1),
                     allData.getDouble(2), allData.getDouble(3),allData.getInt(4),
-                    allData.getInt(5), allData.getInt(6), allData.getInt(7), allData.getInt(8));
+                    allData.getInt(5), allData.getInt(6), allData.getInt(7));
             return setBudgetData;
         }
 

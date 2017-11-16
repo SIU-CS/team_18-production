@@ -13,7 +13,6 @@ import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import java.text.DecimalFormat;
 
-
 public class NewTransactionRepo {
 
     private NewTransaction transaction;
@@ -23,7 +22,6 @@ public class NewTransactionRepo {
         transaction = new NewTransaction();
 
     }
-
 
     public static String createTable(){
 
@@ -35,8 +33,6 @@ public class NewTransactionRepo {
                 + NewTransaction.KEY_COMMENT + " TEXT,"
                 + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
     }
-
-
 
     public void insert(NewTransaction transaction) {
 
@@ -63,8 +59,9 @@ public class NewTransactionRepo {
 
         db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
                 + BudgetData.NUM_OF_ENTRIES+"='" +
-                (updateDB().getInt(8)+ 1) +
+                (updateDB().getInt(7)+ 1) +
                 "' WHERE id=1 ");
+
 
 
         DatabaseManager.getInstance().closeDatabase();

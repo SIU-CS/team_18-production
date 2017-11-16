@@ -34,8 +34,6 @@ public class RecurringIncomeRepo {
                 + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
     }
 
-
-
     public void insert(NewTransaction income) {
 
         DecimalFormat precision = new DecimalFormat("0.00");
@@ -43,9 +41,7 @@ public class RecurringIncomeRepo {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
-
-        //values.put(NewTransaction.KEY_TRANSACTION_ID, income.getTransactionID());
-        values.put(NewTransaction.KEY_AMOUNT, income.getTransactionAmount());
+        values.put(NewTransaction.KEY_AMOUNT, precision.format(income.getTransactionAmount()));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, income.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, income.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, income.getTransactionComment());

@@ -23,9 +23,8 @@ public class BudgetDataRepo {
         return  "CREATE TABLE " + BudgetData.TABLE_BUDGET_STATS + "("
                 + BudgetData.KEY_ID + " INTEGER PRIMARY KEY," + BudgetData.CURRENT_BALANCE + " REAL,"
                 + BudgetData.EXPENSES_REMAINING + " REAL," + BudgetData.TOTAL_SAVINGS + " REAL,"
-                + BudgetData.WEEKS_DELINQUENT + " INT," + BudgetData.WEEKS_CLOSE + " INT,"
-                + BudgetData.CURRENT_INDEX + " INT," + BudgetData.WEEKS_USED + " INT,"
-                + BudgetData.NUM_OF_ENTRIES + " INT" +")";
+                + BudgetData.WEEKS_DELINQUENT + " INT," + BudgetData.CURRENT_INDEX + " INT,"
+                + BudgetData.WEEKS_USED + " INT," + BudgetData.NUM_OF_ENTRIES + " INT" +")";
     }
 
 
@@ -39,10 +38,9 @@ public class BudgetDataRepo {
         values.put(BudgetData.CURRENT_BALANCE, 0.00);
         values.put(BudgetData.EXPENSES_REMAINING, 0.00);
         values.put(BudgetData.TOTAL_SAVINGS, 0.00);
-        values.put(BudgetData.WEEKS_DELINQUENT, 0);
-        values.put(BudgetData.WEEKS_CLOSE, 0);
+        values.put(BudgetData.WEEKS_DELINQUENT, 8);
         values.put(BudgetData.CURRENT_INDEX, 0);
-        values.put(BudgetData.WEEKS_USED, 0);
+        values.put(BudgetData.WEEKS_USED, 30);
         values.put(BudgetData.NUM_OF_ENTRIES, 0);
 
 

@@ -1,8 +1,12 @@
 package team_18.financialadvisor;
 
+/**
+ * Created by Avtar on 11/9/17.
+ */
+
+
 import android.app.DialogFragment;
 import java.util.Calendar;
-
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -10,12 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.DatePicker;
 
-
-
-
-/**
- * Created by Avtar on 11/9/17.
- */
 
 public class DatePickerFragment extends DialogFragment  implements DatePickerDialog.OnDateSetListener {
 

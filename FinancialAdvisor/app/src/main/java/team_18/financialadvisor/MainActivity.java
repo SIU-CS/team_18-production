@@ -43,21 +43,14 @@ public class MainActivity extends AppCompatActivity {
         //list bills
         listItems();
 
-
         //Declaring Budget EditText
 
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
             budgetText.setText(String.valueOf(newData.getCurrentBalance()));
 
-
-
         //Financial health status generation
         health.generateStatus(database);
-
-
-
-
 
         //Setting button behaviors
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
