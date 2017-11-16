@@ -28,6 +28,14 @@ public class BudgetDataRepo {
     }
 
 
+
+
+    public static Cursor getAllData() {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
+
+        return cursor;
+    }
     //todo add one blank initial entry
     public static void setBudget() {
 
@@ -47,13 +55,6 @@ public class BudgetDataRepo {
         // Inserting Row
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
         DatabaseManager.getInstance().closeDatabase();
-    }
-
-    public static Cursor getAllData() {
-        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
-
-        return cursor;
     }
 
 

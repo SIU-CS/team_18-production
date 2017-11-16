@@ -62,8 +62,6 @@ public class NewTransactionRepo {
                 (updateDB().getInt(7)+ 1) +
                 "' WHERE id=1 ");
 
-
-
         DatabaseManager.getInstance().closeDatabase();
     }
 

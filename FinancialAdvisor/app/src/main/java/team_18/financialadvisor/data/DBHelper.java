@@ -49,6 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(BudgetDataRepo.createTable());
         db.execSQL(RecurringExpenseRepo.createTable());
         db.execSQL(RecurringIncomeRepo.createTable());
+        BudgetDataRepo.setBudget();
 
     }
     @Override

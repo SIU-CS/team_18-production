@@ -36,13 +36,12 @@ public class RecurringExpenseRepo {
     }
 
     public void insert(NewTransaction expense) {
-
-        DecimalFormat precision = new DecimalFormat("0.00");
+        double amt = expense.getTransactionAmount();
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(NewTransaction.KEY_AMOUNT, precision.format(expense.getTransactionAmount()));
+        values.put(NewTransaction.KEY_AMOUNT, String.format("%.2f", amt));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, expense.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, expense.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, expense.getTransactionComment());
@@ -52,29 +51,27 @@ public class RecurringExpenseRepo {
         db.insert(NewTransaction.TABLE_RECURRING_EXPENSES, null, values);
 
         //Update expenses in the budget stats DB depending if its weekly/bi-weekly/monthly
-        if (expense.getTransactionRecurring() == "Weekly")
+        if (expense.getTransactionRecurring().compareToIgnoreCase("Weekly") == 0)
         {
+            amt = (expense.getTransactionAmount()*4) + updateDB().getDouble(2);
+
             db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
                     + BudgetData.EXPENSES_REMAINING+"='" +
-                    (precision.format((expense.getTransactionAmount()*4)
-                            + updateDB().getDouble(2)) ) +
-                    "' WHERE id=1 ");
+                    String.format("%.2f",amt) + "' WHERE id=1 ");
         }
-        else if(expense.getTransactionRecurring() == "Bi-Weekly")
+        else if(expense.getTransactionRecurring().compareToIgnoreCase("Bi-Weekly") == 0)
         {
+            amt = (expense.getTransactionAmount()*2) + updateDB().getDouble(2);
             db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
-                    + BudgetData.EXPENSES_REMAINING+"='" +
-                    (precision.format((expense.getTransactionAmount()*2)
-                            + updateDB().getDouble(2))) +
-                    "' WHERE id=1 ");
+                    + BudgetData.EXPENSES_REMAINING+"='"
+                    + String.format("%.2f",amt) + "' WHERE id=1 ");
         }
         else
         {
+            amt = expense.getTransactionAmount() + updateDB().getDouble(2);
             db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
                     + BudgetData.EXPENSES_REMAINING+"='" +
-                    (precision.format(expense.getTransactionAmount()
-                            + updateDB().getDouble(2))) +
-                    "' WHERE id=1 ");
+                    String.format("%.2f", amt) + "' WHERE id=1 ");
 
         }
 
