@@ -1,10 +1,6 @@
 language: android
 jdk: oraclejdk8
 
-addons:
-  apt:
-    packages:
-    - ant
 
 android:
   components:
@@ -14,3 +10,11 @@ android:
     - android-25
     - extra-android-m2repository
     - sys-img-x86-64-android-25 
+	
+
+script:
+  - /team_18-production/FinancialAdvisor/app./build.gradle
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
