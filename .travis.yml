@@ -9,7 +9,7 @@ android:
     - build-tools-26.0.2
     - android-25
     - extra-android-m2repository
-	- sys-img-x86-64-android-25 
+    - sys-img-x86-64-android-25 
 
 before_script:
   # Create and start emulator
