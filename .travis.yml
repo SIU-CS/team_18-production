@@ -1,10 +1,10 @@
 language: android
 jdk: oraclejdk8
 
-env:
-  global:
-    - ANDROID_TARGET=android-25
-    - ANDROID_ABI=x86-64
+addons:
+  apt:
+    packages:
+    - ant
 
 android:
   components:
@@ -14,4 +14,3 @@ android:
     - android-25
     - extra-android-m2repository
     - sys-img-x86-64-android-25 
-
