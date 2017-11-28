@@ -17,8 +17,11 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.CheckBox;
@@ -27,19 +30,16 @@ import android.view.View.OnClickListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class AddIncome extends AppCompatActivity {
     EditText amtPerMonth, transactionCmt;
-    int transactionID;
+
     String transactionType, transaction_recurring, transactionComment;
     double transactionAmount;
     private CheckBox chkRecurring;
     boolean isRecurring = true;
     @Override
 
-
     protected void onCreate(Bundle savedInstanceState) {
-
 
         // set the format to sql date time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -54,7 +54,7 @@ public class AddIncome extends AppCompatActivity {
         Button addIncome = (Button) findViewById(R.id.button_add_income);
 
         addListenerOnChkRecurring();
-
+        addListenerOnSpinner();
 
         //Go to main menu button
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +96,7 @@ public class AddIncome extends AppCompatActivity {
                 NewTransaction addTransaction = new NewTransaction();
                 RecurringIncomeRepo addIncomeRepo = new RecurringIncomeRepo();
 
-                addTransaction.setTransactionID(updateDB().getInt(8) + 1);
+                addTransaction.setTransactionID(updateDB().getInt(7) + 1);
                 addTransaction.setTransactionAmount(transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
@@ -125,6 +125,22 @@ public class AddIncome extends AppCompatActivity {
 
     }
 
+    public void addListenerOnSpinner() {
+
+        Spinner spinnerOption = (Spinner) findViewById(R.id.spinner_transaction_type);
+        GridLayout grid = (GridLayout) findViewById(R.id.grid_wages);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.income_transactions, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOption.setAdapter (adapter);
+        //onItemSelected(adapter, grid ,  );
+
+    }
+    public void onItemSelected(AdapterView<?> spinnerOption, GridLayout view, int pos, long id)
+    {
+        spinnerOption.setVisibility(View.VISIBLE);
+    }
 
     public void addListenerOnChkRecurring() {
 
@@ -155,8 +171,6 @@ public class AddIncome extends AppCompatActivity {
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
-
-
     }
 
         //get cursor object from the Budget Database and use it to get values
@@ -165,10 +179,7 @@ public class AddIncome extends AppCompatActivity {
         Cursor cursor = BudgetDataRepo.getAllData();
             if(cursor != null)
                     cursor.moveToFirst();
-
         return cursor;
         }
-
-
 
 }

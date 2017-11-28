@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 10;
 
     // Database Name
     private static final String DATABASE_NAME = "myBudget.db";
@@ -49,6 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(BudgetDataRepo.createTable());
         db.execSQL(RecurringExpenseRepo.createTable());
         db.execSQL(RecurringIncomeRepo.createTable());
+        BudgetDataRepo.setBudget();
 
     }
     @Override

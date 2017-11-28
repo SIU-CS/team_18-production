@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.text.DecimalFormat;
 
 import team_18.financialadvisor.data.DatabaseManager;
+import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 
 /**
@@ -34,17 +35,13 @@ public class RecurringExpenseRepo {
                 + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
     }
 
-
-
     public void insert(NewTransaction expense) {
-
-        DecimalFormat precision = new DecimalFormat("0.00");
+        double amt = expense.getTransactionAmount();
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
-        //values.put(NewTransaction.KEY_TRANSACTION_ID, expense.getTransactionID());
-        values.put(NewTransaction.KEY_AMOUNT, expense.getTransactionAmount());
+        values.put(NewTransaction.KEY_AMOUNT, String.format("%.2f", amt));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, expense.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, expense.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, expense.getTransactionComment());
@@ -53,9 +50,32 @@ public class RecurringExpenseRepo {
         // Inserting Row
         db.insert(NewTransaction.TABLE_RECURRING_EXPENSES, null, values);
 
-        //todo  updates the budget data by adding the new expenses
+        //Update expenses in the budget stats DB depending if its weekly/bi-weekly/monthly
+        if (expense.getTransactionRecurring().compareToIgnoreCase("Weekly") == 0)
+        {
+            amt = (expense.getTransactionAmount()*4) + updateDB().getDouble(2);
 
+            db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
+                    + BudgetData.EXPENSES_REMAINING+"='" +
+                    String.format("%.2f",amt) + "' WHERE id=1 ");
+        }
+        else if(expense.getTransactionRecurring().compareToIgnoreCase("Bi-Weekly") == 0)
+        {
+            amt = (expense.getTransactionAmount()*2) + updateDB().getDouble(2);
+            db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
+                    + BudgetData.EXPENSES_REMAINING+"='"
+                    + String.format("%.2f",amt) + "' WHERE id=1 ");
+        }
+        else
+        {
+            amt = expense.getTransactionAmount() + updateDB().getDouble(2);
+            db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
+                    + BudgetData.EXPENSES_REMAINING+"='" +
+                    String.format("%.2f", amt) + "' WHERE id=1 ");
 
+        }
+
+        //todo  updates the budget data by adding the new expenses to the table
 
         DatabaseManager.getInstance().closeDatabase();
     }
@@ -69,7 +89,6 @@ public class RecurringExpenseRepo {
 
         return cursor;
     }
-
 
     //todo set code for Deleting a transaction by ID
     public void delete( ) {
@@ -95,7 +114,6 @@ public class RecurringExpenseRepo {
 
         return cursor;
     }
-
 
 
 }

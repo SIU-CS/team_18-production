@@ -13,7 +13,6 @@ public class BudgetData {
     public static final String EXPENSES_REMAINING = "expenses_remaining";
     public static final String WEEKS_USED = "weeks_used";
     public static final String WEEKS_DELINQUENT = "weeks_delinquent";
-    public static final String WEEKS_CLOSE = "weeks_close";
     public static final String TOTAL_SAVINGS = "total_savings";
     public static final String CURRENT_INDEX = "current_index";
     public static final String NUM_OF_ENTRIES = "num_off_entries" ;
@@ -25,20 +24,18 @@ public class BudgetData {
     private double totalSavings;
     private int weeksUsed;
     private int weeksDelinquent;
-    private int weeksClose;
     private int currentIndex;
     private int numOfEntries;
 
 
     public BudgetData(int id, double currentBalance, double expensesRemaining, double totalSavings,
-          int weeksUsed, int weeksDelinquent, int weeksClose, int currentIndex, int numOfEntries) {
+          int weeksUsed, int weeksDelinquent, int currentIndex, int numOfEntries) {
         this.id = id;
         this.currentBalance = currentBalance;
         this.expensesRemaining = expensesRemaining;
         this.totalSavings = totalSavings;
         this.weeksUsed = weeksUsed;
         this.weeksDelinquent = weeksDelinquent;
-        this.weeksClose = weeksClose;
         this.currentIndex = currentIndex;
         this.numOfEntries = numOfEntries;
     }
@@ -89,14 +86,6 @@ public class BudgetData {
 
     public void setWeeksDelinquent(int weeksDelinquent) {
         this.weeksDelinquent = weeksDelinquent;
-    }
-
-    public int getWeeksClose() {
-        return weeksClose;
-    }
-
-    public void setWeeksClose(int weeksClose) {
-        this.weeksClose = weeksClose;
     }
 
     public double getTotalSavings() {
