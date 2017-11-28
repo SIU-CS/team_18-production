@@ -19,6 +19,11 @@
     <string name="label_current_budget">Current Budget</string>
     <string name="label_financial_health">Financial Health</string>
 
+    <string-array name="spinner_upcoming_bills">
+        <item>Sample Bill 1</item>
+        <item>Sample Bill 2</item>
+        <item>Sample Bill 3</item>
+    </string-array>
 
     //For budget summary
 

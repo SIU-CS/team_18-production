@@ -37,8 +37,9 @@ public class AddExpenses extends AppCompatActivity {
     double transactionAmount;
     private CheckBox chkRecurring;
     boolean isRecurring = true;
-
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
@@ -53,6 +54,7 @@ public class AddExpenses extends AppCompatActivity {
         final Button reset = (Button)findViewById(R.id.button_clear);
 
         Button addIncome = (Button)findViewById(R.id.button_add_income);
+
 
         addListenerOnChkRecurring();
 
@@ -96,7 +98,7 @@ public class AddExpenses extends AppCompatActivity {
                 RecurringExpenseRepo addExpRepo = new RecurringExpenseRepo();
 
 
-                addTransaction.setTransactionID(updateDB().getInt(7)+1);
+                addTransaction.setTransactionID(updateDB().getInt(8)+1);
                 addTransaction.setTransactionAmount(-transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
@@ -112,7 +114,7 @@ public class AddExpenses extends AppCompatActivity {
                 {
                     addTransaction.setDate(date.toString());
                     addTrRepo.insert(addTransaction);
-
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
@@ -144,8 +146,10 @@ public class AddExpenses extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), "is recurring = false", Toast.LENGTH_SHORT).show();
                     isRecurring = false;
                 }
+
             }
         });
+
 
     }
 
