@@ -1,6 +1,10 @@
 package team_18.financialadvisor;
 
 
+import android.database.Cursor;
+
+import team_18.financialadvisor.data.repo.BudgetDataRepo;
+import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 /**
  * Created by Dakota on 10/30/2017.
@@ -79,6 +83,16 @@ public class FinancialHealthStatus {
         else if(points>25)
             status="Excellent";
         return status;
+    }
+
+    //get weeks weeks delinquent from budget stats table
+    public int getWeeksDelinquent(){
+        int weeks = 0;
+
+        Cursor budgetData = BudgetDataRepo.getAllData();
+        weeks = budgetData.getInt(4);
+        return weeks;
+
     }
 
 

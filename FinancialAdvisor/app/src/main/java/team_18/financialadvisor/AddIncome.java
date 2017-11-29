@@ -37,8 +37,8 @@ public class AddIncome extends AppCompatActivity {
     double transactionAmount;
     private CheckBox chkRecurring;
     boolean isRecurring = true;
-    @Override
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
@@ -48,6 +48,7 @@ public class AddIncome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
         final Spinner mySpinner = (Spinner) findViewById(R.id.spinner_transaction_type);
+
         final Spinner tSpinner = (Spinner) findViewById(R.id.income_every);
         Button buttonGVGoToMM = (Button) findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button) findViewById(R.id.button_clear);

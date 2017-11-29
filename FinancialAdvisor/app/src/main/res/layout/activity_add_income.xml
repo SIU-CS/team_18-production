@@ -25,11 +25,26 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/spinner_transaction_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/income_transactions" />
+    <RadioGroup
+        android:id="@+id/radioSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_wages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wages" />
+
+        <RadioButton
+            android:id="@+id/radio_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other" />
+
+
+    </RadioGroup>
+
 
     <GridLayout
         android:id="@+id/grid_wages"
@@ -91,22 +106,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Is This Transaction Recurring?"
-        android:textAlignment="center"
-        android:textStyle="bold" />
-
-    <CheckBox
-        android:id="@+id/isRecurring"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:checked="true" />
 
     <Spinner
         android:id="@+id/income_every"
