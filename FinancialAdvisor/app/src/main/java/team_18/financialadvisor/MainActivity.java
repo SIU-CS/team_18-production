@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
-            budgetText.setText(String.valueOf(newData.getCurrentBalance()));
+           budgetText.setText(String.valueOf(newData.getCurrentBalance()));
 
         //Financial health status generation
         health.generateStatus(database);

@@ -25,6 +25,7 @@ public class BudgetDataRepo {
                 + BudgetData.EXPENSES_REMAINING + " REAL," + BudgetData.TOTAL_SAVINGS + " REAL,"
                 + BudgetData.WEEKS_DELINQUENT + " INT," + BudgetData.CURRENT_INDEX + " INT,"
                 + BudgetData.WEEKS_USED + " INT," + BudgetData.NUM_OF_ENTRIES + " INT" +")";
+
     }
 
 
@@ -40,6 +41,8 @@ public class BudgetDataRepo {
     public static void setBudget() {
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+
         ContentValues values = new ContentValues();
 
         values.put(BudgetData.KEY_ID, 1);
@@ -53,12 +56,11 @@ public class BudgetDataRepo {
 
 
         // Inserting Row
+
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
         DatabaseManager.getInstance().closeDatabase();
     }
 
-
-    //todo add code to update data
 
 
 }
