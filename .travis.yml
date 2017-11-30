@@ -29,6 +29,7 @@ android:
  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL > garbage.txt
  - extra-google-m2repository > garbage.txt
  - extra-android-m2repository # for design library > garbage.txt
+ 
  licenses:
  - android-sdk-preview-license-.+
  - android-sdk-license-.+
@@ -52,4 +53,4 @@ before_script:
 
 script:
 - ./gradlew clean build > garbage.txt
-- ./gradlew check connectedCheck
+- ./gradlew connectedCheck
