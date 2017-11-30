@@ -30,12 +30,19 @@ android:
  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
  - extra-google-m2repository
  - extra-android-m2repository # for design library
+ licenses:
+ - android-sdk-preview-license-.+
+ - android-sdk-license-.+
+ - google-gdk-license-.+
 
 
 before_install:
 - cd FinancialAdvisor
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 - chmod +x gradlew
-#- ./gradlew dependencies || true # DON'T ADD unless you are getting "Install missing components using SDK manager"
+- ./gradlew dependencies || true # DON'T ADD unless you are getting "Install missing components using SDK manager"
 #Source: https://medium.com/@oldergod/constraint-layout-and-circleci-travis-d50342696d2
 
 before_script:
@@ -45,4 +52,4 @@ before_script:
 - adb shell input keyevent 82 &
 
 script:
-- ./gradlew clean build
+- ./gradlew clean build connectedCheck 
