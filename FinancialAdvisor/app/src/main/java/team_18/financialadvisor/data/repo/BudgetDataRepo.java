@@ -25,18 +25,9 @@ public class BudgetDataRepo {
                 + BudgetData.EXPENSES_REMAINING + " REAL," + BudgetData.TOTAL_SAVINGS + " REAL,"
                 + BudgetData.WEEKS_DELINQUENT + " INT," + BudgetData.CURRENT_INDEX + " INT,"
                 + BudgetData.WEEKS_USED + " INT," + BudgetData.NUM_OF_ENTRIES + " INT" +")";
-
     }
 
 
-
-
-    public static Cursor getAllData() {
-        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
-
-        return cursor;
-    }
     //todo add one blank initial entry
     public static void setBudget() {
 
@@ -49,9 +40,10 @@ public class BudgetDataRepo {
         values.put(BudgetData.CURRENT_BALANCE, 0.00);
         values.put(BudgetData.EXPENSES_REMAINING, 0.00);
         values.put(BudgetData.TOTAL_SAVINGS, 0.00);
-        values.put(BudgetData.WEEKS_DELINQUENT, 8);
+        values.put(BudgetData.WEEKS_DELINQUENT, 0);
+        values.put(BudgetData.WEEKS_CLOSE, 0);
         values.put(BudgetData.CURRENT_INDEX, 0);
-        values.put(BudgetData.WEEKS_USED, 30);
+        values.put(BudgetData.WEEKS_USED, 0);
         values.put(BudgetData.NUM_OF_ENTRIES, 0);
 
 
@@ -59,6 +51,13 @@ public class BudgetDataRepo {
 
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
         DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public static Cursor getAllData() {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
+
+        return cursor;
     }
 
 

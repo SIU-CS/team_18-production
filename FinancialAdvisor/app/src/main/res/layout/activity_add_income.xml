@@ -12,7 +12,9 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
         android:textColor="@android:color/holo_blue_bright"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -46,59 +48,15 @@
     </RadioGroup>
 
 
-    <GridLayout
-        android:id="@+id/grid_wages"
-        android:layout_width="match_parent"
-        android:layout_height="82dp">
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Hours Per Week" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="7"
-            android:layout_row="0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Pay Per Hour" />
-
-        <EditText
-            android:id="@+id/text_hours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:ems="10"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/text_amt_per_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="7"
-            android:layout_row="1"
-            android:ems="10"
-            android:inputType="numberDecimal" />
-    </GridLayout>
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="34dp" />
 
     <TextView
-        android:id="@+id/text_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Amount Recieved "
-        android:textAlignment="center" />
+        android:text="Amount Recieved" />
 
     <EditText
         android:id="@+id/text_box_income"
@@ -143,6 +101,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="87dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
