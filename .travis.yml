@@ -18,7 +18,7 @@ env:
   global:
   - API=22 # Android API level 24 by default
   - TAG=google_apis # Google APIs by default, alternatively use default
-  - ABI=armeabi-v7a # ARM ABI v7a by default
+  - ABI=google_apis/armeabi-v7a # ARM ABI v7a by default
   - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
