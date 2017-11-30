@@ -30,8 +30,8 @@ android:
  - extra-google-m2repository
  - extra-android-m2repository # for design library
  - addon-google_apis-google-19 # google play services
- - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
- - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+ - sys-img-arm64-v8a-addon-google_apis-google-$ANDROID_API_LEVEL
+ - sys-img-arm64-v8a-addon-google_apis-google-$EMULATOR_API_LEVEL
  - android-22
  - android-25
 
@@ -43,7 +43,7 @@ before_install:
 #Source: https://medium.com/@oldergod/constraint-layout-and-circleci-travis-d50342696d2
 
 before_script:
-- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+- echo no | android create avd --force -n test -t android-22 --abi arm64-v8a
 - emulator -avd test -no-skin -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
