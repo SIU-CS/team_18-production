@@ -11,6 +11,7 @@ public class FinancialHealthStatus {
     private double expensesRemaining;
     private double totalSavings;
 
+    /**
     public FinancialHealthStatus(PseudoDatabase database){
         currentBalance=database.getCurrentBalance();
         expensesRemaining=database.getExpensesRemaining();
@@ -106,4 +107,5 @@ public class FinancialHealthStatus {
     public void setTotalSavings(PseudoDatabase database) {
         this.totalSavings = database.getTotalSavings();
     }
+    */
 }
