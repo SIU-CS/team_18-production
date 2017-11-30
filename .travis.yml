@@ -20,15 +20,15 @@ env:
 
 android:
  components:
- - tools
- - build-tools-$ANDROID_BUILD_TOOLS_VERSION
- - platform-tools
- - tools
- - android-$ANDROID_EMU_API_LEVEL
- - extra-android-support
- - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
- - extra-google-m2repository
- - extra-android-m2repository # for design library
+ - tools > garbage.txt
+ - build-tools-$ANDROID_BUILD_TOOLS_VERSION > garbage.txt
+ - platform-tools > garbage.txt
+ - tools > garbage.txt
+ - android-$ANDROID_EMU_API_LEVEL > garbage.txt
+ - extra-android-support > garbage.txt
+ - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL > garbage.txt
+ - extra-google-m2repository > garbage.txt
+ - extra-android-m2repository # for design library > garbage.txt
  licenses:
  - android-sdk-preview-license-.+
  - android-sdk-license-.+
