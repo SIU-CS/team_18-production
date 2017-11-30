@@ -18,7 +18,7 @@ env:
   global:
   - API=22 # Android API level 24 by default
   - TAG=google_apis # Google APIs by default, alternatively use default
-  - ABI=google_apis/armeabi-v7a # ARM ABI v7a by default
+  - ABI=armeabi-v7a # ARM ABI v7a by default
   - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
@@ -37,7 +37,7 @@ install:
   - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" > garbage.txt
   - echo yes | sdkmanager "$EMULATOR" # Install emulator system image
   # Create and start emulator
-  - echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
+  - echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi google_apis/armeabi-v7a --tag "$TAG"
   - emulator -avd acib -engine classic -no-window -verbose -qemu -m 512 &
 
 before_script:
