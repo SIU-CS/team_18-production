@@ -25,8 +25,6 @@ env:
 before_install:
   - export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
   - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
-  - cd FinancialAdvisor
-  - ./gradlew dependencies || true > garbage.txt
 
 install:
   # Update sdk tools to latest version and install/update components
@@ -49,6 +47,7 @@ before_script:
   - adb shell settings put global transition_animation_scale 0 &
   - adb shell settings put global animator_duration_scale 0 &
   - adb shell input keyevent 82 &
+  - cd FinancialAdvisor
 
 script:
   - ./gradlew clean build
