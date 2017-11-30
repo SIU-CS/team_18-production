@@ -35,7 +35,8 @@ import java.util.Date;
 public class AddIncome extends AppCompatActivity {
     EditText amtPerMonth, transactionCmt, hours, payPerHour ;
 
-    String transactionType, transaction_recurring, transactionComment;
+    String transactionType = "Wages";
+    String transaction_recurring, transactionComment;
     double transactionAmount , hoursWoked, perHour;
     boolean isRecurring = true;
 
@@ -165,6 +166,8 @@ public class AddIncome extends AppCompatActivity {
                 // find the radiobutton by returned id
                 radioIncomeButton = (RadioButton) findViewById(selectedId);
                 transactionType = radioIncomeButton.getText().toString();
+
+                Toast.makeText(getApplicationContext(), "Type " +transactionType, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -190,7 +193,7 @@ public class AddIncome extends AppCompatActivity {
                 radioIncomeButton = (RadioButton) findViewById(selectedId);
 
                 transactionType = radioIncomeButton.getText().toString();
-
+                Toast.makeText(getApplicationContext(), "Type " + transactionType, Toast.LENGTH_SHORT).show();
             }
         });
 

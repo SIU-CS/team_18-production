@@ -43,7 +43,7 @@ public class RecurringIncomeRepo {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
         String incomeEvery = income.getTransactionRecurring();
-        values.put(NewTransaction.KEY_AMOUNT, precision.format(getIncome(incomeEvery)));
+        values.put(NewTransaction.KEY_AMOUNT, precision.format(getIncome(income, incomeEvery)));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, income.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, income.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, income.getTransactionComment());
@@ -65,12 +65,12 @@ public class RecurringIncomeRepo {
         return cursor;
     }
 
-    public double getIncome(String incomeEvery){
+    public double getIncome(NewTransaction income, String incomeEvery){
         double  incomePerMo = 0.00;
 
         if (incomeEvery.compareToIgnoreCase("Weekly") == 0)
         {
-                incomePerMo = income.getTransactionAmount() *4;
+                incomePerMo = income.getTransactionAmount() * 4;
 
         }
         else if(incomeEvery.compareToIgnoreCase("Bi-Weekly") == 0)
