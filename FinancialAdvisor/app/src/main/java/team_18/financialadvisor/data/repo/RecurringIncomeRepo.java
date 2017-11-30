@@ -3,9 +3,12 @@ package team_18.financialadvisor.data.repo;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.EditText;
 
 import java.text.DecimalFormat;
 
+import team_18.financialadvisor.AddIncome;
+import team_18.financialadvisor.R;
 import team_18.financialadvisor.data.DatabaseManager;
 import team_18.financialadvisor.data.model.NewTransaction;
 
@@ -66,7 +69,6 @@ public class RecurringIncomeRepo {
     public double getIncome(){
         double payPerHr, hrsWorked, incomePerMo = 0.00;
 
-        //Update expenses in the budget stats DB depending if its weekly/bi-weekly/monthly
         if (income.getTransactionRecurring().compareToIgnoreCase("Weekly") == 0)
         {
 

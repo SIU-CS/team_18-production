@@ -33,17 +33,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AddIncome extends AppCompatActivity {
-    EditText amtPerMonth, transactionCmt;
+    EditText amtPerMonth, transactionCmt, hours, payPerHour ;
 
     String transactionType, transaction_recurring, transactionComment;
-    double transactionAmount;
+    double transactionAmount , hoursWoked, perHour;
     boolean isRecurring = true;
 
     private RadioGroup radioIncomeGroup;
     private RadioButton radioIncomeButton;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+
 
         // set the format to sql date time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -55,7 +57,8 @@ public class AddIncome extends AppCompatActivity {
         Button buttonGVGoToMM = (Button) findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button) findViewById(R.id.button_clear);
         Button addIncome = (Button) findViewById(R.id.button_add_income);
-
+        findViewById(R.id.text_box_income).setVisibility(View.GONE);
+        findViewById(R.id.text_amount).setVisibility(View.GONE);
         addListenerOnChkRecurring();
 
         //Go to main menu button
@@ -93,19 +96,25 @@ public class AddIncome extends AppCompatActivity {
                 transactionCmt = (EditText) findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
 
+                hours = (EditText) findViewById(R.id.text_hours);
+                hoursWoked = Double.parseDouble(hours.getText().toString());
+                payPerHour = (EditText) findViewById(R.id.text_amt_per_hour);
+                perHour = Double.parseDouble(payPerHour.getText().toString());
+
                 //add transaction to table
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
                 NewTransaction addTransaction = new NewTransaction();
                 RecurringIncomeRepo addIncomeRepo = new RecurringIncomeRepo();
 
                 addTransaction.setTransactionID(updateDB().getInt(7) + 1);
-                addTransaction.setTransactionAmount(transactionAmount);
+
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
 
                 if (isRecurring == true) {
                     addTransaction.setDate(DatePickerFragment.getDate());
+                    addTransaction.setTransactionAmount(hoursWoked * perHour);
                     addIncomeRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Recurring Income Added", Toast.LENGTH_SHORT).show();
 
@@ -113,6 +122,7 @@ public class AddIncome extends AppCompatActivity {
                 else
                 {
                     addTransaction.setDate(date.toString());
+                    addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
@@ -149,7 +159,9 @@ public class AddIncome extends AppCompatActivity {
                 findViewById(R.id.income_every).setVisibility(View.VISIBLE);
                 findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
                 findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
-
+                findViewById(R.id.text_box_income).setVisibility(View.GONE);
+                findViewById(R.id.text_amount).setVisibility(View.GONE);
+                findViewById(R.id.grid_income_every).setVisibility(View.VISIBLE);
                 isRecurring = true;
                 Toast.makeText(getApplicationContext(), "Wages", Toast.LENGTH_SHORT).show();
             }
@@ -164,6 +176,9 @@ public class AddIncome extends AppCompatActivity {
                 findViewById(R.id.income_every).setVisibility(View.GONE);
                 findViewById(R.id.datePicker).setVisibility(View.GONE);
                 findViewById(R.id.text_displayDate).setVisibility(View.GONE);
+                findViewById(R.id.text_amount).setVisibility(View.VISIBLE);
+                findViewById(R.id.text_box_income).setVisibility(View.VISIBLE);
+                findViewById(R.id.grid_income_every).setVisibility(View.GONE);
 
                 isRecurring = false;
                 Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_SHORT).show();
@@ -185,6 +200,6 @@ public class AddIncome extends AppCompatActivity {
             if(cursor != null)
                     cursor.moveToFirst();
         return cursor;
-        }
+    }
 
 }
