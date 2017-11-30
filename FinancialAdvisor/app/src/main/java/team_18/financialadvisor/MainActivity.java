@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.database.Cursor;
+import android.widget.Toast;
+
 import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
@@ -29,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToGV = (Button) findViewById(R.id.buttonMMGoToGV);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
-
+        ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
 
         //todo Declaring Financial Health EditText
         EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
           //healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
 
         //list bills
-        listItems();
+        listItems(simpleList);
 
         //Declaring Budget EditText
         BudgetData newData = App.getDBdata();
@@ -83,9 +86,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        simpleList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String bill = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(MainActivity.this, bill, Toast.LENGTH_LONG).show();
+
+
+                            //todo add code specific to list item
+                        Intent myIntent = new Intent(MainActivity.this, PayBills.class);
+                        startActivity(myIntent);
+
+
+                    }
+
+
+                });
     }
 
-    public void listItems() {
+    public void listItems(ListView simpleList) {
 
         Cursor allBills = RecurringExpenseRepo.getAllBills();
         ArrayList<String> mylist = new ArrayList<String>();
@@ -110,10 +130,8 @@ public class MainActivity extends AppCompatActivity {
             }while ( allBills.moveToNext());
 
             for (int i = 0; i <= 4; i++) {
-                ListView simpleList;
+
                 ArrayAdapter<String> arrayAdapter;
-                simpleList = (ListView)
-                        findViewById(R.id.MMListViewUpcomingBills);
                 arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mylist);
                 simpleList.setAdapter(arrayAdapter);
 
@@ -123,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-      //todo this need work for creating the main table to track data
 
 
 }
