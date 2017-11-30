@@ -22,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.CheckBox;
@@ -35,8 +37,10 @@ public class AddIncome extends AppCompatActivity {
 
     String transactionType, transaction_recurring, transactionComment;
     double transactionAmount;
-    private CheckBox chkRecurring;
     boolean isRecurring = true;
+
+    private RadioGroup radioIncomeGroup;
+    private RadioButton radioIncomeButton;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +51,12 @@ public class AddIncome extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
-        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner_transaction_type);
         final Spinner tSpinner = (Spinner) findViewById(R.id.income_every);
         Button buttonGVGoToMM = (Button) findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button) findViewById(R.id.button_clear);
         Button addIncome = (Button) findViewById(R.id.button_add_income);
 
         addListenerOnChkRecurring();
-        addListenerOnSpinner();
 
         //Go to main menu button
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +82,7 @@ public class AddIncome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //getting all the values from fields
-                transactionType = mySpinner.getSelectedItem().toString();
+                transactionType = radioIncomeButton.toString();
 
 
                 amtPerMonth = (EditText) findViewById(R.id.text_box_income);
@@ -125,18 +127,7 @@ public class AddIncome extends AppCompatActivity {
 
     }
 
-    public void addListenerOnSpinner() {
 
-        Spinner spinnerOption = (Spinner) findViewById(R.id.spinner_transaction_type);
-        GridLayout grid = (GridLayout) findViewById(R.id.grid_wages);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (this, R.array.income_transactions, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerOption.setAdapter (adapter);
-        //onItemSelected(adapter, grid ,  );
-
-    }
     public void onItemSelected(AdapterView<?> spinnerOption, GridLayout view, int pos, long id)
     {
         spinnerOption.setVisibility(View.VISIBLE);
@@ -144,27 +135,41 @@ public class AddIncome extends AppCompatActivity {
 
     public void addListenerOnChkRecurring() {
 
-        chkRecurring = (CheckBox) findViewById(R.id.isRecurring);
+        radioIncomeGroup = (RadioGroup) findViewById(R.id.radioIncomeType);
+        RadioGroup checkRecurring = (RadioGroup) findViewById(R.id.radioIncomeType);
+        RadioButton radio1= (RadioButton)checkRecurring.findViewById(R.id.radioWages);
+        RadioButton radio2= (RadioButton)checkRecurring.findViewById(R.id.radioOther);
 
-        chkRecurring.setOnClickListener(new OnClickListener() {
-
+        radio1.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    findViewById(R.id.income_every).setVisibility(View.VISIBLE);
-                    findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
-                    findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
-                    isRecurring = true;
-                }
-                else{
-                    findViewById(R.id.income_every).setVisibility(View.GONE);
-                    findViewById(R.id.datePicker).setVisibility(View.GONE);
-                    findViewById(R.id.text_displayDate).setVisibility(View.GONE);
-                    isRecurring = false;
-                }
+                // TODO Auto-generated method stub
+                findViewById(R.id.grid_wages).setVisibility(View.VISIBLE);
+                findViewById(R.id.income_every).setVisibility(View.VISIBLE);
+                findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
+                findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
 
+                isRecurring = true;
+                Toast.makeText(getApplicationContext(), "Wages", Toast.LENGTH_SHORT).show();
             }
         });
+
+        radio2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                findViewById(R.id.grid_wages).setVisibility(View.GONE);
+                findViewById(R.id.income_every).setVisibility(View.GONE);
+                findViewById(R.id.datePicker).setVisibility(View.GONE);
+                findViewById(R.id.text_displayDate).setVisibility(View.GONE);
+
+                isRecurring = false;
+                Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

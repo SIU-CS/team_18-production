@@ -41,7 +41,7 @@ public class RecurringIncomeRepo {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(NewTransaction.KEY_AMOUNT, precision.format(income.getTransactionAmount()));
+        values.put(NewTransaction.KEY_AMOUNT, precision.format(getIncome()));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, income.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, income.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, income.getTransactionComment());
@@ -63,6 +63,29 @@ public class RecurringIncomeRepo {
         return cursor;
     }
 
+    public double getIncome(){
+        double payPerHr, hrsWorked, incomePerMo = 0.00;
+
+        //Update expenses in the budget stats DB depending if its weekly/bi-weekly/monthly
+        if (income.getTransactionRecurring().compareToIgnoreCase("Weekly") == 0)
+        {
+
+
+        }
+        else if(income.getTransactionRecurring().compareToIgnoreCase("Bi-Weekly") == 0)
+        {
+
+        }
+        else
+        {
+
+
+        }
+
+
+        return incomePerMo;
+
+    }
 
     //todo set code for Deleting a transaction by ID
     public void delete( ) {

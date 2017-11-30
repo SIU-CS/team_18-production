@@ -30,7 +30,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/income_transactions" />
+    <RadioGroup
+        android:id="@+id/radioIncomeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
+        <RadioButton
+            android:id="@+id/radioWages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Wages" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Income" />
+
+    </RadioGroup>
     <GridLayout
         android:id="@+id/grid_wages"
         android:layout_width="match_parent"
@@ -42,7 +60,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Hours Per Week" />
+            android:text="Hours Worked" />
 
         <EditText
             android:id="@+id/editText2"
@@ -74,11 +92,6 @@
     </GridLayout>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="34dp" />
-
-    <TextView
         android:id="@+id/text_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,20 +106,9 @@
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Is This Transaction Recurring?"
-        android:textAlignment="center"
-        android:textStyle="bold" />
-
-    <CheckBox
-        android:id="@+id/isRecurring"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:checked="true" />
+        android:text="Pay Check Incoming" />
 
     <Spinner
         android:id="@+id/income_every"
@@ -125,7 +127,7 @@
     <TextView
         android:id="@+id/text_displayDate"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:text=" "
         android:textAlignment="center"
         android:textSize="30sp" />
