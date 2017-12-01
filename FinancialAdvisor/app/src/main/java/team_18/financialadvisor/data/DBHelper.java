@@ -25,8 +25,6 @@ import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-
-
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
@@ -49,7 +47,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(BudgetDataRepo.createTable());
         db.execSQL(RecurringExpenseRepo.createTable());
         db.execSQL(RecurringIncomeRepo.createTable());
-        BudgetDataRepo.setBudget();
 
     }
     @Override

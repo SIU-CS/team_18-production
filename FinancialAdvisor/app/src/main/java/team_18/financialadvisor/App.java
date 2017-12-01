@@ -27,9 +27,9 @@ public class  App extends Application {
         context = this.getApplicationContext();
         dbHandler = new DBHelper();
         DatabaseManager.initializeInstance(dbHandler);
-        //BudgetDataRepo.setBudget();
-        getDBdata();
 
+        BudgetDataRepo.setBudget();
+        getDBdata();
 
     }
 

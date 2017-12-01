@@ -48,7 +48,7 @@
 
     <GridLayout
         android:id="@+id/grid_wages"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="82dp">
 
         <TextView
@@ -63,7 +63,7 @@
 
         <EditText
             android:id="@+id/text_hours"
-            android:layout_width="wrap_content"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:layout_column="7"
             android:layout_row="0"
@@ -72,7 +72,7 @@
 
         <EditText
             android:id="@+id/text_amt_per_hour"
-            android:layout_width="wrap_content"
+            android:layout_width="153dp"
             android:layout_height="wrap_content"
             android:layout_column="7"
             android:layout_row="1"

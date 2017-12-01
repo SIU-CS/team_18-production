@@ -44,9 +44,7 @@ public class AddIncome extends AppCompatActivity {
     public RadioButton radioIncomeButton;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
-
 
         // set the format to sql date time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -87,10 +85,14 @@ public class AddIncome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 //getting all the values from fields
                 transaction_recurring = tSpinner.getSelectedItem().toString();
                 transactionCmt = (EditText) findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
+
+                //validate inputs
+
 
                 //add transaction to table
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
@@ -104,9 +106,24 @@ public class AddIncome extends AppCompatActivity {
 
                 if (isRecurring == true) {
                     hours = (EditText) findViewById(R.id.text_hours);
-                    hoursWoked = Double.parseDouble(hours.getText().toString());
                     payPerHour = (EditText) findViewById(R.id.text_amt_per_hour);
+                    //validate input
+                    if( hours.getText().toString().length() == 0 ) {
+                        hours.setError("Hours required!");
+                        return;
+                    }
+                    if( payPerHour.getText().toString().length() == 0 ) {
+                        payPerHour.setError("Pay per hour is required!");
+                        return;
+                    }
+                    if( transactionCmt.getText().toString().length() == 0 ) {
+                        transactionCmt.setError("Coment is required!");
+                        return;
+                    }
+                    hoursWoked = Double.parseDouble(hours.getText().toString());
                     perHour = Double.parseDouble(payPerHour.getText().toString());
+
+
                     addTransaction.setDate(DatePickerFragment.getDate());
                     addTransaction.setTransactionAmount(hoursWoked * perHour);
 
@@ -117,7 +134,17 @@ public class AddIncome extends AppCompatActivity {
                 else
                 {
                     amtPerMonth = (EditText) findViewById(R.id.text_box_income);
+                    //validate input
+                    if( amtPerMonth.getText().toString().length() == 0 ) {
+                        amtPerMonth.setError("Amount is required!");
+                        return;
+                    }
+                    if( transactionCmt.getText().toString().length() == 0 ) {
+                        transactionCmt.setError("Coment is required!");
+                        return;
+                    }
                     transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
+
                     addTransaction.setDate(date.toString());
                     addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
@@ -196,8 +223,6 @@ public class AddIncome extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Type " + transactionType, Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     public void showDatePickerDialog(View v) {

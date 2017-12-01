@@ -27,9 +27,6 @@ public class BudgetDataRepo {
                 + BudgetData.WEEKS_USED + " INT," + BudgetData.NUM_OF_ENTRIES + " INT" +")";
     }
 
-
-
-
     public static Cursor getAllData() {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         Cursor cursor = db.rawQuery( "SELECT * FROM " + BudgetData.TABLE_BUDGET_STATS, null );
@@ -52,14 +49,19 @@ public class BudgetDataRepo {
         values.put(BudgetData.NUM_OF_ENTRIES, 0);
 
 
-        // Inserting Row
+        //make sure that table is empty before entring data
+        String count = "SELECT count(*) FROM " + BudgetData.TABLE_BUDGET_STATS;
+        Cursor mcursor = db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int itemCount = mcursor.getInt(0);
+        if(itemCount>0)
+         return;
+        else
+        //populate table/Inserting Row
         db.insert(BudgetData.TABLE_BUDGET_STATS, null, values);
+
         DatabaseManager.getInstance().closeDatabase();
     }
-
-
-    //todo add code to update data
-
 
 }
 
