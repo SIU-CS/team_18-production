@@ -31,7 +31,7 @@ import java.util.Date;
 
 public class AddExpenses extends AppCompatActivity {
     //Text input/Edit
-    EditText amtPerMonth, transactionCmt;
+    EditText amtPerMonth, transactionCmt, thisDate;
 
     String transactionType, transactionComment , transaction_recurring;
     double transactionAmount;
@@ -51,7 +51,7 @@ public class AddExpenses extends AppCompatActivity {
         final Spinner tSpinner= (Spinner) findViewById(R.id.expenses_every);
         Button buttonGVGoToMM = (Button)findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button)findViewById(R.id.button_clear);
-
+        thisDate = (EditText) findViewById(R.id.text_displayDate);
         Button addIncome = (Button)findViewById(R.id.button_add_income);
 
         addListenerOnChkRecurring();
@@ -80,14 +80,20 @@ public class AddExpenses extends AppCompatActivity {
 
                 //getting all the values from fields
                 transactionType = mySpinner.getSelectedItem().toString();
-
-
                 amtPerMonth = (EditText)findViewById(R.id.text_box_paid);
-                transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
-
                 transaction_recurring = tSpinner.getSelectedItem().toString();
-
                 transactionCmt = (EditText)findViewById(R.id.text_box_transactionComment);
+
+                //validate input
+                if( amtPerMonth.getText().toString().length() == 0 ) {
+                    amtPerMonth.setError("Amount required!");
+                    return;
+                }
+                if( transactionCmt.getText().toString().length() == 0 ) {
+                    transactionCmt.setError("Coment is required!");
+                    return;
+                }
+                transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
                 transactionComment = transactionCmt.getText().toString();
 
                 //add transaction to table depending on type
@@ -95,15 +101,17 @@ public class AddExpenses extends AppCompatActivity {
                 NewTransaction addTransaction = new NewTransaction();
                 RecurringExpenseRepo addExpRepo = new RecurringExpenseRepo();
 
-
                 addTransaction.setTransactionID(updateDB().getInt(7)+1);
                 addTransaction.setTransactionAmount(-transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
 
-
                 if (isRecurring == true) {
+                    if (thisDate.getText().toString().length() == 0) {
+                        thisDate.setError("pick pay day");
+                        return;
+                    }
                     addTransaction.setDate(DatePickerFragment.getDate());
                     addExpRepo.insert(addTransaction);
 

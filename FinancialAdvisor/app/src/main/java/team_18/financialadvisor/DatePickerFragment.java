@@ -21,6 +21,7 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
     private static int pYear;
     private static int pMonth;
     private static int pDay;
+    static TextView thisDate;
 
 
     @Override
@@ -45,7 +46,7 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
         pYear = year;
         pDay = day;
         pMonth = month;
-        (pDisplayDate = (TextView) getActivity().findViewById(R.id.text_displayDate)).setText(month+1 +"/"+ day+"/" + year);
+        (pDisplayDate = (EditText) getActivity().findViewById(R.id.text_displayDate)).setText(month+1 +"/"+ day+"/" + year);
 
     }
     public static String getDate(){

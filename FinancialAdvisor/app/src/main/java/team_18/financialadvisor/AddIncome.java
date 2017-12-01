@@ -25,6 +25,7 @@ import android.widget.GridLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CheckBox;
 import android.view.View.OnClickListener;
@@ -32,11 +33,13 @@ import android.view.View.OnClickListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static team_18.financialadvisor.DatePickerFragment.*;
+
 public class AddIncome extends AppCompatActivity {
-    EditText amtPerMonth, transactionCmt, hours, payPerHour ;
+    EditText amtPerMonth, transactionCmt, hours, payPerHour, thisDate;
 
     String transactionType = "Wages";
-    String transaction_recurring, transactionComment;
+    String transaction_recurring, transactionComment, dateInput;
     double transactionAmount , hoursWoked, perHour;
     boolean isRecurring = true;
 
@@ -90,9 +93,7 @@ public class AddIncome extends AppCompatActivity {
                 transaction_recurring = tSpinner.getSelectedItem().toString();
                 transactionCmt = (EditText) findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
-
-                //validate inputs
-
+                thisDate = (EditText) findViewById(R.id.text_displayDate);
 
                 //add transaction to table
                 NewTransactionRepo addTrRepo = new NewTransactionRepo();
@@ -120,11 +121,17 @@ public class AddIncome extends AppCompatActivity {
                         transactionCmt.setError("Coment is required!");
                         return;
                     }
-                    hoursWoked = Double.parseDouble(hours.getText().toString());
-                    perHour = Double.parseDouble(payPerHour.getText().toString());
 
+                    if (thisDate.getText().toString().length() == 0) {
+
+                        thisDate.setError("pick pay day");
+                        return;
+                    }
 
                     addTransaction.setDate(DatePickerFragment.getDate());
+
+                    hoursWoked = Double.parseDouble(hours.getText().toString());
+                    perHour = Double.parseDouble(payPerHour.getText().toString());
                     addTransaction.setTransactionAmount(hoursWoked * perHour);
 
                     addIncomeRepo.insert(addTransaction);
@@ -161,13 +168,7 @@ public class AddIncome extends AppCompatActivity {
 
     }
 
-
-    public void onItemSelected(AdapterView<?> spinnerOption, GridLayout view, int pos, long id)
-    {
-        spinnerOption.setVisibility(View.VISIBLE);
-    }
-
-    public void addListenerOnChkRecurring() {
+ public void addListenerOnChkRecurring() {
 
         radioIncomeGroup = (RadioGroup) findViewById(R.id.radioIncomeType);
         RadioGroup checkRecurring = (RadioGroup) findViewById(R.id.radioIncomeType);
