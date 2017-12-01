@@ -1,6 +1,10 @@
 package team_18.financialadvisor;
 
 
+import android.database.Cursor;
+
+import team_18.financialadvisor.data.repo.BudgetDataRepo;
+import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 /**
  * Created by Dakota on 10/30/2017.
@@ -10,6 +14,14 @@ public class FinancialHealthStatus {
     private double currentBalance;
     private double expensesRemaining;
     private double totalSavings;
+
+
+    public int getWeeksDelinquent(){
+        int weeks = 0;
+        Cursor budgetStats = BudgetDataRepo.getAllData();
+        weeks = budgetStats.getInt(4);
+        return weeks;
+    }
 
     /**
     public FinancialHealthStatus(PseudoDatabase database){

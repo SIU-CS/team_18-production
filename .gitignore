@@ -127,3 +127,13 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/androidstudio
+
+FinancialAdvisor/app/\.idea/
+
+FinancialAdvisor/app/gradlew\.bat
+
+FinancialAdvisor/app/gradlew
+
+FinancialAdvisor/app/gradle/wrapper/gradle-wrapper\.properties
+
+FinancialAdvisor/app/gradle/wrapper/gradle-wrapper\.jar

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -25,43 +26,49 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/spinner_transaction_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/income_transactions" />
+    <RadioGroup
+        android:id="@+id/radioIncomeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/radioWages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Wages" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Income" />
+
+    </RadioGroup>
 
     <GridLayout
         android:id="@+id/grid_wages"
         android:layout_width="match_parent"
         android:layout_height="82dp">
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="213dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Hours Per Week" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="7"
+            android:layout_column="0"
             android:layout_row="0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Pay Per Hour" />
+            android:text="Hours Worked :"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/text_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="1"
+            android:layout_column="7"
+            android:layout_row="0"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/text_amt_per_hour"
@@ -71,18 +78,24 @@
             android:layout_row="1"
             android:ems="10"
             android:inputType="numberDecimal" />
-    </GridLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="34dp" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:text="Hourly Wage :"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+    </GridLayout>
 
     <TextView
         android:id="@+id/text_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Amount Recieved "
+        android:text="Total Amount Recieved "
         android:textAlignment="center" />
 
     <EditText
@@ -93,26 +106,29 @@
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Is This Transaction Recurring?"
-        android:textAlignment="center"
-        android:textStyle="bold" />
-
-    <CheckBox
-        android:id="@+id/isRecurring"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:checked="true" />
-
-    <Spinner
-        android:id="@+id/income_every"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/transactions_recurring" />
+        android:layout_height="wrap_content" />
+
+    <GridLayout
+        android:id="@+id/grid_income_every"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount Recievd By: "
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/income_every"
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:entries="@array/transactions_recurring" />
+    </GridLayout>
 
     <Button
         android:id="@+id/datePicker"

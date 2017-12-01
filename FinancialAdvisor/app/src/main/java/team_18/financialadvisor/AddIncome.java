@@ -22,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.CheckBox;
@@ -31,15 +33,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AddIncome extends AppCompatActivity {
-    EditText amtPerMonth, transactionCmt;
+    EditText amtPerMonth, transactionCmt, hours, payPerHour ;
 
-    String transactionType, transaction_recurring, transactionComment;
-    double transactionAmount;
-    private CheckBox chkRecurring;
+    String transactionType = "Wages";
+    String transaction_recurring, transactionComment;
+    double transactionAmount , hoursWoked, perHour;
     boolean isRecurring = true;
+
+    private RadioGroup radioIncomeGroup;
+    public RadioButton radioIncomeButton;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+
 
         // set the format to sql date time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -47,15 +54,15 @@ public class AddIncome extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
-        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner_transaction_type);
         final Spinner tSpinner = (Spinner) findViewById(R.id.income_every);
         Button buttonGVGoToMM = (Button) findViewById(R.id.MMButtonGVGoToMM);
         final Button reset = (Button) findViewById(R.id.button_clear);
         Button addIncome = (Button) findViewById(R.id.button_add_income);
 
-        addListenerOnChkRecurring();
-        addListenerOnSpinner();
+        findViewById(R.id.text_box_income).setVisibility(View.GONE);
+        findViewById(R.id.text_amount).setVisibility(View.GONE);
 
+        addListenerOnChkRecurring();
         //Go to main menu button
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -79,15 +86,9 @@ public class AddIncome extends AppCompatActivity {
         addIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //getting all the values from fields
-                transactionType = mySpinner.getSelectedItem().toString();
-
-
-                amtPerMonth = (EditText) findViewById(R.id.text_box_income);
-                transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
-
                 transaction_recurring = tSpinner.getSelectedItem().toString();
-
                 transactionCmt = (EditText) findViewById(R.id.text_box_transactionComment);
                 transactionComment = transactionCmt.getText().toString();
 
@@ -97,20 +98,28 @@ public class AddIncome extends AppCompatActivity {
                 RecurringIncomeRepo addIncomeRepo = new RecurringIncomeRepo();
 
                 addTransaction.setTransactionID(updateDB().getInt(7) + 1);
-                addTransaction.setTransactionAmount(transactionAmount);
                 addTransaction.setTransactionRecurring(transaction_recurring);
                 addTransaction.setTransactionType(transactionType);
                 addTransaction.setTransactionComment(transactionComment);
 
                 if (isRecurring == true) {
+                    hours = (EditText) findViewById(R.id.text_hours);
+                    hoursWoked = Double.parseDouble(hours.getText().toString());
+                    payPerHour = (EditText) findViewById(R.id.text_amt_per_hour);
+                    perHour = Double.parseDouble(payPerHour.getText().toString());
                     addTransaction.setDate(DatePickerFragment.getDate());
+                    addTransaction.setTransactionAmount(hoursWoked * perHour);
+
                     addIncomeRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Recurring Income Added", Toast.LENGTH_SHORT).show();
 
                 }
                 else
                 {
+                    amtPerMonth = (EditText) findViewById(R.id.text_box_income);
+                    transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
                     addTransaction.setDate(date.toString());
+                    addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
@@ -125,18 +134,7 @@ public class AddIncome extends AppCompatActivity {
 
     }
 
-    public void addListenerOnSpinner() {
 
-        Spinner spinnerOption = (Spinner) findViewById(R.id.spinner_transaction_type);
-        GridLayout grid = (GridLayout) findViewById(R.id.grid_wages);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (this, R.array.income_transactions, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerOption.setAdapter (adapter);
-        //onItemSelected(adapter, grid ,  );
-
-    }
     public void onItemSelected(AdapterView<?> spinnerOption, GridLayout view, int pos, long id)
     {
         spinnerOption.setVisibility(View.VISIBLE);
@@ -144,27 +142,61 @@ public class AddIncome extends AppCompatActivity {
 
     public void addListenerOnChkRecurring() {
 
-        chkRecurring = (CheckBox) findViewById(R.id.isRecurring);
-
-        chkRecurring.setOnClickListener(new OnClickListener() {
-
+        radioIncomeGroup = (RadioGroup) findViewById(R.id.radioIncomeType);
+        RadioGroup checkRecurring = (RadioGroup) findViewById(R.id.radioIncomeType);
+        RadioButton radio1= (RadioButton)checkRecurring.findViewById(R.id.radioWages);
+        RadioButton radio2= (RadioButton)checkRecurring.findViewById(R.id.radioOther);
+        radio1.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    findViewById(R.id.income_every).setVisibility(View.VISIBLE);
-                    findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
-                    findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
-                    isRecurring = true;
-                }
-                else{
-                    findViewById(R.id.income_every).setVisibility(View.GONE);
-                    findViewById(R.id.datePicker).setVisibility(View.GONE);
-                    findViewById(R.id.text_displayDate).setVisibility(View.GONE);
-                    isRecurring = false;
-                }
+                // TODO Auto-generated method stub
+                findViewById(R.id.grid_wages).setVisibility(View.VISIBLE);
+                findViewById(R.id.income_every).setVisibility(View.VISIBLE);
+                findViewById(R.id.datePicker).setVisibility(View.VISIBLE);
+                findViewById(R.id.text_displayDate).setVisibility(View.VISIBLE);
+                findViewById(R.id.text_box_income).setVisibility(View.GONE);
+                findViewById(R.id.text_amount).setVisibility(View.GONE);
+                findViewById(R.id.grid_income_every).setVisibility(View.VISIBLE);
+                isRecurring = true;
 
+                // get selected radio button from radioGroup
+                int selectedId = radioIncomeGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioIncomeButton = (RadioButton) findViewById(selectedId);
+                transactionType = radioIncomeButton.getText().toString();
+
+                Toast.makeText(getApplicationContext(), "Type " +transactionType, Toast.LENGTH_SHORT).show();
             }
         });
+
+        radio2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                findViewById(R.id.grid_wages).setVisibility(View.GONE);
+                findViewById(R.id.income_every).setVisibility(View.GONE);
+                findViewById(R.id.datePicker).setVisibility(View.GONE);
+                findViewById(R.id.text_displayDate).setVisibility(View.GONE);
+                findViewById(R.id.text_amount).setVisibility(View.VISIBLE);
+                findViewById(R.id.text_box_income).setVisibility(View.VISIBLE);
+                findViewById(R.id.grid_income_every).setVisibility(View.GONE);
+
+                isRecurring = false;
+
+                // get selected radio button from radioGroup
+                int selectedId = radioIncomeGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioIncomeButton = (RadioButton) findViewById(selectedId);
+
+                transactionType = radioIncomeButton.getText().toString();
+                Toast.makeText(getApplicationContext(), "Type " + transactionType, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
@@ -180,6 +212,6 @@ public class AddIncome extends AppCompatActivity {
             if(cursor != null)
                     cursor.moveToFirst();
         return cursor;
-        }
+    }
 
 }

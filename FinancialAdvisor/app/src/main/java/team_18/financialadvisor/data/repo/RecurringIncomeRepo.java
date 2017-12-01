@@ -3,9 +3,12 @@ package team_18.financialadvisor.data.repo;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.EditText;
 
 import java.text.DecimalFormat;
 
+import team_18.financialadvisor.AddIncome;
+import team_18.financialadvisor.R;
 import team_18.financialadvisor.data.DatabaseManager;
 import team_18.financialadvisor.data.model.NewTransaction;
 
@@ -16,7 +19,6 @@ import team_18.financialadvisor.data.model.NewTransaction;
 public class RecurringIncomeRepo {
 
     private NewTransaction income;
-
     public RecurringIncomeRepo(){
 
         income = new NewTransaction();
@@ -40,8 +42,8 @@ public class RecurringIncomeRepo {
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
-
-        values.put(NewTransaction.KEY_AMOUNT, precision.format(income.getTransactionAmount()));
+        String incomeEvery = income.getTransactionRecurring();
+        values.put(NewTransaction.KEY_AMOUNT, precision.format(getIncome(income, incomeEvery)));
         values.put(NewTransaction.KYE_TRANSACTION_EVERY, income.getTransactionRecurring());
         values.put(NewTransaction.KEY_TYPE, income.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, income.getTransactionComment());
@@ -63,6 +65,27 @@ public class RecurringIncomeRepo {
         return cursor;
     }
 
+    public double getIncome(NewTransaction income, String incomeEvery){
+        double  incomePerMo = 0.00;
+
+        if (incomeEvery.compareToIgnoreCase("Weekly") == 0)
+        {
+                incomePerMo = income.getTransactionAmount() * 4;
+
+        }
+        else if(incomeEvery.compareToIgnoreCase("Bi-Weekly") == 0)
+        {
+            incomePerMo = income.getTransactionAmount() * 2;
+        }
+        else
+        {
+            incomePerMo = income.getTransactionAmount();
+        }
+
+
+        return incomePerMo;
+
+    }
 
     //todo set code for Deleting a transaction by ID
     public void delete( ) {
