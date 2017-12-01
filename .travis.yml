@@ -1,0 +1,55 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+
+before_cache:
+ - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+ directories:
+ - $HOME/.gradle/caches/
+ - $HOME/.gradle/wrapper/
+
+env:
+ global:
+ - ANDROID_BUILD_TOOLS_VERSION=26.0.2
+ - ANDROID_EMU_API_LEVEL=22
+ - ANDROID_ABI=armeabi-v7a
+ - ADB_INSTALL_TIMEOUT=5 # minutes
+
+android:
+ components:
+ - tools > garbage.txt
+ - build-tools-$ANDROID_BUILD_TOOLS_VERSION > garbage.txt
+ - platform-tools > garbage.txt
+ - tools > garbage.txt
+ - android-$ANDROID_EMU_API_LEVEL > garbage.txt
+ - extra-android-support > garbage.txt
+ - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL > garbage.txt
+ - extra-google-m2repository > garbage.txt
+ - extra-android-m2repository # for design library > garbage.txt
+ 
+ licenses:
+ - android-sdk-preview-license-.+
+ - android-sdk-license-.+
+ - google-gdk-license-.+
+
+
+before_install:
+- cd FinancialAdvisor
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+- chmod +x gradlew
+- ./gradlew dependencies || true > garbage.txt
+
+
+before_script:
+- echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
+- emulator -avd test -no-window &
+- android-wait-for-emulator > garbage.txt
+- adb shell input keyevent 82 &
+
+script:
+- ./gradlew clean build > garbage.txt
