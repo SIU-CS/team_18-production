@@ -90,16 +90,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String bill = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(MainActivity.this, bill, Toast.LENGTH_LONG).show();
 
+                       // Toast.makeText(MainActivity.this, " INdex " + position, Toast.LENGTH_LONG).show();
 
-                            //todo add code specific to list item
+                        //Create a bundle object
+                        Bundle b = new Bundle();
+
+                        //Inserts a String value into the mapping of this Bundle
+                        b.putInt("key_val", position);
+
+                        //Add the bundle to the intent.
                         Intent myIntent = new Intent(MainActivity.this, PayBills.class);
+                        myIntent.putExtras(b);
+
+                        //start the DisplayActivity
                         startActivity(myIntent);
-
-
                     }
-
 
                 });
     }
@@ -110,23 +116,21 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> mylist = new ArrayList<String>();
 
         allBills.moveToFirst();
-        int fourBills = 0;
-        String bills, billType, amount, due;
-        if(allBills != null && allBills.moveToFirst()) {
 
-            do{
+        String bills, billType, amount, due;
+        if (allBills != null && allBills.moveToFirst()) {
+
+            do {
 
                 // todo seprate recurring from one time transactins and format the output
 
                 billType = allBills.getString(3);
                 amount = allBills.getString(1);
                 due = allBills.getString(5);
-                bills =  "$ " + amount +"   " + billType +" Due On: " + due;
+                bills = "$ " + amount + "   " + billType + " Due On: " + due;
                 mylist.add(bills);
 
-                fourBills++;
-
-            }while ( allBills.moveToNext());
+            } while (allBills.moveToNext());
 
             for (int i = 0; i <= 4; i++) {
 
@@ -135,6 +139,26 @@ public class MainActivity extends AppCompatActivity {
                 simpleList.setAdapter(arrayAdapter);
 
             }
+        }
+    }
+    public void getBillID() {
+
+        Cursor allBills = RecurringExpenseRepo.getAllBills();
+
+        allBills.moveToFirst();
+
+        String bills, billType, amount, due;
+        if(allBills != null && allBills.moveToFirst()) {
+
+            do{
+
+                // get id of the right bill
+
+
+
+            }while ( allBills.moveToNext());
+
+
         }
 
     }
