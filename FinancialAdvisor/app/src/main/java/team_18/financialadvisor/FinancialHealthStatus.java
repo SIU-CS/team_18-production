@@ -106,7 +106,10 @@ public class FinancialHealthStatus {
     }
 
     public String generateStatus(){
-        int points = (balanceMinusExpensesPoints() + savingsPoints() + weeksDelinquentPoints());
+        int balance = balanceMinusExpensesPoints();
+        int savings = savingsPoints();
+        int weeks =weeksDelinquentPoints();
+        int points = (balance + savings + weeks);
         String status=null;
         if (points<=10)
             status="Bad";
