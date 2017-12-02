@@ -14,6 +14,8 @@ public class FinancialHealthStatus {
     private double currentBalance;
     private double expensesRemaining;
     private double totalSavings;
+    private int weeksDelinquent;
+    private int weeksUsed;
 
 
     public int getWeeksDelinquent(){
@@ -22,6 +24,35 @@ public class FinancialHealthStatus {
         weeks = budgetStats.getInt(4);
         return weeks;
     }
+
+    public double getTotalSavings(){
+        double savings = 0;
+        Cursor budgetStats = BudgetDataRepo.getAllData();
+        savings = budgetStats.getDouble(3);
+        return savings;
+    }
+
+    public int getWeeksUsed(){
+        int weeks = 0;
+        Cursor budgetStats = BudgetDataRepo.getAllData();
+        weeks = budgetStats.getInt(6);
+        return weeks;
+    }
+
+    public double getExpensesRemaining(){
+        double expenses = 0;
+        Cursor budgetStats = BudgetDataRepo.getAllData();
+        expenses = budgetStats.getDouble(2);
+        return expenses;
+    }
+
+    public double getCurrentBalance(){
+        double balance = 0.00;
+        Cursor budgetStats = BudgetDataRepo.getAllData();
+        balance = budgetStats.getDouble(4);
+        return balance;
+    }
+
 
     /**
     public FinancialHealthStatus(PseudoDatabase database){
@@ -117,7 +148,7 @@ public class FinancialHealthStatus {
     }
 
     public void setTotalSavings(PseudoDatabase database) {
-        this.totalSavings = database.getTotalSavings();
+        this.totalSavings = getTotalSavings();
     }
     */
 }
