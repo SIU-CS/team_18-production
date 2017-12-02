@@ -32,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToGV = (Button) findViewById(R.id.buttonMMGoToGV);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
+        Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
 
-        //todo Declaring Financial Health EditText
-        EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
-          //healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
+        //Financial Health status stuff
+        final FinancialHealthStatus health =new FinancialHealthStatus();
+        final EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
+        healthText.setText(health.generateStatus(), TextView.BufferType.EDITABLE);
 
         //list bills
         listItems(simpleList);
@@ -44,16 +46,21 @@ public class MainActivity extends AppCompatActivity {
         //Declaring Budget EditText
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
-            budgetText.setText(String.valueOf(newData.getCurrentBalance()));
+        budgetText.setText(String.valueOf(newData.getCurrentBalance()));
 
-        //todo Financial health status generation
-            //health.generateStatus(database);
 
         //Setting button behaviors
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
                 startActivity(myIntent);
+            }
+        });
+
+
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                healthText.setText(health.generateStatus(), TextView.BufferType.EDITABLE);
             }
         });
 
