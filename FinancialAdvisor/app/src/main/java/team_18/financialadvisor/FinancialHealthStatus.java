@@ -4,7 +4,7 @@ package team_18.financialadvisor;
 import android.database.Cursor;
 
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
-import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
+
 
 /**
  * Created by Dakota on 10/30/2017.
