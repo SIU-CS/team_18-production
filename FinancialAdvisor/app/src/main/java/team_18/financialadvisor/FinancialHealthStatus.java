@@ -17,6 +17,7 @@ public class FinancialHealthStatus {
     public int getWeeksDelinquent(){
         int weeks;
         Cursor budgetStats = BudgetDataRepo.getAllData();
+        budgetStats.moveToFirst();
         weeks = budgetStats.getInt(4);
         return weeks;
     }
@@ -24,6 +25,7 @@ public class FinancialHealthStatus {
     public double getTotalSavings(){
         double savings;
         Cursor budgetStats = BudgetDataRepo.getAllData();
+        budgetStats.moveToFirst();
         savings = budgetStats.getDouble(3);
         return savings;
     }
@@ -31,6 +33,7 @@ public class FinancialHealthStatus {
     public int getWeeksUsed(){
         int weeks;
         Cursor budgetStats = BudgetDataRepo.getAllData();
+        budgetStats.moveToFirst();
         weeks = budgetStats.getInt(6);
         return weeks;
     }
@@ -38,13 +41,16 @@ public class FinancialHealthStatus {
     public double getExpensesRemaining(){
         double expenses;
         Cursor budgetStats = BudgetDataRepo.getAllData();
+        budgetStats.moveToFirst();
         expenses = budgetStats.getDouble(2);
         return expenses;
     }
 
     public double getCurrentBalance(){
         double balance;
+
         Cursor budgetStats = BudgetDataRepo.getAllData();
+        budgetStats.moveToFirst();
         balance = budgetStats.getDouble(4);
         return balance;
     }
