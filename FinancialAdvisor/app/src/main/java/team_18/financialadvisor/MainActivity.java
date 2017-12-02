@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
 
-        //todo Declaring Financial Health EditText
+        //Financial Health status stuff
+        final FinancialHealthStatus health =new FinancialHealthStatus();
         EditText healthText = (EditText)findViewById(R.id.MMEditTextFinancialHealth);
-          //healthText.setText(health.generateStatus(database), TextView.BufferType.EDITABLE);
+        healthText.setText(health.generateStatus(), TextView.BufferType.EDITABLE);
 
         //list bills
         listItems(simpleList);
@@ -44,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
         //Declaring Budget EditText
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
-            budgetText.setText(String.valueOf(newData.getCurrentBalance()));
+        budgetText.setText(String.valueOf(newData.getCurrentBalance()));
 
-        //todo Financial health status generation
-            //health.generateStatus(database);
 
         //Setting button behaviors
         buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {

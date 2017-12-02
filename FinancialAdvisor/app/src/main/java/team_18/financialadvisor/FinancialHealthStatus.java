@@ -15,35 +15,35 @@ public class FinancialHealthStatus {
 
 
     public int getWeeksDelinquent(){
-        int weeks = 0;
+        int weeks;
         Cursor budgetStats = BudgetDataRepo.getAllData();
         weeks = budgetStats.getInt(4);
         return weeks;
     }
 
     public double getTotalSavings(){
-        double savings = 0.00;
+        double savings;
         Cursor budgetStats = BudgetDataRepo.getAllData();
         savings = budgetStats.getDouble(3);
         return savings;
     }
 
     public int getWeeksUsed(){
-        int weeks = 0;
+        int weeks;
         Cursor budgetStats = BudgetDataRepo.getAllData();
         weeks = budgetStats.getInt(6);
         return weeks;
     }
 
     public double getExpensesRemaining(){
-        double expenses = 0.00;
+        double expenses;
         Cursor budgetStats = BudgetDataRepo.getAllData();
         expenses = budgetStats.getDouble(2);
         return expenses;
     }
 
     public double getCurrentBalance(){
-        double balance = 0.00;
+        double balance;
         Cursor budgetStats = BudgetDataRepo.getAllData();
         balance = budgetStats.getDouble(4);
         return balance;
@@ -52,7 +52,7 @@ public class FinancialHealthStatus {
 
 
     public FinancialHealthStatus(){
-        generateStatus();
+
     }
 
 
@@ -90,7 +90,7 @@ public class FinancialHealthStatus {
 
     public int weeksDelinquentPoints(){
         int points = 0;
-        if (getWeeksDelinquent()<=1)
+        if (getWeeksDelinquent()==0)
             points=20;
         else if (getWeeksDelinquent()/getWeeksUsed()<=5)
             points=10;
