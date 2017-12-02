@@ -97,14 +97,14 @@ public class MainActivity extends AppCompatActivity {
                         //Create a bundle object
                         Bundle b = new Bundle();
 
-                        //Inserts a String value into the mapping of this Bundle
+                        //Insert a String value into the mapping of this Bundle
                         b.putInt("key_val", position);
 
                         //Add the bundle to the intent.
                         Intent myIntent = new Intent(MainActivity.this, PayBills.class);
                         myIntent.putExtras(b);
 
-                        //start the DisplayActivity
+                        //start and Display Activity
                         startActivity(myIntent);
                     }
 
@@ -123,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
             do {
 
-                // todo seprate recurring from one time transactins and format the output
-
                 billType = allBills.getString(3);
                 amount = allBills.getString(1);
                 due = allBills.getString(5);
@@ -142,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    //todo may not need this!
     public void getBillID() {
 
         Cursor allBills = RecurringExpenseRepo.getAllBills();
@@ -155,16 +155,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // get id of the right bill
 
-
-
             }while ( allBills.moveToNext());
 
 
         }
 
     }
-
-
 
 
 }
