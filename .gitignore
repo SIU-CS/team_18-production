@@ -137,3 +137,5 @@ FinancialAdvisor/app/gradlew
 FinancialAdvisor/app/gradle/wrapper/gradle-wrapper\.properties
 
 FinancialAdvisor/app/gradle/wrapper/gradle-wrapper\.jar
+
+*.xml

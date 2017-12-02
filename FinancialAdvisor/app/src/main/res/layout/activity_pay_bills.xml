@@ -10,15 +10,15 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/buttonBSGoToCV"
+        android:id="@+id/buttonPBToBS"
         android:layout_width="125dp"
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="@string/button_calendar_view" />
+        android:text="@string/button_budget_summary" />
 
     <Button
-        android:id="@+id/buttonBSGoToMM"
+        android:id="@+id/buttonPBToMM"
         android:layout_width="125dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
@@ -26,11 +26,51 @@
         android:text="@string/button_main_menu" />
 
     <Button
-        android:id="@+id/buttonBSGoToGV"
+        android:id="@+id/buttonPBToCV"
         android:layout_width="125dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="@string/button_graph_view" />
+        android:text="@string/button_calendar_view" />
 
+    <TextView
+        android:id="@+id/text_bill_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonPBToMM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="Bill Type"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_bill_type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/pick_date"
+        android:textAlignment="center"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/text_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_amout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="comment"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/text_view_amout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="amout"
+        android:textSize="40sp" />
 </RelativeLayout>

@@ -99,12 +99,13 @@ public class RecurringExpenseRepo {
 
     //get bill takes in an id and seaches and return that entry
 
-    public Cursor getBill(int id) {
+    public static Cursor getBill(int id) {
 
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
         Cursor cursor = db.rawQuery( "SELECT * FROM "
                 + NewTransaction.TABLE_RECURRING_EXPENSES + " WHERE " +
-                NewTransaction.KEY_TRANSACTION_ID + "=1", new String[] { Integer.toString(id) } );
+                NewTransaction.KEY_TRANSACTION_ID + "='" + id + "'" , null );
         return cursor;
     }
     public static Cursor getAllBills() {
