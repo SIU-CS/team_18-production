@@ -37,9 +37,8 @@ import static team_18.financialadvisor.DatePickerFragment.*;
 
 public class AddIncome extends AppCompatActivity {
     EditText amtPerMonth, transactionCmt, hours, payPerHour, thisDate;
-
     String transactionType = "Wages";
-    String transaction_recurring, transactionComment, dateInput;
+    String transaction_recurring, transactionComment;
     double transactionAmount , hoursWoked, perHour;
     boolean isRecurring = true;
 
@@ -50,7 +49,6 @@ public class AddIncome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
-        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         final Date date = new Date();
 
         super.onCreate(savedInstanceState);
@@ -151,10 +149,13 @@ public class AddIncome extends AppCompatActivity {
                     }
                     transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
 
-                    addTransaction.setDate(dateFormat.format(date.toString()));
+                    String fDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+
+                    addTransaction.setDate(fDate);
                     addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
-                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), fDate, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent myIntent = new Intent(AddIncome.this, MainActivity.class);

@@ -11,9 +11,6 @@ public class NewTransaction {
     public static final String TABLE_RECURRING_EXPENSES = "RecurringExpenses";
     public static final String TABLE_RECURRING_INCOME = "RecurringIncome";
 
-
-
-
     //Transactions table column names
     public static final String KEY_TRANSACTION_ID = "transaction_id";
     public static final String KEY_TYPE = "type";
@@ -21,7 +18,6 @@ public class NewTransaction {
     public static final String KEY_COMMENT = "comment";
     public static final String KYE_TRANSACTION_EVERY = "transaction_recurring";
     public static final String KYE_TRANSACTION_DATE= "paid_on";
-
 
     //variables
     private String transactionType;

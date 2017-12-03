@@ -15,8 +15,6 @@ import team_18.financialadvisor.data.model.NewTransaction;
 
 public class BudgetDataRepo {
 
-
-
     public static String createTable(){
 
         //the budget table
@@ -47,7 +45,6 @@ public class BudgetDataRepo {
         values.put(BudgetData.CURRENT_INDEX, 0);
         values.put(BudgetData.WEEKS_USED, 30);
         values.put(BudgetData.NUM_OF_ENTRIES, 0);
-
 
         //make sure that table is empty before entring data
         String count = "SELECT count(*) FROM " + BudgetData.TABLE_BUDGET_STATS;

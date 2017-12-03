@@ -21,15 +21,11 @@ public class PayBills extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_bills);
 
-
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonPBToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonPBToCV);
         Button buttonBSGoToCV = (Button)findViewById(R.id.buttonPBToBS);
 
-
-
         //Setting button behavior
-
         buttonBSGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(PayBills.this, MainActivity.class);
@@ -68,6 +64,5 @@ public class PayBills extends AppCompatActivity {
         date.setText("Due Date: " + thisBill.getString(5));
         amount.setText("$" + thisBill.getDouble(1) * -1.00);
         coment.setText(thisBill.getString(4));
-
     }
 }

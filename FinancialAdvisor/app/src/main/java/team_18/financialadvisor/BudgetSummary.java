@@ -22,7 +22,6 @@ public class BudgetSummary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget_summary);
 
-
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonBSGoToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonBSGoToGV);
         Button buttonBSGoToCV = (Button)findViewById(R.id.buttonBSGoToCV);
@@ -73,8 +72,6 @@ public class BudgetSummary extends AppCompatActivity {
                 else
                     income.add(bill);
 
-
-
             } while (allBills.moveToNext());
 
             for (int i = 0; i <= 4; i++) {
@@ -87,11 +84,7 @@ public class BudgetSummary extends AppCompatActivity {
                 arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, income);
                 listIncome.setAdapter(arrayAdapter2);
 
-
-
             }
-
-
         }
     }
 }

@@ -148,27 +148,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //todo may not need this!
-    public void getBillID() {
-
-        Cursor allBills = RecurringExpenseRepo.getAllBills();
-
-        allBills.moveToFirst();
-
-        String bills, billType, amount, due;
-        if(allBills != null && allBills.moveToFirst()) {
-
-            do{
-
-                // get id of the right bill
-
-            }while ( allBills.moveToNext());
-
-
-        }
-
-    }
-
-
 }
 

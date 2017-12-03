@@ -28,11 +28,9 @@ import android.view.View.OnClickListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class AddExpenses extends AppCompatActivity {
     //Text input/Edit
     EditText amtPerMonth, transactionCmt, thisDate;
-
     String transactionType, transactionComment , transaction_recurring;
     double transactionAmount;
     private CheckBox chkRecurring;
@@ -42,7 +40,6 @@ public class AddExpenses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final Date date = new Date();
 
         super.onCreate(savedInstanceState);
@@ -55,7 +52,6 @@ public class AddExpenses extends AppCompatActivity {
         Button addIncome = (Button)findViewById(R.id.button_add_income);
 
         addListenerOnChkRecurring();
-
 
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -118,9 +114,9 @@ public class AddExpenses extends AppCompatActivity {
                 }
                 else
                 {
-                    addTransaction.setDate(date.toString());
+                    String fDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+                    addTransaction.setDate(fDate);
                     addTrRepo.insert(addTransaction);
-
                 }
 
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
