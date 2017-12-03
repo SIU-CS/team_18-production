@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
@@ -25,6 +27,7 @@ public class BudgetSummary extends AppCompatActivity {
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonBSGoToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonBSGoToGV);
         Button buttonBSGoToCV = (Button)findViewById(R.id.buttonBSGoToCV);
+        Button buttonTM = (Button) findViewById(R.id.btn_transfer);
         ListView listIncome = (ListView) findViewById(R.id.BSListViewEarnings);
         ListView listExpenses = (ListView) findViewById(R.id.BSListViewExpenditures);
 
@@ -47,6 +50,23 @@ public class BudgetSummary extends AppCompatActivity {
         buttonBSGoToGV.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(BudgetSummary.this, GraphView.class);
+                startActivity(myIntent);
+            }
+        });
+        buttonTM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //getting all the values from fields
+
+
+                //validate input
+
+
+                //update db
+
+
+                Intent myIntent = new Intent(BudgetSummary.this, MainActivity.class);
                 startActivity(myIntent);
             }
         });
