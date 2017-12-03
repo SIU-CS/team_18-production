@@ -9,7 +9,7 @@ import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
-import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
+
 
 import android.app.DialogFragment;
 import android.content.Intent;
