@@ -60,5 +60,21 @@ public class BudgetDataRepo {
         DatabaseManager.getInstance().closeDatabase();
     }
 
+    public static void updateSavings(double savings) {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
+                + BudgetData.TOTAL_SAVINGS+"='"
+                + String.format("%.2f",savings) + "' WHERE id=1 ");
+
+    }
+
+    public static void updateBudget(double budget) {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        db.execSQL("UPDATE " + BudgetData.TABLE_BUDGET_STATS + " SET "
+                + BudgetData.CURRENT_BALANCE+"='"
+                + String.format("%.2f",budget) + "' WHERE id=1 ");
+
+    }
+
 }
 

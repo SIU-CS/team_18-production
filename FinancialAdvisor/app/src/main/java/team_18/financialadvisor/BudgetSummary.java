@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
@@ -105,8 +106,11 @@ public class BudgetSummary extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "You only have " + budget + " in your chekings", Toast.LENGTH_SHORT).show();
                     }
                     else{
+                        budget -= T_Amount;
+                        savings += T_Amount;
                         //update db
-
+                        BudgetDataRepo.updateBudget(budget);
+                        BudgetDataRepo.updateSavings(savings);
 
                         //return to main
                         Intent myIntent = new Intent(BudgetSummary.this, MainActivity.class);
@@ -121,8 +125,11 @@ public class BudgetSummary extends AppCompatActivity {
                     }
                     else
                     {
+                        budget += T_Amount;
+                        savings -= T_Amount;
                         //update db
-
+                        BudgetDataRepo.updateBudget(budget);
+                        BudgetDataRepo.updateSavings(savings);
 
                         //return to main
                         Intent myIntent = new Intent(BudgetSummary.this, MainActivity.class);
