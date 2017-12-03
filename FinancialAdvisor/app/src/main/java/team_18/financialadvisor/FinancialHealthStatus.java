@@ -51,7 +51,7 @@ public class FinancialHealthStatus {
 
         Cursor budgetStats = BudgetDataRepo.getAllData();
         budgetStats.moveToFirst();
-        balance = budgetStats.getDouble(4);
+        balance = budgetStats.getDouble(1);
         return balance;
     }
 
@@ -65,13 +65,13 @@ public class FinancialHealthStatus {
 
     public int balanceMinusExpensesPoints(){
         int points = 0;
-        if(getCurrentBalance()-getExpensesRemaining()>=100)
+        if(getCurrentBalance()+getExpensesRemaining()>300)
             points=30;
-        else if (getCurrentBalance()-getExpensesRemaining()>=50)
+        else if (getCurrentBalance()+getExpensesRemaining()>100)
             points=20;
-        else if (getCurrentBalance()-getExpensesRemaining()> 0)
+        else if (getCurrentBalance()+getExpensesRemaining()> 0)
             points=10;
-        else if (getCurrentBalance()-getExpensesRemaining()<0)
+        else if (getCurrentBalance()+getExpensesRemaining()<0)
             points=0;
         return points;
     }
@@ -117,9 +117,9 @@ public class FinancialHealthStatus {
             status="Poor";
         else if (points<=30)
             status="Good";
-        else if (points<=40)
+        else if (points<=45)
             status="Very Good";
-        else if(points>50)
+        else if(points>45)
             status="Excellent";
         return status;
     }
