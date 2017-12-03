@@ -23,7 +23,6 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
     private static int pDay;
     static TextView thisDate;
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -33,13 +32,10 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
         pMonth = c.get(Calendar.MONTH);
         pDay = c.get(Calendar.DAY_OF_MONTH);
 
-
-
         // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, pYear, pMonth, pDay);
 
     }
-
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
@@ -53,7 +49,5 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
 
         return pDisplayDate.getText().toString();
     }
-
-
 
 }

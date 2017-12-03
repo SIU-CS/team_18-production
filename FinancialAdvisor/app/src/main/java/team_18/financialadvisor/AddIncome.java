@@ -50,7 +50,7 @@ public class AddIncome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         final Date date = new Date();
 
         super.onCreate(savedInstanceState);
@@ -87,7 +87,6 @@ public class AddIncome extends AppCompatActivity {
         addIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 //getting all the values from fields
                 transaction_recurring = tSpinner.getSelectedItem().toString();
@@ -152,7 +151,7 @@ public class AddIncome extends AppCompatActivity {
                     }
                     transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
 
-                    addTransaction.setDate(date.toString());
+                    addTransaction.setDate(dateFormat.format(date.toString()));
                     addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();

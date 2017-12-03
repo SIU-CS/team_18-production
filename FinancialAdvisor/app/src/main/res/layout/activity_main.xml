@@ -45,19 +45,19 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@+id/MMEditTextFinancialHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Placeholder Health Value"
-        android:ems="10"
-        android:id="@+id/MMEditTextFinancialHealth"
-        android:textAlignment="center"
+        android:layout_alignEnd="@+id/MMTextViewUpcomingBillsLabel"
+        android:layout_below="@+id/MMTextViewFinancialHealthLabel"
         android:clickable="false"
         android:editable="false"
+        android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:layout_below="@+id/MMTextViewFinancialHealthLabel"
-        android:layout_alignStart="@+id/MMEditTextCurrentBudget" />
+        android:inputType="textPersonName"
+        android:text="Placeholder Health Value"
+        android:textAlignment="center" />
 
     <TextView
         android:text="Upcoming Bills"
@@ -114,6 +114,15 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonMMGoToAddIncome"
         android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/MMTextViewUpcomingBillsLabel"
+        android:layout_alignParentEnd="true"
+        android:text="Refresh"
+        android:textSize="12sp" />
 
 
 </RelativeLayout>
