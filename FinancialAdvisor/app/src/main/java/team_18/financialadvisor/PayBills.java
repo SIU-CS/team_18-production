@@ -8,14 +8,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.database.Cursor;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  * Created by Avtar on 11/30/17.
  */
 
 public class PayBills extends AppCompatActivity {
     private TextView textView;
+    String dateDue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,7 @@ public class PayBills extends AppCompatActivity {
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonPBToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonPBToCV);
         Button buttonBSGoToCV = (Button)findViewById(R.id.buttonPBToBS);
+        Button payBill = (Button)findViewById(R.id.button_pay);
 
         //Setting button behavior
         buttonBSGoToMM.setOnClickListener(new View.OnClickListener(){
@@ -49,6 +54,20 @@ public class PayBills extends AppCompatActivity {
 
        setBillPayment();
 
+        payBill.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                TextView date = (TextView) findViewById(R.id.text_date);
+
+                Bundle b = getIntent().getExtras();
+                int keyID = 0;
+                keyID = b.getInt("key_val") + 1;
+
+                RecurringExpenseRepo.setNewDate(getDate(), keyID);
+                Intent myIntent = new Intent(PayBills.this, MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
     }
     public void setBillPayment(){
         Bundle b = getIntent().getExtras();
@@ -65,4 +84,30 @@ public class PayBills extends AppCompatActivity {
         amount.setText("$" + thisBill.getDouble(1) * -1.00);
         coment.setText(thisBill.getString(4));
     }
+
+    public String getDate() {
+        Bundle b = getIntent().getExtras();
+        SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+        Date myDate = null;
+
+        int keyID = 0;
+        keyID = b.getInt("key_val") + 1;
+        Cursor thisBill = RecurringExpenseRepo.getBill(keyID);
+        thisBill.moveToFirst();
+
+
+        dateDue = thisBill.getString(5);
+        try {
+            myDate = df.parse(dateDue);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(myDate);
+        cal.add(Calendar.MONTH, 1);
+        String thisDate = cal.get(Calendar.MONTH) +"/" +cal.get(Calendar.DAY_OF_MONTH)+"/"+ cal.get(Calendar.YEAR);
+        return thisDate;
+    }
+
 }

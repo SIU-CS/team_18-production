@@ -73,4 +73,12 @@
         android:layout_marginTop="18dp"
         android:text="amout"
         android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/button_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/text_bill_type"
+        android:layout_alignParentBottom="true"
+        android:text="Pay Bill" />
 </RelativeLayout>
