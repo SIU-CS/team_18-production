@@ -65,8 +65,10 @@ public class FinancialHealthStatus {
 
     public int balanceMinusExpensesPoints(){
         int points = 0;
-        if(getCurrentBalance()+getExpensesRemaining()>300)
+        if(getCurrentBalance()+getExpensesRemaining()>500)
             points=30;
+        else if (getCurrentBalance()+getExpensesRemaining()>300)
+            points=25;
         else if (getCurrentBalance()+getExpensesRemaining()>100)
             points=20;
         else if (getCurrentBalance()+getExpensesRemaining()> 0)
@@ -108,7 +110,7 @@ public class FinancialHealthStatus {
     public String generateStatus(){
         int balance = balanceMinusExpensesPoints();
         int savings = savingsPoints();
-        int weeks =weeksDelinquentPoints();
+        int weeks = weeksDelinquentPoints();
         int points = (balance + savings + weeks);
         String status=null;
         if (points<=10)

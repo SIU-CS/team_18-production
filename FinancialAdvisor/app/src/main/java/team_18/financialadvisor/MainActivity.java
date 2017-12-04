@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMMGoToGV = (Button) findViewById(R.id.buttonMMGoToGV);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
-        Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
 
         //Financial Health status stuff
@@ -58,11 +57,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        btnRefresh.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                healthText.setText(health.generateStatus(), TextView.BufferType.EDITABLE);
-            }
-        });
 
         buttonMMGoToCV.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -147,28 +141,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    //todo may not need this!
-    public void getBillID() {
-
-        Cursor allBills = RecurringExpenseRepo.getAllBills();
-
-        allBills.moveToFirst();
-
-        String bills, billType, amount, due;
-        if(allBills != null && allBills.moveToFirst()) {
-
-            do{
-
-                // get id of the right bill
-
-            }while ( allBills.moveToNext());
-
-
-        }
-
-    }
-
 
 }
 

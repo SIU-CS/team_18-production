@@ -76,4 +76,8 @@
         <item>Bi-Weekly</item>
         <item>Monthly</item>
     </string-array>
+    <string-array name="transfer">
+        <item>Budget</item>
+        <item>Savings</item>
+    </string-array>
 </resources>
