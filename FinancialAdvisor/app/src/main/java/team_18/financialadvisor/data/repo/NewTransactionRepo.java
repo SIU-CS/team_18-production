@@ -31,7 +31,7 @@ public class NewTransactionRepo {
                 + NewTransaction.KEY_AMOUNT + " REAL,"
                 + NewTransaction.KEY_TYPE + " TEXT,"
                 + NewTransaction.KEY_COMMENT + " TEXT,"
-                + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP"  +")";
+                + NewTransaction.KYE_TRANSACTION_DATE + " DEFAULT CURRENT_TIMESTAMP" + ")";
     }
 
     public void insert(NewTransaction transaction) {
@@ -41,12 +41,11 @@ public class NewTransactionRepo {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
 
-
         values.put(NewTransaction.KEY_TRANSACTION_ID, transaction.getTransactionID());
         values.put(NewTransaction.KEY_AMOUNT, transaction.getTransactionAmount());
         values.put(NewTransaction.KEY_TYPE, transaction.getTransactionType());
         values.put(NewTransaction.KEY_COMMENT, transaction.getTransactionComment());
-
+        values.put(NewTransaction.KYE_TRANSACTION_DATE, transaction.getDate());
         // Inserting Row
         db.insert(NewTransaction.TABLE_TRANSACTIONS, null, values);
 
@@ -84,9 +83,7 @@ public class NewTransactionRepo {
     }
 
     //get bill takes in an id and seaches and return that entry
-
     public Cursor getBill(int id) {
-
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         Cursor cursor = db.rawQuery( "SELECT * FROM " + NewTransaction.TABLE_TRANSACTIONS + " WHERE " +
                 NewTransaction.KEY_TRANSACTION_ID + "=1", new String[] { Integer.toString(id) } );
@@ -98,7 +95,5 @@ public class NewTransactionRepo {
 
         return cursor;
     }
-
-
 
 }
