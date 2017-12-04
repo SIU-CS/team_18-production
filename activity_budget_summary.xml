@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_budget_summary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="team_18.financialadvisor.BudgetSummary"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/MMButtonBackgroundTitle2"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
+
+    <ImageView
+        android:id="@+id/BSButtonBackground"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
+
+    <ImageView
+        android:id="@+id/MMButtonSeparator"
+        android:layout_width="2dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@color/colorLightGreen" />
+
+    <TextView
+        android:id="@+id/BSTextViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@+id/buttonBSGoToCV"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label_budget_summary_title"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorDarkerGreen"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/BSTextViewEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonBSGoToCV"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_money_earned"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/BSTextViewExpenditures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BSTextViewEarnings"
+        android:layout_alignBottom="@+id/BSTextViewEarnings"
+        android:layout_alignParentEnd="true"
+        android:text="TextView"
+        android:textSize="16sp"
+        tools:text="@string/label_money_spent" />
+
+    <ListView
+        android:id="@+id/BSListViewEarnings"
+        android:layout_width="190dp"
+        android:layout_height="245dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BSTextViewEarnings" />
+
+    <ListView
+        android:id="@+id/BSListViewExpenditures"
+        android:layout_width="190dp"
+        android:layout_height="245dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/BSListViewEarnings" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BSListViewAlerts"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label_alerts"
+        android:textSize="24sp" />
+
+    <ListView
+        android:id="@+id/BSListViewAlerts"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_above="@+id/BSButtonBackground"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonBSGoToMM"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorDarkGreen"
+        android:text="@string/button_main_menu"
+        android:textColor="@color/colorLightGreen" />
+
+    <Button
+        android:id="@+id/buttonBSGoToGV"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorDarkGreen"
+        android:text="@string/button_graph_view"
+        android:textColor="@color/colorLightGreen" />
+
+</RelativeLayout>
