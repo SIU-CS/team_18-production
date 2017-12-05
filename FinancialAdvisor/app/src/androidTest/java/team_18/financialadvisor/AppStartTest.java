@@ -34,7 +34,7 @@ public class AppStartTest {
     @Test
     public void appStartTest() {
         ViewInteraction editText = onView(
-                allOf(withId(R.id.MMEditTextCurrentBudget), withText("0.0"),
+                allOf(withId(R.id.MMEditTextCurrentBudget), withId(R.id.MMEditTextCurrentBudget),
                         childAtPosition(
                                 allOf(withId(R.id.activity_main),
                                         childAtPosition(
@@ -45,7 +45,7 @@ public class AppStartTest {
         editText.check(matches(withText("0.0")));
 
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.MMEditTextFinancialHealth), withText("Poor"),
+                allOf(withId(R.id.MMEditTextFinancialHealth), withId(R.id.MMEditTextFinancialHealth),
                         childAtPosition(
                                 allOf(withId(R.id.activity_main),
                                         childAtPosition(
