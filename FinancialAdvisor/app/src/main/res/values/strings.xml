@@ -5,6 +5,9 @@
     <string name="app_name">Financial Advisor</string>
 
     //Universal Strings
+
+        //LEGACY STRINGS
+
     <string name="button_main_menu">Main Menu</string>
     <string name="button_calendar_view">Calendar View</string>
     <string name="button_budget_summary">Budget Summary</string>
@@ -12,13 +15,16 @@
 
     //For main activity
 
+    <string name="button_next_screen">To Budget Summary</string>
+    <string name="button_previous_screen">To Graph View</string>
+
     <string name="button_subtract_from_budget">Add Expenses</string>
     <string name="button_add_to_budget">Add Income</string>
 
+    <string name="label_main_menu_title">Main Menu</string>
     <string name="label_upcoming_bills">Upcoming Bills</string>
-    <string name="label_current_budget">Current Budget</string>
-    <string name="label_financial_health">Financial Health</string>
-
+    <string name="label_current_budget">Current Budget:</string>
+    <string name="label_financial_health">Financial Health:</string>
 
     //For budget summary
 
@@ -26,9 +32,6 @@
     <string name="label_money_earned">Earnings</string>
     <string name="label_money_spent">Expenditures</string>
     <string name="label_alerts">Alerts</string>
-
-    <string name="button_file_export">Export Budget Data</string>
-    <string name="button_file_import">Import Budget Data</string>
 
     //For graph view
 

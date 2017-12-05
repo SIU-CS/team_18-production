@@ -27,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Declaring button
-        Button buttonMMGoToBS = (Button) findViewById(R.id.buttonMMGoToBS);
-        Button buttonMMGoToCV = (Button) findViewById(R.id.buttonMMGoToCV);
-        Button buttonMMGoToGV = (Button) findViewById(R.id.buttonMMGoToGV);
+        Button buttonMMGoToNext = (Button) findViewById(R.id.buttonMMGoToNext);
+        Button buttonMMGoToPrev = (Button) findViewById(R.id.buttonMMGoToPrevious);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Setting button behaviors
-        buttonMMGoToBS.setOnClickListener(new View.OnClickListener() {
+        buttonMMGoToNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
                 startActivity(myIntent);
@@ -58,16 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        buttonMMGoToCV.setOnClickListener(new View.OnClickListener() {
+        buttonMMGoToPrev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
-                startActivity(myIntent);
-            }
-        });
-
-        buttonMMGoToGV.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, GraphView.class);
                 startActivity(myIntent);
             }
         });
