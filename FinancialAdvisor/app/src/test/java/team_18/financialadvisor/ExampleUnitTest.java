@@ -2,6 +2,10 @@ package team_18.financialadvisor;
 
 import org.junit.Test;
 
+import team_18.financialadvisor.data.DBHelper;
+import team_18.financialadvisor.data.DatabaseManager;
+import team_18.financialadvisor.data.model.BudgetData;
+
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +16,11 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        final FinancialHealthStatus health =new FinancialHealthStatus();
+        BudgetData newData = App.getDBdata();
+        DBHelper helper=new DBHelper();
+        DatabaseManager.initializeInstance(helper);
+        String status= health.generateStatus();
+        assertEquals("Poor", status);
     }
 }
