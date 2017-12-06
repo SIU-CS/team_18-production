@@ -150,8 +150,7 @@ public class AddIncome extends AppCompatActivity {
                     addTransaction.setDate(fDate);
                     addTransaction.setTransactionAmount(transactionAmount);
                     addTrRepo.insert(addTransaction);
-                    Toast.makeText(getApplicationContext(), fDate, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent myIntent = new Intent(AddIncome.this, MainActivity.class);

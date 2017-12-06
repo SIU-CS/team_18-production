@@ -7,17 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.database.Cursor;
-
 import java.text.ParseException;
 import java.util.Calendar;
-
-import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
-import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
  * Created by Avtar on 11/30/17.
  */
@@ -105,16 +102,6 @@ public class PayBills extends AppCompatActivity {
         amount.setText("$" + thisBill.getDouble(1) * -1.00);
         coment.setText(thisBill.getString(4));
     }
-
-    /**
-    public void setNewBudget(double paid){
-
-        Cursor cursor = BudgetDataRepo.getAllData();
-        cursor.moveToFirst();
-        double budget  = cursor.getDouble(1);
-       // BudgetDataRepo.updateBudget(budget);
-    }
- */
 
     public String getDate() {
         Bundle b = getIntent().getExtras();
