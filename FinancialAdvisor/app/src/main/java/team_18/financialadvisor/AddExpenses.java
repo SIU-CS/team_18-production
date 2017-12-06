@@ -110,13 +110,14 @@ public class AddExpenses extends AppCompatActivity {
                     }
                     addTransaction.setDate(DatePickerFragment.getDate());
                     addExpRepo.insert(addTransaction);
-
+                    Toast.makeText(getApplicationContext(), "Recurring Bill Added", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     String fDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
                     addTransaction.setDate(fDate);
                     addTrRepo.insert(addTransaction);
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
@@ -159,7 +160,7 @@ public class AddExpenses extends AppCompatActivity {
 
     }
     //get cursor object from the Budget Database and use it to get values
-    public Cursor updateDB(){
+    public static Cursor updateDB(){
 
         Cursor cursor = BudgetDataRepo.getAllData();
         if(cursor != null)
