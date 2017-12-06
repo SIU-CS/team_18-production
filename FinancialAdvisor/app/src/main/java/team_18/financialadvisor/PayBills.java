@@ -10,6 +10,8 @@ import android.database.Cursor;
 
 import java.text.ParseException;
 import java.util.Calendar;
+
+import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,12 +104,51 @@ public class PayBills extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         Calendar cal = Calendar.getInstance();
         cal.setTime(myDate);
-        cal.add(Calendar.MONTH, 1);
-        String thisDate = cal.get(Calendar.MONTH) +"/" +cal.get(Calendar.DAY_OF_MONTH)+"/"+ cal.get(Calendar.YEAR);
+        //Update expenses in the recurring transaction and add to transactions table
+        if (thisBill.getString(2).compareToIgnoreCase("Weekly") == 0)
+        {
+
+            cal.add(Calendar.DAY_OF_YEAR, 34);
+        }
+        else if(thisBill.getString(2).compareToIgnoreCase("Bi-Weekly") == 0)
+        {
+
+            cal.add(Calendar.DAY_OF_YEAR, 14);
+        }
+        else
+        {
+            cal.add(Calendar.MONTH, 1);
+
+        }
+
+        df = new SimpleDateFormat("mm/dd/yyyy");
+        Date resultdate = new Date(cal.getTimeInMillis());
+        String thisDate = df.format(resultdate);
+
+
+
+         //thisDate = cal.get(Calendar.MONTH) +"/" +cal.get(Calendar.DAY_OF_MONTH)+"/"+ cal.get(Calendar.YEAR);
         return thisDate;
+    }
+    public static Date addDay(Date date, int i) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_YEAR, i);
+        return cal.getTime();
+    }
+    public static Date addMonth(Date date, int i) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, i);
+        return cal.getTime();
+    }
+    public static Date addYear(Date date, int i) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.YEAR, i);
+        return cal.getTime();
     }
 
 }
