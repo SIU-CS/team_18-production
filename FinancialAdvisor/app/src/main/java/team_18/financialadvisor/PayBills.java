@@ -12,6 +12,9 @@ import java.text.ParseException;
 import java.util.Calendar;
 
 import team_18.financialadvisor.data.model.BudgetData;
+import team_18.financialadvisor.data.model.NewTransaction;
+import team_18.financialadvisor.data.repo.BudgetDataRepo;
+import team_18.financialadvisor.data.repo.NewTransactionRepo;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +29,8 @@ public class PayBills extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_bills);
+        // set the format to sql date time
+        final Date date = new Date();
 
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonPBToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonPBToCV);
@@ -58,13 +63,25 @@ public class PayBills extends AppCompatActivity {
 
         payBill.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                TextView date = (TextView) findViewById(R.id.text_date);
-
                 Bundle b = getIntent().getExtras();
                 int keyID = 0;
                 keyID = b.getInt("key_val") + 1;
 
+                NewTransaction addTransaction = new NewTransaction();
+                NewTransactionRepo newTransaction = new NewTransactionRepo();
+                Cursor billPaid = RecurringExpenseRepo.getBill(keyID);
+                billPaid.moveToFirst();
+                addTransaction.setTransactionID(AddExpenses.updateDB().getInt(7)+1);
+                addTransaction.setTransactionAmount(billPaid.getDouble(1));
+
+                addTransaction.setTransactionType(billPaid.getString(3));
+                addTransaction.setTransactionComment(billPaid.getString(4));
+                String fDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+                addTransaction.setDate(fDate);
+
+                newTransaction.insert(addTransaction);
                 RecurringExpenseRepo.setNewDate(getDate(), keyID);
+               // setNewBudget(billPaid.getDouble(1));
                 Intent myIntent = new Intent(PayBills.this, MainActivity.class);
                 startActivity(myIntent);
             }
@@ -72,12 +89,14 @@ public class PayBills extends AppCompatActivity {
 
     }
     public void setBillPayment(){
+
+        int keyID = 0;
         Bundle b = getIntent().getExtras();
         TextView billType = (TextView) findViewById(R.id.text_bill_type);
         TextView date = (TextView) findViewById(R.id.text_date);
         TextView amount = (TextView) findViewById(R.id.text_view_amout);
         TextView coment = (TextView) findViewById(R.id.text_comment);
-        int keyID = 0;
+
         keyID = b.getInt("key_val") + 1;
         Cursor thisBill = RecurringExpenseRepo.getBill(keyID);
         thisBill.moveToFirst();
@@ -86,6 +105,16 @@ public class PayBills extends AppCompatActivity {
         amount.setText("$" + thisBill.getDouble(1) * -1.00);
         coment.setText(thisBill.getString(4));
     }
+
+    /**
+    public void setNewBudget(double paid){
+
+        Cursor cursor = BudgetDataRepo.getAllData();
+        cursor.moveToFirst();
+        double budget  = cursor.getDouble(1);
+       // BudgetDataRepo.updateBudget(budget);
+    }
+ */
 
     public String getDate() {
         Bundle b = getIntent().getExtras();
@@ -110,12 +139,14 @@ public class PayBills extends AppCompatActivity {
         if (thisBill.getString(2).compareToIgnoreCase("Weekly") == 0)
         {
 
-            cal.add(Calendar.DAY_OF_YEAR, 34);
+            cal.add(Calendar.DAY_OF_MONTH, 7);
+
         }
         else if(thisBill.getString(2).compareToIgnoreCase("Bi-Weekly") == 0)
         {
 
-            cal.add(Calendar.DAY_OF_YEAR, 14);
+
+            cal.add(Calendar.DAY_OF_MONTH, 14);
         }
         else
         {
@@ -127,28 +158,7 @@ public class PayBills extends AppCompatActivity {
         Date resultdate = new Date(cal.getTimeInMillis());
         String thisDate = df.format(resultdate);
 
-
-
-         //thisDate = cal.get(Calendar.MONTH) +"/" +cal.get(Calendar.DAY_OF_MONTH)+"/"+ cal.get(Calendar.YEAR);
         return thisDate;
-    }
-    public static Date addDay(Date date, int i) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DAY_OF_YEAR, i);
-        return cal.getTime();
-    }
-    public static Date addMonth(Date date, int i) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.MONTH, i);
-        return cal.getTime();
-    }
-    public static Date addYear(Date date, int i) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.YEAR, i);
-        return cal.getTime();
     }
 
 }
