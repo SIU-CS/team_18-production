@@ -1,4 +1,4 @@
-package team_18.financialadvisor;
+/*package team_18.financialadvisor;
 
 import org.junit.Test;
 
@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+/*
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
@@ -24,3 +25,4 @@ public class ExampleUnitTest {
         assertEquals("Poor", status);
     }
 }
+*/
