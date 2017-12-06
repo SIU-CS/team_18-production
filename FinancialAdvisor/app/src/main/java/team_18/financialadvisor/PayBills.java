@@ -26,28 +26,12 @@ public class PayBills extends AppCompatActivity {
         setContentView(R.layout.activity_pay_bills);
 
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonPBToMM);
-        Button buttonBSGoToGV = (Button)findViewById(R.id.buttonPBToCV);
-        Button buttonBSGoToCV = (Button)findViewById(R.id.buttonPBToBS);
         Button payBill = (Button)findViewById(R.id.button_pay);
 
         //Setting button behavior
         buttonBSGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(PayBills.this, MainActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
-        buttonBSGoToCV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent myIntent = new Intent(PayBills.this, CalendarView.class);
-                startActivity(myIntent);
-            }
-        });
-
-        buttonBSGoToGV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent myIntent = new Intent(PayBills.this, BudgetSummary.class);
                 startActivity(myIntent);
             }
         });

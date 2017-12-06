@@ -60,6 +60,11 @@
     //For expenses transaction types
     <string name="pick_date">Next Due On</string>
 
+    //For activity_pay_bills.xml
+    <string name="button_yes">Yes, It\'s Paid</string>
+    <string name="button_go_back">No, Go Back</string>
+    <string name="label_confirm_paid">Has this expense been paid?</string>
+
     <string-array name="expense_transactions">
         <item>Groceries</item>
         <item>Gas</item>

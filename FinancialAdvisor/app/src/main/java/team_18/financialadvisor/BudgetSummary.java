@@ -31,7 +31,6 @@ public class BudgetSummary extends AppCompatActivity {
 
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonBSGoToMM);
         Button buttonBSGoToGV = (Button)findViewById(R.id.buttonBSGoToGV);
-        Button buttonBSGoToCV = (Button)findViewById(R.id.buttonBSGoToCV);
         Button buttonTM = (Button) findViewById(R.id.btn_transfer);
         final TextView accountText = (TextView) findViewById(R.id.text_account);
 
@@ -45,13 +44,6 @@ public class BudgetSummary extends AppCompatActivity {
         buttonBSGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(BudgetSummary.this, MainActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
-        buttonBSGoToCV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent myIntent = new Intent(BudgetSummary.this, CalendarView.class);
                 startActivity(myIntent);
             }
         });

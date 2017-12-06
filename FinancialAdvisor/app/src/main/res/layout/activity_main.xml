@@ -11,8 +11,9 @@
         android:id="@+id/MMTextViewCurrentBudgetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/MMTitle"
-        android:layout_below="@+id/MMButtonSubtractFromBudget"
+        android:layout_above="@+id/MMEditTextFinancialHealth"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
         android:text="@string/label_current_budget"
         android:textAlignment="center"
         android:textSize="20sp" />
@@ -21,8 +22,8 @@
         android:id="@+id/MMEditTextCurrentBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/buttonMMGoToAddIncome"
-        android:layout_below="@+id/buttonMMGoToAddIncome"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/MMTextViewCurrentBudgetLabel"
         android:background="@android:color/transparent"
         android:clickable="false"
         android:editable="false"
@@ -47,9 +48,9 @@
         android:id="@+id/MMEditTextFinancialHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/MMEditTextCurrentBudget"
-        android:layout_below="@+id/MMEditTextCurrentBudget"
-        android:layout_marginTop="11dp"
+        android:layout_above="@+id/MMTextViewUpcomingBillsLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="11dp"
         android:background="@android:color/transparent"
         android:clickable="false"
         android:editable="false"
@@ -64,16 +65,15 @@
         android:id="@+id/MMTextViewUpcomingBillsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MMTextViewFinancialHealthLabel"
+        android:layout_above="@+id/MMListViewUpcomingBills"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
         android:text="Upcoming Bills"
         android:textSize="24sp" />
 
     <ListView
         android:id="@+id/MMListViewUpcomingBills"
         android:layout_width="wrap_content"
-        android:layout_height="275dp"
+        android:layout_height="300dp"
         android:layout_above="@+id/MMButtonBackground"
         android:layout_alignStart="@+id/MMButtonBackground"></ListView>
 
@@ -81,89 +81,59 @@
         android:id="@+id/MMButtonBackground"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_alignStart="@+id/MMTextViewFinancialHealthLabel"
-        android:layout_alignTop="@+id/buttonMMGoToNext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:adjustViewBounds="true"
         app:srcCompat="@color/colorDarkGreen" />
 
     <ImageView
         android:id="@+id/MMButtonBackgroundTitle"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_alignStart="@+id/MMButtonSubtractFromBudget"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         app:srcCompat="@color/colorDarkGreen" />
 
-    <TextView
-        android:id="@+id/MMTitle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/label_main_menu_title"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="36sp" />
-
-    <ImageView
-        android:id="@+id/MMButtonSeparator1"
-        android:layout_width="2dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/MMListViewUpcomingBills"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@color/colorLightGreen" />
-
-    <ImageView
-        android:id="@+id/MMButtonSeparator"
-        android:layout_width="2dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/MMListViewUpcomingBills"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@color/colorLightGreen" />
-
     <Button
         android:id="@+id/buttonMMGoToAddIncome"
-        style="?android:attr/borderlessButtonStyle"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_alignBottom="@+id/MMButtonBackgroundTitle"
-        android:layout_alignEnd="@+id/MMButtonBackgroundTitle"
-        android:background="@color/colorDarkGreen"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:text="@string/button_add_to_budget"
-        android:textColor="@color/colorLightGreen" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/MMButtonSubtractFromBudget"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
         android:layout_below="@+id/MMTitle"
         android:text="@string/button_subtract_from_budget"
-        android:textColor="@color/colorLightGreen" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/buttonMMGoToPrevious"
-        style="?android:attr/borderlessButtonStyle"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="170dp"
         android:layout_height="70dp"
-        android:layout_alignBottom="@+id/buttonMMGoToNext"
-        android:layout_alignStart="@+id/MMButtonBackground"
-        android:background="@color/colorDarkGreen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:text="@string/button_budget_summary"
-        android:textColor="@color/colorLightGreen" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/buttonMMGoToNext"
-        style="?android:attr/borderlessButtonStyle"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="170dp"
         android:layout_height="70dp"
-        android:layout_alignEnd="@+id/MMListViewUpcomingBills"
-        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"
-        android:layout_marginTop="282dp"
-        android:background="@color/colorDarkGreen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:text="@string/button_next_screen"
-        android:textColor="@color/colorLightGreen" />
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>
