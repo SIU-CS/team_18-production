@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 /*
-public class ExampleUnitTest {
+public class FinancialHealthUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
+    public void FinancialHealth() throws Exception {
         final FinancialHealthStatus health =new FinancialHealthStatus();
         BudgetData newData = App.getDBdata();
         DBHelper helper=new DBHelper();
