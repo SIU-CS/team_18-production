@@ -159,7 +159,7 @@ public class AddExpenses extends AppCompatActivity {
 
     }
     //get cursor object from the Budget Database and use it to get values
-    public Cursor updateDB(){
+    public static Cursor updateDB(){
 
         Cursor cursor = BudgetDataRepo.getAllData();
         if(cursor != null)
