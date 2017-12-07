@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/label_amount_paid"
+        android:textColor="@android:color/black"
         android:visibility="visible" />
 
     <EditText
@@ -62,8 +63,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/label_is_transation_recurring"
+        android:text="@string/label_is_transaction_recurring"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textStyle="bold" />
 
     <CheckBox
@@ -105,6 +107,7 @@
         android:layout_height="wrap_content"
         android:text="@string/label_transaction_comment"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 
     <EditText

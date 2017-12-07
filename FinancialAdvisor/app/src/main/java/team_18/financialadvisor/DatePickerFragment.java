@@ -5,6 +5,7 @@ package team_18.financialadvisor;
  */
 
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import java.util.Calendar;
 import android.app.DatePickerDialog;
@@ -21,6 +22,7 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
     private static int pYear;
     private static int pMonth;
     private static int pDay;
+    @SuppressWarnings("unused")
     static TextView thisDate;
 
     @Override
@@ -37,6 +39,7 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
         pYear = year;

@@ -16,6 +16,7 @@
         android:layout_marginTop="12dp"
         android:text="@string/label_current_budget"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -38,8 +39,8 @@
         android:id="@+id/MMEditTextCurrentSavings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView9"
-        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignBaseline="@+id/MMTextViewCurrentSavings"
+        android:layout_alignBottom="@+id/MMTextViewCurrentSavings"
         android:layout_alignStart="@+id/MMEditTextCurrentBudget"
         android:background="@android:color/transparent"
         android:clickable="false"
@@ -58,6 +59,7 @@
         android:layout_alignBottom="@+id/MMEditTextFinancialHealth"
         android:layout_alignParentStart="true"
         android:text="@string/label_financial_health"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -82,7 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/MMListViewUpcomingBills"
         android:layout_centerHorizontal="true"
-        android:text="Upcoming Bills"
+        android:text="@string/label_upcoming_bills"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <ListView
@@ -126,7 +129,6 @@
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
-        android:layout_below="@+id/MMTitle"
         android:text="@string/button_subtract_from_budget"
         android:textColor="@android:color/white" />
 
@@ -141,13 +143,14 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/MMTextViewCurrentSavings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/MMEditTextCurrentBudget"
         android:paddingTop="10dp"
         android:text="@string/label_current_savings"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
 

@@ -2,7 +2,7 @@ package team_18.financialadvisor.data.model;
 
 /**
  * Created by Avtar on 11/8/17.
- * this calss creates new transactions based on input
+ * this class creates new transactions based on input
  *
  */
 

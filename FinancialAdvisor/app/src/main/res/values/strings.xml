@@ -34,14 +34,9 @@
     <string name="label_money_spent">Expenditures</string>
     <string name="label_alerts">Alerts</string>
     <string name="label_transfer_funds">Transfer Funds From</string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
-    <string name=""></string>
+    <string name="label_to">To</string>
+    <string name="number_initial_amount">0.00</string>
+    <string name="button_transfer_money">Transfer Money</string>
 
     //For graph view
 
@@ -70,14 +65,14 @@
     <string name="radio_other_income">Other Income</string>
     <string name="label_hours_worked">Hours Worked :</string>
     <string name="label_hourly_wage">Hourly Wage :</string>
-    <string name="label_total_amount_received">Total Amount Recieved</string>
-    <string name="label_time_frame">Amount Received By:</string>
+    <string name="label_total_amount_received">Total Amount Received</string>
+    <string name="label_time_frame">Payment Interval:</string>
 
     //For expenses transaction types
     <string name="pick_date">Next Due On</string>
     <string name="label_transaction_type">Select Type of Transaction</string>
     <string name="label_amount_paid">Amount Paid</string>
-    <string name="label_is_transation_recurring">Is This Transaction Recurring?</string>
+    <string name="label_is_transaction_recurring">Is This Transaction Recurring?</string>
     <string name="label_transaction_comment">Transaction Comment</string>
 
     <string name="button_clear">Clear</string>
