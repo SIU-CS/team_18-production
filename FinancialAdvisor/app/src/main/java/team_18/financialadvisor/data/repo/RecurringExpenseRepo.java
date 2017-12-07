@@ -115,6 +115,14 @@ public class RecurringExpenseRepo {
 
         return cursor;
     }
+    public static void setNewDate(String nextDue, int id){
+
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        db.execSQL("UPDATE " + NewTransaction.TABLE_RECURRING_EXPENSES + " SET "
+                + NewTransaction.KYE_TRANSACTION_DATE+"='"
+                + nextDue + "' WHERE " + NewTransaction.KEY_TRANSACTION_ID+"=" +id);
+
+    }
 
 
 }
