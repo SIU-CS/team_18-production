@@ -116,7 +116,7 @@ public class RecurringIncomeRepo {
 
             db.execSQL("UPDATE " + NewTransaction.TABLE_RECURRING_INCOME + " SET "
                     + NewTransaction.KYE_TRANSACTION_DATE+"='"
-                    + nextDue + "+1 month" + "' WHERE id=" + id +" ");
+                    + nextDue + "' WHERE " + NewTransaction.KEY_TRANSACTION_ID+"=" +id);
 
     }
 
