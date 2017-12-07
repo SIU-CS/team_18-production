@@ -39,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         //list bills
         listItems(simpleList);
 
-        //Declaring Budget EditText
+        //Declaring Budget and Savings EditText
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
+        final EditText savingsText = (EditText)findViewById(R.id.MMEditTextCurrentSavings);
         budgetText.setText(String.valueOf(newData.getCurrentBalance()));
+        savingsText.setText(String.valueOf(newData.getTotalSavings()));
 
 
         //Setting button behaviors
