@@ -36,7 +36,6 @@
         android:drawSelectorOnTop="true"
         android:dropDownWidth="match_parent"
         android:entries="@array/expense_transactions"
-        android:popupBackground="@color/colorAccent"
         android:visibility="visible" />
 
     <TextView
@@ -122,7 +121,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
         android:background="@color/colorDarkGreen"
         android:orientation="horizontal">
 
