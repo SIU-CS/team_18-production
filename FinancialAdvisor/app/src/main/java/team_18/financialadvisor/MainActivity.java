@@ -12,11 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.database.Cursor;
-import android.widget.Toast;
-
 import team_18.financialadvisor.data.model.BudgetData;
-import team_18.financialadvisor.data.repo.BudgetDataRepo;
-import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.model.RecIncome;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        RecIncome.setIncome();
         //Declaring button
         Button buttonMMGoToNext = (Button) findViewById(R.id.buttonMMGoToNext);
         Button buttonMMGoToPrev = (Button) findViewById(R.id.buttonMMGoToPrevious);
