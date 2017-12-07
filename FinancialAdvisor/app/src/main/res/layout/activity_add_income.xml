@@ -96,7 +96,6 @@
         android:id="@+id/text_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/label_total_amount_recieved"
         android:textAlignment="center"
         android:textColor="@android:color/black" />
 
