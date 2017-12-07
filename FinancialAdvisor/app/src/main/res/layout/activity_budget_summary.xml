@@ -53,10 +53,9 @@
         android:layout_alignBaseline="@+id/BSTextViewEarnings"
         android:layout_alignBottom="@+id/BSTextViewEarnings"
         android:layout_alignParentEnd="true"
-        android:text="Expenditures"
+        android:text="@string/label_money_spent"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        tools:text="@string/label_money_spent" />
+        android:textSize="18sp" />
 
     <ListView
         android:id="@+id/BSListViewEarnings"
@@ -69,27 +68,18 @@
         android:id="@+id/BSListViewExpenditures"
         android:layout_width="180dp"
         android:layout_height="175dp"
+        android:layout_above="@+id/textView5"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/BSTextViewTitle"
-        android:layout_marginTop="31dp" />
+        android:layout_marginBottom="17dp" />
 
     <Button
         android:id="@+id/buttonBSGoToMM"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:text="@string/button_main_menu" />
-
-    <Button
-        android:id="@+id/buttonBSGoToGV"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="170dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/button_graph_view" />
 
     <TextView
         android:id="@+id/textView5"
@@ -97,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/gridLayout"
         android:layout_centerHorizontal="true"
-        android:text="Transfer Funds From"
+        android:text="@string/label_transfer_funds"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 

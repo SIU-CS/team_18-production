@@ -30,7 +30,6 @@ public class BudgetSummary extends AppCompatActivity {
         setContentView(R.layout.activity_budget_summary);
 
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonBSGoToMM);
-        Button buttonBSGoToGV = (Button)findViewById(R.id.buttonBSGoToGV);
         Button buttonTM = (Button) findViewById(R.id.btn_transfer);
         final TextView accountText = (TextView) findViewById(R.id.text_account);
 
@@ -44,13 +43,6 @@ public class BudgetSummary extends AppCompatActivity {
         buttonBSGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent myIntent = new Intent(BudgetSummary.this, MainActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
-        buttonBSGoToGV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent myIntent = new Intent(BudgetSummary.this, GraphView.class);
                 startActivity(myIntent);
             }
         });

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Declaring button
         Button buttonMMGoToNext = (Button) findViewById(R.id.buttonMMGoToNext);
-        Button buttonMMGoToPrev = (Button) findViewById(R.id.buttonMMGoToPrevious);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
@@ -51,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
         buttonMMGoToNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
-                startActivity(myIntent);
-            }
-        });
-
-
-
-        buttonMMGoToPrev.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
                 startActivity(myIntent);
             }
         });
