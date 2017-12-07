@@ -9,37 +9,31 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/buttonPBToBS"
-        android:layout_width="125dp"
-        android:layout_height="70dp"
+    <ImageView
+        android:id="@+id/PBButtonBackground2"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/button_budget_summary" />
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
 
     <Button
         android:id="@+id/buttonPBToMM"
-        android:layout_width="125dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
         android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/button_main_menu" />
-
-    <Button
-        android:id="@+id/buttonPBToCV"
-        android:layout_width="125dp"
-        android:layout_height="70dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/button_calendar_view" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/button_go_back" />
 
     <TextView
         android:id="@+id/text_bill_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonPBToMM"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="50dp"
         android:text="Bill Type"
         android:textSize="24sp" />
 
@@ -49,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_bill_type"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="39dp"
         android:text="@string/pick_date"
         android:textAlignment="center"
         android:textSize="22sp" />
@@ -60,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view_amout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="66dp"
         android:text="comment"
         android:textSize="24sp" />
 
@@ -70,7 +64,36 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_date"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="amout"
+        android:layout_marginTop="59dp"
+        android:text="amount"
         android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/button_pay"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/button_yes" />
+
+    <ImageView
+        android:id="@+id/PBButtonBackground"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
+
+    <TextView
+        android:id="@+id/PBLabelConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonPBToMM"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label_confirm_paid"
+        android:textColor="@android:color/background_light"
+        android:textSize="28sp" />
+
 </RelativeLayout>

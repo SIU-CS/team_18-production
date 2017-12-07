@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context="team_18.financialadvisor.MainActivity">
 
     <TextView
         android:id="@+id/MMTextViewCurrentBudgetLabel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/MMEditTextFinancialHealth"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
         android:text="@string/label_current_budget"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:layout_below="@+id/buttonMMGoToBS"
-        android:layout_alignParentStart="true" />
+        android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/MMEditTextCurrentBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="$Placeholder$"
-        android:ems="10"
-        android:id="@+id/MMEditTextCurrentBudget"
-        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/MMTextViewCurrentBudgetLabel"
+        android:background="@android:color/transparent"
         android:clickable="false"
         android:editable="false"
+        android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:layout_below="@+id/MMTextViewCurrentBudgetLabel"
-        android:layout_centerHorizontal="true" />
+        android:inputType="textPersonName"
+        android:text="$Placeholder$"
+        android:textAlignment="center" />
 
     <TextView
-        android:text="@string/label_financial_health"
+        android:id="@+id/MMTextViewFinancialHealthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/MMTextViewFinancialHealthLabel"
-        android:textSize="24sp"
-        android:layout_below="@+id/MMEditTextCurrentBudget"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBaseline="@+id/MMEditTextFinancialHealth"
+        android:layout_alignBottom="@+id/MMEditTextFinancialHealth"
+        android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
+        android:text="@string/label_financial_health"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/MMEditTextFinancialHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/MMTextViewUpcomingBillsLabel"
-        android:layout_below="@+id/MMTextViewFinancialHealthLabel"
+        android:layout_above="@+id/MMTextViewUpcomingBillsLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="11dp"
+        android:background="@android:color/transparent"
         android:clickable="false"
         android:editable="false"
         android:ems="10"
@@ -60,69 +62,78 @@
         android:textAlignment="center" />
 
     <TextView
-        android:text="Upcoming Bills"
+        android:id="@+id/MMTextViewUpcomingBillsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/MMTextViewUpcomingBillsLabel"
-        android:textSize="24sp"
-        android:layout_below="@+id/MMEditTextFinancialHealth"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/buttonMMGoToAddIncome"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/button_add_to_budget" />
-
-    <Button
-        android:text="@string/button_subtract_from_budget"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/MMButtonSubtractFromBudget"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:id="@+id/buttonMMGoToBS"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/MMListViewUpcomingBills"
         android:layout_centerHorizontal="true"
-        android:text="@string/button_budget_summary" />
-
-    <Button
-        android:id="@+id/buttonMMGoToCV"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/button_calendar_view" />
-
-    <Button
-        android:id="@+id/buttonMMGoToGV"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
-        android:text="@string/button_graph_view"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Upcoming Bills"
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/MMListViewUpcomingBills"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonMMGoToAddIncome"
-        android:layout_below="@+id/MMTextViewUpcomingBillsLabel"></ListView>
+        android:layout_height="300dp"
+        android:layout_above="@+id/MMButtonBackground"
+        android:layout_alignStart="@+id/MMButtonBackground"></ListView>
+
+    <ImageView
+        android:id="@+id/MMButtonBackground"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
+
+    <ImageView
+        android:id="@+id/MMButtonBackgroundTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@color/colorDarkGreen" />
 
     <Button
-        android:id="@+id/btnRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/MMTextViewUpcomingBillsLabel"
+        android:id="@+id/buttonMMGoToAddIncome"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
-        android:text="Refresh"
-        android:textSize="12sp" />
+        android:layout_alignParentTop="true"
+        android:text="@string/button_add_to_budget"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/MMButtonSubtractFromBudget"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_below="@+id/MMTitle"
+        android:text="@string/button_subtract_from_budget"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonMMGoToPrevious"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/button_previous_screen"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonMMGoToNext"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/button_next_screen"
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>

@@ -1,0 +1,93 @@
+<resources>
+
+    //Title
+
+    <string name="app_name">Financial Advisor</string>
+
+    //Universal Strings
+
+        //LEGACY STRINGS
+
+    <string name="button_main_menu">Main Menu</string>
+    <string name="button_calendar_view">Calendar View</string>
+    <string name="button_budget_summary">Budget Summary</string>
+    <string name="button_graph_view">Graph View</string>
+
+        //NEW STRINGS: KEEP THESE!
+
+    <string name="button_next_screen">To Budget Summary</string>
+    <string name="button_previous_screen">To Graph View</string>
+
+    //For main activity
+
+    <string name="button_subtract_from_budget">Add Expenses</string>
+    <string name="button_add_to_budget">Add Income</string>
+
+    <string name="label_main_menu_title">Main Menu</string>
+    <string name="label_upcoming_bills">Upcoming Bills</string>
+    <string name="label_current_budget">Current Budget:</string>
+    <string name="label_financial_health">Financial Health:</string>
+
+    <string-array name="spinner_upcoming_bills">
+        <item>Sample Bill 1</item>
+        <item>Sample Bill 2</item>
+        <item>Sample Bill 3</item>
+    </string-array>
+
+    //For budget summary
+
+    <string name="label_budget_summary_title">Budget Summary</string>
+    <string name="label_money_earned">Earnings</string>
+    <string name="label_money_spent">Expenditures</string>
+    <string name="label_alerts">Alerts</string>
+
+    <string name="button_file_export">Export Budget Data</string>
+    <string name="button_file_import">Import Budget Data</string>
+
+    //For graph view
+
+    <string name="label_graph_view">Graph View</string>
+    <string name="label_total_spent">Total Expenditures</string>
+
+    <string name="button_three_months">Past Three Months</string>
+    <string name="button_six_months">Past Six Months</string>
+    <string name="button_twelve_months">Past Twelve Months</string>
+
+    //For calendar view
+
+    <string name="label_time_frame_week">One Week</string>
+    <string name="label_time_frame_month">One Month</string>
+    <string name="label_time_frame_year">One Year</string>
+
+    //For income transaction types
+
+    <string-array name="income_transactions">
+        <item>Wages</item>
+        <item>Commission</item>
+        <item>Gift</item>
+        <item>Other</item>
+    </string-array>
+
+    //For expenses transaction types
+    <string name="pick_date">Next Due On</string>
+
+    <string-array name="expense_transactions">
+        <item>Groceries</item>
+        <item>Gas</item>
+        <item>Rent Payment</item>
+        <item>Car Loan</item>
+        <item>Mortgage</item>
+        <item>Phone Bill</item>
+        <item>Internet and TV</item>
+        <item>Insurance</item>
+        <item>Electricity and Gas</item>
+        <item>Water and Waste</item>
+        <item>Other</item>
+    </string-array>
+    //for recurring transactions
+    <string-array name="transactions_recurring">
+        <item>Weekly</item>
+        <item>Bi-Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+</resources>

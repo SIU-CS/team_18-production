@@ -9,7 +9,7 @@ import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
-import team_18.financialadvisor.data.repo.RecurringIncomeRepo;
+
 
 import android.app.DialogFragment;
 import android.content.Intent;
@@ -28,11 +28,9 @@ import android.view.View.OnClickListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class AddExpenses extends AppCompatActivity {
     //Text input/Edit
     EditText amtPerMonth, transactionCmt, thisDate;
-
     String transactionType, transactionComment , transaction_recurring;
     double transactionAmount;
     private CheckBox chkRecurring;
@@ -42,7 +40,6 @@ public class AddExpenses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // set the format to sql date time
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final Date date = new Date();
 
         super.onCreate(savedInstanceState);
@@ -55,7 +52,6 @@ public class AddExpenses extends AppCompatActivity {
         Button addIncome = (Button)findViewById(R.id.button_add_income);
 
         addListenerOnChkRecurring();
-
 
         buttonGVGoToMM.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -114,13 +110,14 @@ public class AddExpenses extends AppCompatActivity {
                     }
                     addTransaction.setDate(DatePickerFragment.getDate());
                     addExpRepo.insert(addTransaction);
-
+                    Toast.makeText(getApplicationContext(), "Recurring Bill Added", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    addTransaction.setDate(date.toString());
+                    String fDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+                    addTransaction.setDate(fDate);
                     addTrRepo.insert(addTransaction);
-
+                    Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
                 }
 
                 Intent myIntent = new Intent(AddExpenses.this, MainActivity.class);
@@ -163,7 +160,7 @@ public class AddExpenses extends AppCompatActivity {
 
     }
     //get cursor object from the Budget Database and use it to get values
-    public Cursor updateDB(){
+    public static Cursor updateDB(){
 
         Cursor cursor = BudgetDataRepo.getAllData();
         if(cursor != null)

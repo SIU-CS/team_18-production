@@ -8,12 +8,11 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="8sp"
+        android:background="@color/colorDarkGreen"
         android:text="@string/button_add_to_budget"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
-        android:textColor="@android:color/holo_blue_bright"
-        android:textStyle="bold" />
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -59,6 +58,7 @@
             android:layout_row="0"
             android:text="Hours Worked :"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -87,6 +87,7 @@
             android:layout_row="1"
             android:text="Hourly Wage :"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
     </GridLayout>
@@ -96,7 +97,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total Amount Recieved "
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/text_box_income"
@@ -132,6 +134,7 @@
 
     <Button
         android:id="@+id/datePicker"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showDatePickerDialog"
@@ -154,6 +157,7 @@
         android:layout_height="wrap_content"
         android:text="Transaction Comment"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 
     <EditText
@@ -166,28 +170,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorDarkGreen"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/MMButtonGVGoToMM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Cancel" />
 
         <Button
             android:id="@+id/button_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Clear" />
 
         <Button
             android:id="@+id/button_add_income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Done" />

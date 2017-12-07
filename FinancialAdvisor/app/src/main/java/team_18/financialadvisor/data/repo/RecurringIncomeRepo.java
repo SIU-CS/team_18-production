@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import team_18.financialadvisor.AddIncome;
 import team_18.financialadvisor.R;
 import team_18.financialadvisor.data.DatabaseManager;
+import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 
 /**
@@ -109,7 +110,15 @@ public class RecurringIncomeRepo {
 
         return cursor;
     }
+    public static void setNewDate(String nextDue , int id){
 
+            SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+            db.execSQL("UPDATE " + NewTransaction.TABLE_RECURRING_INCOME + " SET "
+                    + NewTransaction.KYE_TRANSACTION_DATE+"='"
+                    + nextDue + "+1 month" + "' WHERE id=" + id +" ");
+
+    }
 
 
 }
