@@ -11,19 +11,21 @@
         android:id="@+id/MMTextViewCurrentBudgetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/MMEditTextFinancialHealth"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="13dp"
+        android:layout_below="@+id/MMButtonBackgroundTitle"
+        android:layout_marginTop="12dp"
         android:text="@string/label_current_budget"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/MMEditTextCurrentBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_alignBaseline="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_alignBottom="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_toEndOf="@+id/MMButtonSubtractFromBudget"
         android:background="@android:color/transparent"
         android:clickable="false"
         android:editable="false"
@@ -31,7 +33,22 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:inputType="textPersonName"
-        android:text="$Placeholder$"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/MMEditTextCurrentSavings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/MMTextViewCurrentSavings"
+        android:layout_alignBottom="@+id/MMTextViewCurrentSavings"
+        android:layout_alignStart="@+id/MMEditTextCurrentBudget"
+        android:background="@android:color/transparent"
+        android:clickable="false"
+        android:editable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="textPersonName"
         android:textAlignment="center" />
 
     <TextView
@@ -40,8 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/MMEditTextFinancialHealth"
         android:layout_alignBottom="@+id/MMEditTextFinancialHealth"
-        android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
+        android:layout_alignParentStart="true"
         android:text="@string/label_financial_health"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -58,7 +76,6 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:inputType="textPersonName"
-        android:text="Placeholder Health Value"
         android:textAlignment="center" />
 
     <TextView
@@ -67,13 +84,14 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/MMListViewUpcomingBills"
         android:layout_centerHorizontal="true"
-        android:text="Upcoming Bills"
+        android:text="@string/label_upcoming_bills"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <ListView
         android:id="@+id/MMListViewUpcomingBills"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="275dp"
         android:layout_above="@+id/MMButtonBackground"
         android:layout_alignStart="@+id/MMButtonBackground"></ListView>
 
@@ -111,29 +129,29 @@
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_alignStart="@+id/MMTextViewCurrentBudgetLabel"
-        android:layout_below="@+id/MMTitle"
         android:text="@string/button_subtract_from_budget"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/buttonMMGoToPrevious"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="170dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/button_previous_screen"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/buttonMMGoToNext"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="@string/button_next_screen"
         android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/MMTextViewCurrentSavings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/MMEditTextCurrentBudget"
+        android:paddingTop="10dp"
+        android:text="@string/label_current_savings"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

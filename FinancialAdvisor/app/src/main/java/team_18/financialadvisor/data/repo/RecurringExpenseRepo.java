@@ -16,6 +16,7 @@ import team_18.financialadvisor.data.model.NewTransaction;
 
 public class RecurringExpenseRepo {
 
+    @SuppressWarnings("unused")
     private NewTransaction expense;
 
     public RecurringExpenseRepo(){
@@ -91,13 +92,14 @@ public class RecurringExpenseRepo {
     }
 
     //todo set code for Deleting a transaction by ID
+    @SuppressWarnings("unused")
     public void delete( ) {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         db.delete(NewTransaction.TABLE_TRANSACTIONS, null,null);
         DatabaseManager.getInstance().closeDatabase();
     }
 
-    //get bill takes in an id and seaches and return that entry
+    //get bill takes in an id and searches and return that entry
 
     public static Cursor getBill(int id) {
 

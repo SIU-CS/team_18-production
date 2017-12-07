@@ -23,6 +23,7 @@
 
     <string name="label_main_menu_title">Main Menu</string>
     <string name="label_upcoming_bills">Upcoming Bills</string>
+    <string name="label_current_savings">Current Savings:</string>
     <string name="label_current_budget">Current Budget:</string>
     <string name="label_financial_health">Financial Health:</string>
 
@@ -32,6 +33,10 @@
     <string name="label_money_earned">Earnings</string>
     <string name="label_money_spent">Expenditures</string>
     <string name="label_alerts">Alerts</string>
+    <string name="label_transfer_funds">Transfer Funds From</string>
+    <string name="label_to">To</string>
+    <string name="number_initial_amount">0.00</string>
+    <string name="button_transfer_money">Transfer Money</string>
 
     //For graph view
 
@@ -56,11 +61,27 @@
         <item>Gift</item>
         <item>Other</item>
     </string-array>
+    <string name="radio_wages">Wages</string>
+    <string name="radio_other_income">Other Income</string>
+    <string name="label_hours_worked">Hours Worked :</string>
+    <string name="label_hourly_wage">Hourly Wage :</string>
+    <string name="label_total_amount_received">Total Amount Received</string>
+    <string name="label_time_frame">Payment Interval:</string>
 
     //For expenses transaction types
     <string name="pick_date">Next Due On</string>
+    <string name="label_transaction_type">Select Type of Transaction</string>
+    <string name="label_amount_paid">Amount Paid</string>
+    <string name="label_is_transaction_recurring">Is This Transaction Recurring?</string>
+    <string name="label_transaction_comment">Transaction Comment</string>
+
+    <string name="button_clear">Clear</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_done">Done</string>
+
 
     //For activity_pay_bills.xml
+
     <string name="button_yes">Yes, It\'s Paid</string>
     <string name="button_go_back">No, Go Back</string>
     <string name="label_confirm_paid">Has this expense been paid?</string>

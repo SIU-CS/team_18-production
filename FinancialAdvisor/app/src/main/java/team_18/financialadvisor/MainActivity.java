@@ -12,23 +12,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.database.Cursor;
-import android.widget.Toast;
-
 import team_18.financialadvisor.data.model.BudgetData;
-import team_18.financialadvisor.data.repo.BudgetDataRepo;
-import team_18.financialadvisor.data.repo.NewTransactionRepo;
+import team_18.financialadvisor.data.model.RecIncome;
 import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 public class MainActivity extends AppCompatActivity {
+    @SuppressWarnings("unused")
     private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //todo fix month
+        //RecIncome.setIncome();
         //Declaring button
         Button buttonMMGoToNext = (Button) findViewById(R.id.buttonMMGoToNext);
-        Button buttonMMGoToPrev = (Button) findViewById(R.id.buttonMMGoToPrevious);
         Button buttonMMGoToAddIncome = (Button) findViewById(R.id.buttonMMGoToAddIncome);
         Button MMButtonSubtractFromBudget = (Button) findViewById(R.id.MMButtonSubtractFromBudget);
         ListView simpleList = (ListView) findViewById(R.id.MMListViewUpcomingBills);
@@ -41,25 +39,18 @@ public class MainActivity extends AppCompatActivity {
         //list bills
         listItems(simpleList);
 
-        //Declaring Budget EditText
+        //Declaring Budget and Savings EditText
         BudgetData newData = App.getDBdata();
         final EditText budgetText = (EditText)findViewById(R.id.MMEditTextCurrentBudget);
+        final EditText savingsText = (EditText)findViewById(R.id.MMEditTextCurrentSavings);
         budgetText.setText(String.valueOf(newData.getCurrentBalance()));
+        savingsText.setText(String.valueOf(newData.getTotalSavings()));
 
 
         //Setting button behaviors
         buttonMMGoToNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, BudgetSummary.class);
-                startActivity(myIntent);
-            }
-        });
-
-
-
-        buttonMMGoToPrev.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, CalendarView.class);
                 startActivity(myIntent);
             }
         });
@@ -83,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String bill = String.valueOf(parent.getItemAtPosition(position));
+                        @SuppressWarnings("unused") String bill = String.valueOf(parent.getItemAtPosition(position));
 
-                       // Toast.makeText(MainActivity.this, " INdex " + position, Toast.LENGTH_LONG).show();
+                       // Toast.makeText(MainActivity.this, " Index " + position, Toast.LENGTH_LONG).show();
 
                         //Create a bundle object
                         Bundle b = new Bundle();
@@ -107,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     public void listItems(ListView simpleList) {
 
         Cursor allBills = RecurringExpenseRepo.getAllBills();
-        ArrayList<String> mylist = new ArrayList<String>();
+        ArrayList<String> myList = new ArrayList<String>();
 
         allBills.moveToFirst();
 
@@ -120,14 +111,14 @@ public class MainActivity extends AppCompatActivity {
                 amount = allBills.getString(1);
                 due = allBills.getString(5);
                 bills = "$ " + amount + "   " + billType + " Due On: " + due;
-                mylist.add(bills);
+                myList.add(bills);
 
             } while (allBills.moveToNext());
 
             for (int i = 0; i <= 4; i++) {
 
                 ArrayAdapter<String> arrayAdapter;
-                arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mylist);
+                arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, myList);
                 simpleList.setAdapter(arrayAdapter);
 
             }

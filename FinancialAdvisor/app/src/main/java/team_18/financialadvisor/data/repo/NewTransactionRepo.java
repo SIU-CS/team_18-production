@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 
 public class NewTransactionRepo {
 
+    @SuppressWarnings("unused")
     private NewTransaction transaction;
 
     public NewTransactionRepo(){
@@ -76,13 +77,15 @@ public class NewTransactionRepo {
 
 
     //todo set code for Deleting a transaction by ID
+    @SuppressWarnings("unused")
     public void delete( ) {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         db.delete(NewTransaction.TABLE_TRANSACTIONS, null,null);
         DatabaseManager.getInstance().closeDatabase();
     }
 
-    //get bill takes in an id and seaches and return that entry
+    //get bill takes in an id and searches and return that entry
+    @SuppressWarnings("unused")
     public Cursor getBill(int id) {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         Cursor cursor = db.rawQuery( "SELECT * FROM " + NewTransaction.TABLE_TRANSACTIONS + " WHERE " +

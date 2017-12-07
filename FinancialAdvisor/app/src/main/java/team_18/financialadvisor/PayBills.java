@@ -1,5 +1,6 @@
 package team_18.financialadvisor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import java.util.Date;
  */
 
 public class PayBills extends AppCompatActivity {
+    @SuppressWarnings("unused")
     private TextView textView;
     String dateDue;
     @Override
@@ -69,14 +71,15 @@ public class PayBills extends AppCompatActivity {
         });
 
     }
+    @SuppressLint("SetTextI18n")
     public void setBillPayment(){
 
         int keyID = 0;
         Bundle b = getIntent().getExtras();
         TextView billType = (TextView) findViewById(R.id.text_bill_type);
         TextView date = (TextView) findViewById(R.id.text_date);
-        TextView amount = (TextView) findViewById(R.id.text_view_amout);
-        TextView coment = (TextView) findViewById(R.id.text_comment);
+        TextView amount = (TextView) findViewById(R.id.text_view_amount);
+        TextView comment = (TextView) findViewById(R.id.text_comment);
 
         keyID = b.getInt("key_val") + 1;
         Cursor thisBill = RecurringExpenseRepo.getBill(keyID);
@@ -84,7 +87,7 @@ public class PayBills extends AppCompatActivity {
         billType.setText(thisBill.getString(3));
         date.setText("Due Date: " + thisBill.getString(5));
         amount.setText("$" + thisBill.getDouble(1) * -1.00);
-        coment.setText(thisBill.getString(4));
+        comment.setText(thisBill.getString(4));
     }
 
     public String getDate() {
@@ -126,8 +129,8 @@ public class PayBills extends AppCompatActivity {
         }
 
         df = new SimpleDateFormat("mm/dd/yyyy");
-        Date resultdate = new Date(cal.getTimeInMillis());
-        String thisDate = df.format(resultdate);
+        Date resultDate = new Date(cal.getTimeInMillis());
+        String thisDate = df.format(resultDate);
 
         return thisDate;
     }

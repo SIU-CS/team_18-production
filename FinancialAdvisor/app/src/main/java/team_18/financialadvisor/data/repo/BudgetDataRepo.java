@@ -46,11 +46,11 @@ public class BudgetDataRepo {
         values.put(BudgetData.WEEKS_USED, 30);
         values.put(BudgetData.NUM_OF_ENTRIES, 0);
 
-        //make sure that table is empty before entring data
+        //make sure that table is empty before entering data
         String count = "SELECT count(*) FROM " + BudgetData.TABLE_BUDGET_STATS;
-        Cursor mcursor = db.rawQuery(count, null);
-        mcursor.moveToFirst();
-        int itemCount = mcursor.getInt(0);
+        Cursor mCursor = db.rawQuery(count, null);
+        mCursor.moveToFirst();
+        int itemCount = mCursor.getInt(0);
         if(itemCount>0)
          return;
         else
