@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select Type of Transaction"
+        android:text="@string/label_transaction_type"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp"
         android:visibility="visible" />
@@ -47,7 +47,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Amount Paid"
+        android:text="@string/label_amount_paid"
+        android:textColor="@android:color/black"
         android:visibility="visible" />
 
     <EditText
@@ -62,8 +63,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Is This Transaction Recurring?"
+        android:text="@string/label_is_transaction_recurring"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textStyle="bold" />
 
     <CheckBox
@@ -103,8 +105,9 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transaction Comment"
+        android:text="@string/label_transaction_comment"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 
     <EditText
@@ -132,7 +135,7 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/button_cancel" />
 
         <Button
             android:id="@+id/button_clear"
@@ -141,7 +144,7 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="Clear" />
+            android:text="@string/button_clear" />
 
         <Button
             android:id="@+id/button_add_income"
@@ -150,6 +153,6 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="Done" />
+            android:text="@string/button_done" />
     </LinearLayout>
 </LinearLayout>

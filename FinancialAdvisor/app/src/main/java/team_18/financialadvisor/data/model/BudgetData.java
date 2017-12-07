@@ -4,6 +4,7 @@ package team_18.financialadvisor.data.model;
  * Created by Avtar on 11/8/17.
  */
 
+@SuppressWarnings("unused")
 public class BudgetData {
     public static final String TABLE_BUDGET_STATS = "BudgetStats";
 

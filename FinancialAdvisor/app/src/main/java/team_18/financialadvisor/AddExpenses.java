@@ -86,7 +86,7 @@ public class AddExpenses extends AppCompatActivity {
                     return;
                 }
                 if( transactionCmt.getText().toString().length() == 0 ) {
-                    transactionCmt.setError("Coment is required!");
+                    transactionCmt.setError("Comment is required!");
                     return;
                 }
                 transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
@@ -154,7 +154,7 @@ public class AddExpenses extends AppCompatActivity {
 
     }
 
-    public void showDatePickerDialog(View v) {
+    public void showDatePickerDialog(@SuppressWarnings("unused") View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
 

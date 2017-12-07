@@ -5,7 +5,6 @@ package team_18.financialadvisor;
  * Revised by Ian on 11/1/17
  */
 
-import team_18.financialadvisor.data.model.BudgetData;
 import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
@@ -22,20 +21,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static team_18.financialadvisor.DatePickerFragment.*;
-
 public class AddIncome extends AppCompatActivity {
     EditText amtPerMonth, transactionCmt, hours, payPerHour, thisDate;
     String transactionType = "Wages";
     String transaction_recurring, transactionComment;
-    double transactionAmount , hoursWoked, perHour;
+    double transactionAmount , hoursWorked, perHour;
     boolean isRecurring = true;
 
     private RadioGroup radioIncomeGroup;
@@ -111,7 +107,7 @@ public class AddIncome extends AppCompatActivity {
                         return;
                     }
                     if( transactionCmt.getText().toString().length() == 0 ) {
-                        transactionCmt.setError("Coment is required!");
+                        transactionCmt.setError("Comment is required!");
                         return;
                     }
 
@@ -123,9 +119,9 @@ public class AddIncome extends AppCompatActivity {
 
                     addTransaction.setDate(DatePickerFragment.getDate());
 
-                    hoursWoked = Double.parseDouble(hours.getText().toString());
+                    hoursWorked = Double.parseDouble(hours.getText().toString());
                     perHour = Double.parseDouble(payPerHour.getText().toString());
-                    addTransaction.setTransactionAmount(hoursWoked * perHour);
+                    addTransaction.setTransactionAmount(hoursWorked * perHour);
 
                     addIncomeRepo.insert(addTransaction);
                     Toast.makeText(getApplicationContext(), "Recurring Income Added", Toast.LENGTH_SHORT).show();
@@ -140,7 +136,7 @@ public class AddIncome extends AppCompatActivity {
                         return;
                     }
                     if( transactionCmt.getText().toString().length() == 0 ) {
-                        transactionCmt.setError("Coment is required!");
+                        transactionCmt.setError("Comment is required!");
                         return;
                     }
                     transactionAmount = Double.parseDouble(amtPerMonth.getText().toString());
@@ -186,7 +182,7 @@ public class AddIncome extends AppCompatActivity {
                 // get selected radio button from radioGroup
                 int selectedId = radioIncomeGroup.getCheckedRadioButtonId();
 
-                // find the radiobutton by returned id
+                // find the radio button by returned id
                 radioIncomeButton = (RadioButton) findViewById(selectedId);
                 transactionType = radioIncomeButton.getText().toString();
 
@@ -212,7 +208,7 @@ public class AddIncome extends AppCompatActivity {
                 // get selected radio button from radioGroup
                 int selectedId = radioIncomeGroup.getCheckedRadioButtonId();
 
-                // find the radiobutton by returned id
+                // find the radio button by returned id
                 radioIncomeButton = (RadioButton) findViewById(selectedId);
 
                 transactionType = radioIncomeButton.getText().toString();
@@ -221,7 +217,7 @@ public class AddIncome extends AppCompatActivity {
         });
     }
 
-    public void showDatePickerDialog(View v) {
+    public void showDatePickerDialog(@SuppressWarnings("unused") View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }

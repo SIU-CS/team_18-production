@@ -17,8 +17,10 @@ import team_18.financialadvisor.data.model.NewTransaction;
  * Created by Avtar on 11/9/17.
  */
 
+@SuppressWarnings("unused")
 public class RecurringIncomeRepo {
 
+    @SuppressWarnings("unused")
     private NewTransaction income;
     public RecurringIncomeRepo(){
 
@@ -57,6 +59,7 @@ public class RecurringIncomeRepo {
     }
 
     //get cursor object from the Budget Database and use it to get values
+    @SuppressWarnings("unused")
     public Cursor getDB(){
 
         Cursor cursor = BudgetDataRepo.getAllData();
@@ -95,7 +98,7 @@ public class RecurringIncomeRepo {
         DatabaseManager.getInstance().closeDatabase();
     }
 
-    //get bill takes in an id and seaches and return that entry
+    //get bill takes in an id and searches and return that entry
 
     public Cursor getIncomeByID(int id) {
 

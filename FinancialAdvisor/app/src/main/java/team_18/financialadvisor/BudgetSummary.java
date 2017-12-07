@@ -1,5 +1,6 @@
 package team_18.financialadvisor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +17,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import team_18.financialadvisor.data.model.BudgetData;
-import team_18.financialadvisor.data.model.NewTransaction;
 import team_18.financialadvisor.data.repo.BudgetDataRepo;
 import team_18.financialadvisor.data.repo.NewTransactionRepo;
-import team_18.financialadvisor.data.repo.RecurringExpenseRepo;
 
 public class BudgetSummary extends AppCompatActivity {
     EditText amountToT;
@@ -30,13 +28,12 @@ public class BudgetSummary extends AppCompatActivity {
         setContentView(R.layout.activity_budget_summary);
 
         Button buttonBSGoToMM = (Button)findViewById(R.id.buttonBSGoToMM);
-        Button buttonBSGoToGV = (Button)findViewById(R.id.buttonBSGoToGV);
         Button buttonTM = (Button) findViewById(R.id.btn_transfer);
         final TextView accountText = (TextView) findViewById(R.id.text_account);
 
         ListView listIncome = (ListView) findViewById(R.id.BSListViewEarnings);
         ListView listExpenses = (ListView) findViewById(R.id.BSListViewExpenditures);
-        final Spinner accountSpinner = (Spinner) findViewById(R.id.spiner_account);
+        final Spinner accountSpinner = (Spinner) findViewById(R.id.spinner_account);
 
         final int[] spinnerPos = new int[1];
         listItems(listIncome, listExpenses);
@@ -48,16 +45,10 @@ public class BudgetSummary extends AppCompatActivity {
             }
         });
 
-        buttonBSGoToGV.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent myIntent = new Intent(BudgetSummary.this, GraphView.class);
-                startActivity(myIntent);
-            }
-        });
-
         accountSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             // will run every time the user select an item from spinner
+            @SuppressLint("SetTextI18n")
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
@@ -95,7 +86,7 @@ public class BudgetSummary extends AppCompatActivity {
                 //validate input
                 if(spinnerPos[0] == 0){
                     if(T_Amount > budget){
-                        Toast.makeText(getApplicationContext(), "You only have " + budget + " in your chekings", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "You only have " + budget + " in your checkings", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         budget -= T_Amount;
@@ -134,7 +125,7 @@ public class BudgetSummary extends AppCompatActivity {
 
     }
     public void listItems(ListView listIncome, ListView  listExpenses) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressWarnings("unused") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Cursor allBills = NewTransactionRepo.getAllBills();
         ArrayList<String> income = new ArrayList<String>();
         ArrayList<String> expenses = new ArrayList<String>();

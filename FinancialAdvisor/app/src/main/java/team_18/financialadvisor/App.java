@@ -3,7 +3,7 @@ package team_18.financialadvisor;
 /**
  * Created by Avtar on 11/8/17.
  *
- * Creates an instance for DBHleper right when the program starts
+ * Creates an instance for DBHelper right when the program starts
  *
  */
 
