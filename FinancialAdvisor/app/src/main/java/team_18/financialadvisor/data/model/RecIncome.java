@@ -2,6 +2,9 @@ package team_18.financialadvisor.data.model;
 
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
+
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,15 +21,18 @@ public class RecIncome extends AppCompatActivity {
 
     public static void setIncome(){
 
-        SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+        DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
         Date calDate, dbDate = null;
-        calDate = new Date();
+        Date myDate = null;
+        calDate = getCurrentDate();
         double myBudget = 0.00;
+
         Cursor allIncomes = RecurringIncomeRepo.getIncomes();
         Cursor budget = BudgetDataRepo.getAllData();
         budget.moveToFirst();
-        myBudget = budget.getDouble(1);
         allIncomes.moveToFirst();
+
+        myBudget = budget.getDouble(1);
 
         do {
 
@@ -38,9 +44,43 @@ public class RecIncome extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            if (toJulianDate(df.format(calDate) )<= toJulianDate(dbDate)){
+            if (toJulianDate(calDate)== toJulianDate(dbDate) || toJulianDate(calDate)> toJulianDate(dbDate)){
                 myBudget += amount;
                 BudgetDataRepo.updateBudget(myBudget);
+
+                String dateDue = allIncomes.getString(5);
+                try {
+                    myDate = df.parse(dateDue);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(myDate);
+
+                //Update expenses in the recurring transaction and add to transactions table
+                if (allIncomes.getString(2).compareToIgnoreCase("Weekly") == 0)
+                {
+
+                    cal.add(Calendar.DAY_OF_MONTH, 7);
+
+                }
+                else if(allIncomes.getString(2).compareToIgnoreCase("Bi-Weekly") == 0)
+                {
+
+
+                    cal.add(Calendar.DAY_OF_MONTH, 14);
+                }
+                else
+                {
+                    cal.add(Calendar.MONTH, 1);
+
+                }
+
+                df = new SimpleDateFormat("mm/dd/yyyy");
+                Date resultdate = new Date(cal.getTimeInMillis());
+                String thisDate = df.format(resultdate);
+                RecurringIncomeRepo.setNewDate(thisDate, allIncomes.getInt(0));
+
             }
 
 
@@ -61,6 +101,16 @@ public class RecIncome extends AppCompatActivity {
         int y = lYear + 4800 - a;
         int m = lMonth + 12 * a - 3;
         return lDay + (153 * m + 2) / 5 + 365 * y + y / 4 - y / 100 + y / 400 - 32045;
+    }
+
+    public static Date getCurrentDate(){
+        // Use the current date as the default date in the picker
+        final Calendar c = Calendar.getInstance();
+
+        Date theDate = c.getTime();
+
+        return theDate;
+
     }
 
 }
