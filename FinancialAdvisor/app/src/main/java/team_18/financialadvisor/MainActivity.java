@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecIncome.setIncome();
+        //todo fix month
+        //RecIncome.setIncome();
         //Declaring button
         Button buttonMMGoToNext = (Button) findViewById(R.id.buttonMMGoToNext);
         Button buttonMMGoToPrev = (Button) findViewById(R.id.buttonMMGoToPrevious);
